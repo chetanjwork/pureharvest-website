@@ -1,13 +1,25 @@
 'use client';
 
 import { ReactLenis } from 'lenis/react';
-import { ReactNode } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  if (isMobile) {
+    return <>{children}</>;
+  }
+
   return (
-    // lerp: 0.08 = snappy but smooth. duration: 1.0 = fast response.
-    // wheelMultiplier: 1 = natural wheel speed, no over-amplification
-    // touchMultiplier: 1.5 = mobile swipe feels natural
     <ReactLenis
       root
       options={{

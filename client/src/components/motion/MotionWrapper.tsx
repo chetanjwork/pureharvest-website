@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useRef, useState, useEffect } from 'react';
 
 interface MotionWrapperProps {
   children: ReactNode;
@@ -23,9 +23,22 @@ export default function MotionWrapper({
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '0px 0px -4% 0px' });
   const shouldReduceMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  if (isMobile || shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   const getInitial = () => {
-    if (shouldReduceMotion) return { opacity: 1, y: 0, x: 0 };
     switch (direction) {
       case 'up':    return { opacity: 0, y: yOffset };
       case 'down':  return { opacity: 0, y: -yOffset };
@@ -40,8 +53,8 @@ export default function MotionWrapper({
     <motion.div
       ref={ref}
       initial={getInitial()}
-      animate={shouldReduceMotion ? { opacity: 1, y: 0, x: 0 } : (isInView ? { opacity: 1, y: 0, x: 0 } : getInitial())}
-      transition={shouldReduceMotion ? { duration: 0.05 } : {
+      animate={isInView ? { opacity: 1, y: 0, x: 0 } : getInitial()}
+      transition={{
         duration,
         delay,
         ease: [0.22, 1, 0.36, 1],

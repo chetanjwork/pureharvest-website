@@ -99,35 +99,50 @@ export default function Hero() {
           </div>
 
           {/* CENTER COLUMN: The Hero Bottle (Visual Anchor) with GPU-promoted scroll parallax & rolling rotation */}
-          <motion.div
-            className="w-full lg:w-auto lg:absolute lg:left-1/2 lg:top-[50%] lg:-translate-x-1/2 lg:-translate-y-[48%] flex items-center justify-center z-10 order-2 lg:order-none py-6 lg:py-0 pointer-events-none"
-            style={{
-              y: disableAnimations ? "0px" : bottleY,
-              scale: disableAnimations ? 1 : bottleScale,
-              rotate: disableAnimations ? 0 : bottleRotate,
-              opacity: disableAnimations ? 1 : bottleOpacity,
-              willChange: disableAnimations ? "auto" : "transform, opacity"
-            }}
-          >
+          {disableAnimations ? (
+            <div className="w-full flex items-center justify-center z-10 order-2 py-6 pointer-events-none">
+              <div className="relative w-full h-full flex items-center justify-center animate-mobile-hero">
+                <Image
+                  src="/herobannerbottle.png"
+                  alt="PureHarvest Premium Branded Water Bottle"
+                  width={1536}
+                  height={1024}
+                  priority
+                  className="object-contain drop-shadow-[0_24px_48px_rgba(0,0,0,0.12)] max-h-[50vh]"
+                />
+              </div>
+            </div>
+          ) : (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={disableAnimations ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -15, 0] }}
-              transition={disableAnimations ? { duration: 0.6, ease: "easeOut" } : {
-                opacity: { duration: 0.8 },
-                y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+              className="w-full lg:w-auto lg:absolute lg:left-1/2 lg:top-[50%] lg:-translate-x-1/2 lg:-translate-y-[48%] flex items-center justify-center z-10 order-2 lg:order-none py-6 lg:py-0 pointer-events-none"
+              style={{
+                y: bottleY,
+                scale: bottleScale,
+                rotate: bottleRotate,
+                opacity: bottleOpacity,
+                willChange: "transform, opacity"
               }}
-              className="relative w-full h-full flex items-center justify-center"
             >
-              <Image
-                src="/herobannerbottle.png"
-                alt="PureHarvest Premium Branded Water Bottle"
-                width={1536}
-                height={1024}
-                priority
-                className="object-contain drop-shadow-[0_40px_70px_rgba(0,0,0,0.18)] max-h-[60vh] lg:max-h-[82vh]"
-              />
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: [0, -15, 0] }}
+                transition={{
+                  opacity: { duration: 0.8 },
+                  y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                }}
+                className="relative w-full h-full flex items-center justify-center"
+              >
+                <Image
+                  src="/herobannerbottle.png"
+                  alt="PureHarvest Premium Branded Water Bottle"
+                  width={1536}
+                  height={1024}
+                  priority
+                  className="object-contain drop-shadow-[0_40px_70px_rgba(0,0,0,0.18)] max-h-[82vh]"
+                />
+              </motion.div>
             </motion.div>
-          </motion.div>
+          )}
 
           {/* RIGHT COLUMN: Glass Metrics Cards */}
           <div className="w-full lg:w-[32%] flex flex-col justify-center gap-3 lg:gap-4 z-20 order-3 lg:order-none pb-4 lg:pb-0">

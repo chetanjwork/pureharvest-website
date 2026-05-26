@@ -21,16 +21,8 @@ export default function ParallaxImage({
   ...props 
 }: ParallaxImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Calculate the movement. If speed is 15, it moves from -15% to +15%
-  const y = useTransform(scrollYProgress, [0, 1], [`-${speed}%`, `${speed}%`]);
-
   const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024);
@@ -40,14 +32,36 @@ export default function ParallaxImage({
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Calculate the movement. If speed is 15, it moves from -15% to +15%
+  const y = useTransform(scrollYProgress, [0, 1], [`-${speed}%`, `${speed}%`]);
+
+  if (isMobile) {
+    return (
+      <div className={`relative overflow-hidden ${className}`}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className={`object-cover ${imageClassName}`}
+          {...props}
+        />
+      </div>
+    );
+  }
+
   return (
     <div ref={containerRef} className={`relative overflow-hidden ${className}`}>
       <motion.div 
         className="absolute left-0 right-0"
         style={{
-            top: isMobile ? "0px" : `-${speed}%`,
-            bottom: isMobile ? "0px" : `-${speed}%`,
-            y: isMobile ? "0px" : y
+            top: `-${speed}%`,
+            bottom: `-${speed}%`,
+            y
         }}
       >
         <Image
