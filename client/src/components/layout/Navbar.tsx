@@ -121,10 +121,7 @@ export default function Navbar() {
             </motion.div>
             <motion.span 
               layout
-              className={`text-[13px] font-sans font-black tracking-[0.1em] uppercase whitespace-nowrap transition-colors 
-                ${scrolled || isMenuOpen ? 'text-brand-accent' : 'text-brand-accent'} 
-                ${scrolled && !isMenuOpen ? 'hidden md:block' : ''}
-              `}
+              className="text-[13px] font-sans font-black tracking-[0.1em] uppercase whitespace-nowrap transition-colors text-brand-accent hidden md:block"
             >
               PureHarvest
             </motion.span>
@@ -151,15 +148,18 @@ export default function Navbar() {
           </nav>
 
           {/* ACTION BUTTON & MOBILE TOGGLE */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <motion.button
               layout
               onClick={() => scrollTo('onboarding')}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               className={`
-                flex items-center gap-2 rounded-full text-[9px] font-black uppercase tracking-widest transition-all shadow-lg group relative overflow-hidden bg-brand-accent text-white focus:outline-none
-                ${scrolled && !isMenuOpen ? 'px-6 py-2.5' : 'px-8 py-3.5'}
+                flex items-center gap-1.5 rounded-full text-[8px] sm:text-[9px] font-black uppercase tracking-widest transition-all shadow-lg group relative overflow-hidden bg-brand-accent text-white focus:outline-none
+                ${(scrolled && !isMenuOpen) 
+                  ? 'px-4 py-2 sm:px-6 sm:py-2.5' 
+                  : 'px-5 py-2.5 sm:px-8 sm:py-3.5'
+                }
               `}
             >
               <motion.div
@@ -169,7 +169,7 @@ export default function Navbar() {
               />
               <span className="relative z-10">Inquire</span>
               <motion.div className="relative z-10" whileHover={{ x: 2, y: -2 }} transition={{ type: 'spring', stiffness: 400 }}>
-                <ArrowUpRight size={12} />
+                <ArrowUpRight size={11} />
               </motion.div>
             </motion.button>
 
