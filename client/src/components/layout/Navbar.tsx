@@ -38,9 +38,15 @@ export default function Navbar() {
     restDelta: 0.001
   });
 
-  useMotionValueEvent(scrollY, 'change', (y) => {
-    setScrolled(y > 50);
-  });
+  // Robust native scroll listener for mobile-friendly, lag-free triggers
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Lock scroll when menu is open
   useEffect(() => {
@@ -76,29 +82,24 @@ export default function Navbar() {
         animate={{ 
           y: 0, 
           opacity: 1,
-          width: (!isMobile && scrolled && !isMenuOpen) ? 'auto' : '100%',
-          top: (!isMobile && scrolled && !isMenuOpen) ? '20px' : '0px',
+          top: (scrolled && !isMenuOpen) ? '20px' : '0px',
         }}
-        transition={isMobile ? { duration: 0.15 } : { 
+        transition={{ 
           type: "spring",
           stiffness: 260,
           damping: 20,
           mass: 1,
           opacity: { duration: 0.4 }
         }}
-        className={`fixed left-0 right-0 transition-all duration-700 flex justify-center pointer-events-none ${isMenuOpen ? 'z-[200]' : 'z-[100]'}`}
+        className={`fixed left-0 right-0 flex justify-center pointer-events-none ${isMenuOpen ? 'z-[200]' : 'z-[100]'}`}
       >
         <motion.div 
-          layout={!isMobile}
+          layout
           className={`
-            pointer-events-auto flex items-center justify-between transition-all duration-700
-            ${!isMobile && scrolled && !isMenuOpen 
+            pointer-events-auto flex items-center justify-between
+            ${scrolled && !isMenuOpen 
               ? 'bg-white/60 bg-[radial-gradient(120%_120%_at_50%_-20%,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.2)_100%)] backdrop-blur-[40px] border border-white/60 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.25),0_40px_80px_-20px_rgba(0,0,0,0.35),0_0_20px_rgba(0,0,0,0.1),inset_0_1px_2px_rgba(255,255,255,1),inset_0_-1px_2px_rgba(0,0,0,0.05)] px-4 py-2 rounded-full gap-6' 
-              : `w-full max-w-[1400px] px-6 md:px-10 py-4 lg:py-6 border-b transition-all duration-300 ${
-                  scrolled 
-                    ? 'bg-white/90 backdrop-blur-xl border-black/[0.05] shadow-sm' 
-                    : 'bg-transparent border-transparent'
-                }`
+              : 'w-full max-w-[1400px] px-6 md:px-10 py-6 bg-transparent border-b border-transparent'
             }
             ${isMenuOpen ? 'bg-white/95 backdrop-blur-2xl px-6 py-4 rounded-b-[32px]' : ''}
           `}
