@@ -1,0 +1,57 @@
+# Node modules
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Next.js build output
+client/.next/
+client/out/
+
+# Environments and Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+client/.env.local
+server/.env
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Editor directories
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Ignore heavy raw PNG bottles and renders to prevent push timeouts
+*_Bottle*.png
+client/public/*_Bottle*.png
+*front.png
+*back.png
+client/public/*front.png
+client/public/*back.png
+whitebottle.png
+client/public/whitebottle.png
+classic.png
+client/public/classic.png
+signature.png
+client/public/signature.png
+hero-bottle.png
+client/public/hero-bottle.png
+hero-clean.png
+client/public/hero-clean.png
+PureHarvestFevicon.png
+herobannerbottle.png
+client/public/herobannerbottle.png
