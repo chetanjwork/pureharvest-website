@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 interface ScrollTextRevealProps {
   text: string;
@@ -14,7 +14,32 @@ interface ScrollTextRevealProps {
  */
 export default function ScrollTextReveal({ text, className = "" }: ScrollTextRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const words = text.split(" ");
+
+  if (isMobile) {
+    return (
+      <motion.p
+        initial={{ opacity: 0.6, y: 5 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className={className}
+      >
+        {text}
+      </motion.p>
+    );
+  }
 
   return (
     <div ref={containerRef} className={`relative flex flex-wrap gap-x-[0.3em] gap-y-0 ${className}`}>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import MotionWrapper from '../motion/MotionWrapper';
 import TextReveal from '../motion/TextReveal';
@@ -21,6 +21,16 @@ const CLIENT_BRANDS = [
 
 export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Track scroll position of the hero section for premium, lag-free parallax
   const { scrollYProgress } = useScroll({
@@ -90,17 +100,17 @@ export default function Hero() {
           <motion.div
             className="w-full lg:w-auto lg:absolute lg:left-1/2 lg:top-[50%] lg:-translate-x-1/2 lg:-translate-y-[48%] flex items-center justify-center z-10 order-2 lg:order-none py-6 lg:py-0 pointer-events-none"
             style={{
-              y: bottleY,
-              scale: bottleScale,
-              rotate: bottleRotate,
-              opacity: bottleOpacity,
-              willChange: "transform, opacity"
+              y: isMobile ? "0px" : bottleY,
+              scale: isMobile ? 1 : bottleScale,
+              rotate: isMobile ? 0 : bottleRotate,
+              opacity: isMobile ? 1 : bottleOpacity,
+              willChange: isMobile ? "auto" : "transform, opacity"
             }}
           >
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: [0, -15, 0] }}
-              transition={{
+              initial={{ opacity: 0, y: 30 }}
+              animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -15, 0] }}
+              transition={isMobile ? { duration: 0.6, ease: "easeOut" } : {
                 opacity: { duration: 0.8 },
                 y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
               }}

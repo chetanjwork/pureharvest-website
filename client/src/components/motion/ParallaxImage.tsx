@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image, { ImageProps } from 'next/image';
 
@@ -30,14 +30,24 @@ export default function ParallaxImage({
   // Calculate the movement. If speed is 15, it moves from -15% to +15%
   const y = useTransform(scrollYProgress, [0, 1], [`-${speed}%`, `${speed}%`]);
 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <div ref={containerRef} className={`relative overflow-hidden ${className}`}>
       <motion.div 
         className="absolute left-0 right-0"
         style={{
-            top: `-${speed}%`,
-            bottom: `-${speed}%`,
-            y
+            top: isMobile ? "0px" : `-${speed}%`,
+            bottom: isMobile ? "0px" : `-${speed}%`,
+            y: isMobile ? "0px" : y
         }}
       >
         <Image
