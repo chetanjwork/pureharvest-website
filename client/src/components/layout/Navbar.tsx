@@ -96,26 +96,34 @@ export default function Navbar() {
         <motion.div 
           layout
           className={`
-            pointer-events-auto flex items-center justify-between
-            ${scrolled && !isMenuOpen 
-              ? 'bg-white/60 bg-[radial-gradient(120%_120%_at_50%_-20%,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.2)_100%)] backdrop-blur-[40px] border border-white/60 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.25),0_40px_80px_-20px_rgba(0,0,0,0.35),0_0_20px_rgba(0,0,0,0.1),inset_0_1px_2px_rgba(255,255,255,1),inset_0_-1px_2px_rgba(0,0,0,0.05)] px-4 py-2 rounded-full gap-6' 
-              : 'w-full max-w-[1400px] px-6 md:px-10 py-6 bg-transparent border-b border-transparent'
+            pointer-events-auto flex items-center justify-between transition-all duration-500
+            ${isMenuOpen 
+              ? 'w-full px-6 py-4 bg-white/95 backdrop-blur-2xl rounded-b-[32px] border-b border-black/5 shadow-lg' 
+              : scrolled
+                ? 'w-[92vw] max-w-[340px] sm:max-w-[380px] lg:w-auto px-3 py-1.5 lg:px-5 lg:py-2 bg-white/60 bg-[radial-gradient(120%_120%_at_50%_-20%,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.2)_100%)] backdrop-blur-[40px] border border-white/60 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] rounded-full gap-3 sm:gap-6'
+                : 'w-full max-w-[1400px] px-6 md:px-10 py-5 lg:py-6 bg-transparent border-b border-transparent'
             }
-            ${isMenuOpen ? 'bg-white/95 backdrop-blur-2xl px-6 py-4 rounded-b-[32px]' : ''}
           `}
         >
           {/* LOGO */}
           <Link
             href="/"
-            className="flex items-center gap-3 group active:scale-95 transition-transform"
+            className="flex items-center gap-2 sm:gap-3 group active:scale-95 transition-transform"
           >
-            <motion.div layout className="relative w-10 h-10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+            <motion.div 
+              layout 
+              className={`relative flex items-center justify-center group-hover:scale-110 transition-transform duration-500
+                ${(scrolled && !isMenuOpen) ? 'w-8 h-8' : 'w-10 h-10'}
+              `}
+            >
               <Image 
                 src="/logo.png" 
                 alt="PureHarvest Logo" 
                 width={40} 
                 height={40} 
-                className="object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
+                className={`object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-500
+                  ${(scrolled && !isMenuOpen) ? 'w-8 h-8' : 'w-10 h-10'}
+                `}
                 priority
               />
             </motion.div>
@@ -155,10 +163,10 @@ export default function Navbar() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               className={`
-                flex items-center gap-1.5 rounded-full text-[8px] sm:text-[9px] font-black uppercase tracking-widest transition-all shadow-lg group relative overflow-hidden bg-brand-accent text-white focus:outline-none
+                flex items-center gap-1 sm:gap-1.5 rounded-full font-black uppercase tracking-widest transition-all shadow-lg group relative overflow-hidden bg-brand-accent text-white focus:outline-none
                 ${(scrolled && !isMenuOpen) 
-                  ? 'px-4 py-2 sm:px-6 sm:py-2.5' 
-                  : 'px-5 py-2.5 sm:px-8 sm:py-3.5'
+                  ? 'px-3 py-1.5 sm:px-5 sm:py-2 text-[8px] sm:text-[9px]' 
+                  : 'px-4.5 py-2.5 sm:px-8 sm:py-3.5 text-[8.5px] sm:text-[9px]'
                 }
               `}
             >
@@ -169,7 +177,7 @@ export default function Navbar() {
               />
               <span className="relative z-10">Inquire</span>
               <motion.div className="relative z-10" whileHover={{ x: 2, y: -2 }} transition={{ type: 'spring', stiffness: 400 }}>
-                <ArrowUpRight size={11} />
+                <ArrowUpRight size={(scrolled && !isMenuOpen) ? 10 : 12} />
               </motion.div>
             </motion.button>
 
@@ -178,7 +186,9 @@ export default function Navbar() {
               layout
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               whileTap={{ scale: 0.85 }}
-              className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors lg:hidden bg-black/5 text-brand-accent hover:bg-black/10 focus:outline-none -webkit-tap-highlight-color-transparent`}
+              className={`rounded-full flex items-center justify-center transition-colors lg:hidden bg-black/5 text-brand-accent hover:bg-black/10 focus:outline-none -webkit-tap-highlight-color-transparent
+                ${(scrolled && !isMenuOpen) ? 'w-8 h-8' : 'w-9 h-9'}
+              `}
             >
               <AnimatePresence mode="wait" initial={false}>
                 {isMenuOpen ? (
@@ -189,7 +199,7 @@ export default function Navbar() {
                     exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
                   >
-                    <X size={18} />
+                    <X size={16} />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -199,7 +209,7 @@ export default function Navbar() {
                     exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
                   >
-                    <Menu size={18} />
+                    <Menu size={16} />
                   </motion.div>
                 )}
               </AnimatePresence>
