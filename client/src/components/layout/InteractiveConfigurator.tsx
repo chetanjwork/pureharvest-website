@@ -51,9 +51,16 @@ const SERIES_OPTIONS = [
 export default function InteractiveConfigurator() {
   const [activeSeries, setActiveSeries] = useState(SERIES_OPTIONS[0]);
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   const handleSeriesChange = (series: typeof SERIES_OPTIONS[0]) => {
@@ -110,8 +117,8 @@ export default function InteractiveConfigurator() {
 
             {/* ── Bottle (explicit width/height — never collapses) ── */}
             <motion.div
-              animate={{ y: [0, -14, 0] }}
-              transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+              animate={isMobile ? { y: 0 } : { y: [0, -14, 0] }}
+              transition={isMobile ? { duration: 0.1 } : { duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
               className="relative z-20 flex items-center justify-center py-12 px-8"
             >
               <AnimatePresence mode="wait">
@@ -121,7 +128,7 @@ export default function InteractiveConfigurator() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.94 }}
                   transition={{ duration: 0.45, ease: 'easeInOut' }}
-                  whileHover={{ scale: 1.025, rotate: 0.5 }}
+                  whileHover={isMobile ? {} : { scale: 1.025, rotate: 0.5 }}
                   style={{ cursor: 'pointer' }}
                 >
                   <img
@@ -129,10 +136,12 @@ export default function InteractiveConfigurator() {
                     alt={activeSeries.name}
                     style={{
                       width: 'auto',
-                      height: 'min(72vh, 640px)',
+                      height: isMobile ? 'min(45vh, 320px)' : 'min(72vh, 640px)',
                       maxWidth: '100%',
                       objectFit: 'contain',
-                      filter: 'drop-shadow(0 40px 60px rgba(0,0,0,0.12)) drop-shadow(0 8px 16px rgba(0,0,0,0.06))',
+                      filter: isMobile 
+                        ? 'drop-shadow(0 20px 40px rgba(0,0,0,0.08))' 
+                        : 'drop-shadow(0 40px 60px rgba(0,0,0,0.12)) drop-shadow(0 8px 16px rgba(0,0,0,0.06))',
                     }}
                   />
                 </motion.div>
@@ -142,8 +151,8 @@ export default function InteractiveConfigurator() {
             {/* Floor contact shadow — synced to float */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
               <motion.div
-                animate={{ scaleX: [1, 0.88, 1], opacity: [0.10, 0.18, 0.10] }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+                animate={isMobile ? { scaleX: 1, opacity: 0.14 } : { scaleX: [1, 0.88, 1], opacity: [0.10, 0.18, 0.10] }}
+                transition={isMobile ? { duration: 0.1 } : { duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
                 style={{
                   width: 120,
                   height: 12,

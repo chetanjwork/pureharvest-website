@@ -38,6 +38,7 @@ export default function Transformation() {
               imageClassName="opacity-60 scale-105 group-hover:scale-100 transition-transform duration-1000"
               speed={12}
               sizes="(max-width: 1024px) 100vw, 50vw"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-black/40 pointer-events-none" />
             
@@ -62,6 +63,7 @@ export default function Transformation() {
               imageClassName="scale-110 group-hover:scale-105 transition-transform duration-1000"
               speed={12}
               sizes="(max-width: 1024px) 100vw, 50vw"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent pointer-events-none" />
             

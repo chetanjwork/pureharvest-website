@@ -57,6 +57,7 @@ export default function Showcase() {
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                  loading="lazy"
                 />
               </div>
               

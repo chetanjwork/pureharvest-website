@@ -35,6 +35,18 @@
     -webkit-user-select: none;
   }
 
+  /* Swiggy/Zepto-grade instant touch interactions */
+  button, 
+  a, 
+  input, 
+  select, 
+  textarea,
+  [role="button"] {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+  }
+
   input, textarea {
     user-select: text !important;
     -webkit-user-select: text !important;

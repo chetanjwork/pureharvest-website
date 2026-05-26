@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 
 interface TextRevealProps {
   text: string;
@@ -12,11 +12,44 @@ interface TextRevealProps {
 
 export default function TextReveal({ text, className = '', delay = 0, as = 'p' }: TextRevealProps) {
   const ref = useRef(null);
-  // Wider margin so animation fires before element is fully in view = less jank
   const isInView = useInView(ref, { once: true, margin: '0px 0px -5% 0px' });
+  const shouldReduceMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const Component = motion[as as keyof typeof motion] as any;
   const words = text.split(' ');
+
+  if (shouldReduceMotion) {
+    const RawComponent = as;
+    return (
+      <RawComponent ref={ref} className={className}>
+        {text}
+      </RawComponent>
+    );
+  }
+
+  if (isMobile) {
+    return (
+      <Component
+        ref={ref}
+        initial={{ opacity: 0.6, y: 5 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0.6, y: 5 }}
+        transition={{ duration: 0.4, ease: 'easeOut', delay }}
+        className={className}
+      >
+        {text}
+      </Component>
+    );
+  }
 
   const container = {
     hidden: { opacity: 0 },
@@ -28,7 +61,6 @@ export default function TextReveal({ text, className = '', delay = 0, as = 'p' }
 
   const child = {
     hidden: { opacity: 0, y: 12 },
-    // NO blur — blur is the most expensive CSS prop and kills scroll performance
     visible: {
       opacity: 1,
       y: 0,

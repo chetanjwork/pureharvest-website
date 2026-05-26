@@ -143,9 +143,19 @@ export default function Portfolio() {
   const [active, setActive] = useState(0);
   const [mounted, setMounted] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
   const autoRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
   const total = bottles.length;
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const next = useCallback(() => {
     if (total === 0) return;
@@ -341,6 +351,7 @@ export default function Portfolio() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   ...style,
+                  filter: isMobile ? 'none' : style.filter,
                   transform: activeTransform,
                 }}
               >
@@ -356,9 +367,11 @@ export default function Portfolio() {
                       imageRendering: 'auto',
                       // Contoured drop shadow on the glass/PET itself that shifts with mouse movement
                       filter: isActive
-                        ? `drop-shadow(${tilt.x * -0.8}px ${12 + tilt.y * 0.8}px ${18 + Math.abs(tilt.x) * 0.5}px rgba(11,33,71,0.12)) 
-                           drop-shadow(${tilt.x * -0.3}px ${4 + tilt.y * 0.3}px 6px rgba(11,33,71,0.06))`
-                        : 'drop-shadow(0 6px 10px rgba(11,33,71,0.03))',
+                        ? (isMobile 
+                           ? 'drop-shadow(0 14px 20px rgba(11,33,71,0.12))' 
+                           : `drop-shadow(${tilt.x * -0.8}px ${12 + tilt.y * 0.8}px ${18 + Math.abs(tilt.x) * 0.5}px rgba(11,33,71,0.12)) 
+                              drop-shadow(${tilt.x * -0.3}px ${4 + tilt.y * 0.3}px 6px rgba(11,33,71,0.06))`)
+                        : 'none',
                       transition: isTransitioning ? 'filter 0.5s ease' : 'none',
                     }}
                   />

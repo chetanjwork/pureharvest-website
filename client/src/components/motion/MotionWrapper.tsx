@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { ReactNode, useRef } from 'react';
 
 interface MotionWrapperProps {
@@ -21,10 +21,11 @@ export default function MotionWrapper({
   className = '',
 }: MotionWrapperProps) {
   const ref = useRef(null);
-  // Trigger earlier so animation is done BEFORE user sees it — prevents mid-scroll jank
   const isInView = useInView(ref, { once: true, margin: '0px 0px -4% 0px' });
+  const shouldReduceMotion = useReducedMotion();
 
   const getInitial = () => {
+    if (shouldReduceMotion) return { opacity: 1, y: 0, x: 0 };
     switch (direction) {
       case 'up':    return { opacity: 0, y: yOffset };
       case 'down':  return { opacity: 0, y: -yOffset };
@@ -39,11 +40,10 @@ export default function MotionWrapper({
     <motion.div
       ref={ref}
       initial={getInitial()}
-      animate={isInView ? { opacity: 1, y: 0, x: 0 } : getInitial()}
-      transition={{
+      animate={shouldReduceMotion ? { opacity: 1, y: 0, x: 0 } : (isInView ? { opacity: 1, y: 0, x: 0 } : getInitial())}
+      transition={shouldReduceMotion ? { duration: 0.05 } : {
         duration,
         delay,
-        // tween is lighter than spring for scroll-triggered animations
         ease: [0.22, 1, 0.36, 1],
       }}
       className={className}
