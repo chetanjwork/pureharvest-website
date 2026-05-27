@@ -30,11 +30,11 @@ export default function FoundersNote() {
           <MotionWrapper delay={0.3} className="w-full">
             <div className="relative px-6 md:px-12">
               <Quote className="absolute -top-6 left-0 md:-top-10 md:-left-4 w-12 h-12 md:w-16 md:h-16 text-[#D4AF37]/10 rotate-180" strokeWidth={1} />
-              <div className="flex flex-col gap-8 md:gap-10">
-                <p className="font-serif italic text-[18px] md:text-[24px] lg:text-[28px] text-brand-accent/80 leading-[1.9] md:leading-[2] font-medium relative z-10">
+              <div className="flex flex-col gap-5 md:gap-6">
+                <p className="font-sans text-[16px] md:text-[18px] lg:text-[20px] text-brand-accent/80 leading-[1.7] md:leading-[1.8] font-normal relative z-10">
                   PureHarvest wasn’t simply built to manufacture bottles; it was created to solve a quiet problem in luxury hospitality. I realized that a truly premium hotel or corporate boardroom deserves more than just standard water - it requires an uncompromising aesthetic and absolute purity.
                 </p>
-                <p className="font-serif italic text-[18px] md:text-[24px] lg:text-[28px] text-brand-accent/80 leading-[1.9] md:leading-[2] font-medium relative z-10">
+                <p className="font-sans text-[16px] md:text-[18px] lg:text-[20px] text-brand-accent/80 leading-[1.7] md:leading-[1.8] font-normal relative z-10">
                   When you partner with us, you aren't just another account. We engineer our signature series with the exact same meticulous care you offer your own VIP guests - ensuring every table, event, and suite reflects absolute perfection. For us, the bottle is just the vessel; elevating your brand's experience is everything.
                 </p>
               </div>
