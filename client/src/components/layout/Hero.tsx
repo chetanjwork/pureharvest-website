@@ -99,7 +99,7 @@ export default function Hero() {
                   height={1024}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
-                  className="object-contain drop-shadow-[0_24px_48px_rgba(0,0,0,0.12)] max-h-[50vh]"
+                  className="object-contain md:drop-shadow-[0_24px_48px_rgba(0,0,0,0.12)] max-h-[50vh]"
                 />
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function Hero() {
                   height={1024}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
-                  className="object-contain drop-shadow-[0_40px_70px_rgba(0,0,0,0.18)] max-h-[82vh]"
+                  className="object-contain md:drop-shadow-[0_40px_70px_rgba(0,0,0,0.18)] max-h-[82vh]"
                 />
               </motion.div>
             </motion.div>
@@ -142,7 +142,7 @@ export default function Hero() {
           <div className="w-full lg:w-[32%] flex flex-col justify-center gap-3 lg:gap-4 z-20 order-3 lg:order-none pb-4 lg:pb-0">
             {/* Metric 1 */}
             <MotionWrapper delay={0.4}>
-              <div className="bg-[#FFFFFF]/80 backdrop-blur-xl border border-white/60 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] rounded-xl h-[75px] lg:h-[100px] flex items-center hover:-translate-y-1 transition-transform duration-300">
+              <div className="bg-white md:bg-[#FFFFFF]/80 md:backdrop-blur-xl border border-gray-100 md:border-white/60 shadow-sm md:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] rounded-xl h-[75px] lg:h-[100px] flex items-center hover:-translate-y-1 transition-transform duration-300">
                 <div className="w-[70px] lg:w-[100px] h-full flex items-center justify-center border-r border-[#E5E7EB] border-opacity-80">
                   <Users size={20} strokeWidth={1.5} className="text-[#1E50FF] lg:w-7 lg:h-7" />
                 </div>
@@ -155,7 +155,7 @@ export default function Hero() {
 
             {/* Metric 2 */}
             <MotionWrapper delay={0.5}>
-              <div className="bg-[#FFFFFF]/80 backdrop-blur-xl border border-white/60 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] rounded-xl h-[75px] lg:h-[100px] flex items-center hover:-translate-y-1 transition-transform duration-300">
+              <div className="bg-white md:bg-[#FFFFFF]/80 md:backdrop-blur-xl border border-gray-100 md:border-white/60 shadow-sm md:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] rounded-xl h-[75px] lg:h-[100px] flex items-center hover:-translate-y-1 transition-transform duration-300">
                 <div className="w-[70px] lg:w-[100px] h-full flex items-center justify-center border-r border-[#E5E7EB] border-opacity-80">
                   <ShieldCheck size={20} strokeWidth={1.5} className="text-[#1E50FF] lg:w-7 lg:h-7" />
                 </div>
@@ -168,7 +168,7 @@ export default function Hero() {
 
             {/* Metric 3 */}
             <MotionWrapper delay={0.6}>
-              <div className="bg-[#FFFFFF]/80 backdrop-blur-xl border border-white/60 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] rounded-xl h-[75px] lg:h-[100px] flex items-center hover:-translate-y-1 transition-transform duration-300">
+              <div className="bg-white md:bg-[#FFFFFF]/80 md:backdrop-blur-xl border border-gray-100 md:border-white/60 shadow-sm md:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] rounded-xl h-[75px] lg:h-[100px] flex items-center hover:-translate-y-1 transition-transform duration-300">
                 <div className="w-[70px] lg:w-[100px] h-full flex items-center justify-center border-r border-[#E5E7EB] border-opacity-80">
                   <Droplet size={20} strokeWidth={1.5} className="text-[#1E50FF] lg:w-7 lg:h-7" />
                 </div>
