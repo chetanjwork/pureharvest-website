@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Droplets, Zap, Filter, Wind, FlaskConical,
   Sparkles, Plus, Layers, Shield, RefreshCw,
-  Activity, Gauge, ShieldCheck, Check
+  Activity, Gauge, ShieldCheck, Check, ChevronDown
 } from 'lucide-react';
 
 const STAGES = [
@@ -124,7 +124,7 @@ export default function Purification() {
     >
       
       {/* Absolute Dynamic Grid Mesh (Brand Accent Linked) */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(11,33,71,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(11,33,71,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[repeating-linear-gradient(to_right,rgba(11,33,71,0.03)_0,rgba(11,33,71,0.03)_1px,transparent_1px,transparent_40px),repeating-linear-gradient(to_bottom,rgba(11,33,71,0.03)_0,rgba(11,33,71,0.03)_1px,transparent_1px,transparent_40px)] pointer-events-none z-0" />
       
       <Container className="relative z-10">
 
@@ -188,7 +188,7 @@ export default function Purification() {
         </div>
 
         {/* ── DESKTOP: Laboratory Specifications Table ── */}
-        <div className="hidden lg:block w-full overflow-hidden bg-white/95 md:bg-white/60 md:backdrop-blur-md border border-black/[0.03] rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.03)] relative z-10">
+        <div className="hidden md:block w-full overflow-hidden bg-white/95 md:bg-white/60 md:backdrop-blur-md border border-black/[0.03] rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.03)] relative z-10">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-black/[0.05] bg-black/[0.01]">
@@ -208,8 +208,8 @@ export default function Purification() {
                   <React.Fragment key={stage.number}>
                     <tr 
                       onClick={() => setExpandedIndex(isExpanded ? null : idx)}
-                      className={`border-b border-black/[0.02] last:border-none transition-all duration-300 cursor-pointer hover:bg-black/[0.01] ${
-                        isExpanded ? 'bg-black/[0.005]' : ''
+                      className={`border-b border-black/[0.02] last:border-none transition-all duration-300 cursor-pointer hover:bg-slate-50/60 ${
+                        isExpanded ? 'bg-slate-50/40' : ''
                       }`}
                     >
                       <td className="py-4 px-8 text-xs font-semibold text-brand-accent/30 tabular-nums">{stage.number}</td>
@@ -230,8 +230,10 @@ export default function Purification() {
                         </span>
                       </td>
                       <td className="py-4 px-8 text-xs font-bold text-brand-accent/70">{stage.taste}</td>
-                      <td className="py-4 px-8 text-right text-brand-accent/20 font-black">
-                        <span className={`inline-block transition-transform duration-300 ${isExpanded ? 'rotate-90 text-brand-secondary' : ''}`}>→</span>
+                      <td className="py-4 px-8 text-right text-brand-accent/30 font-black">
+                        <div className={`inline-block transition-transform duration-300 ${isExpanded ? 'rotate-180 text-brand-secondary' : ''}`}>
+                          <ChevronDown size={16} strokeWidth={2.5} />
+                        </div>
                       </td>
                     </tr>
                     {/* Collapsible details row */}
@@ -260,8 +262,8 @@ export default function Purification() {
           </table>
         </div>
 
-        {/* ── MOBILE & TABLET: Micro-Accordion Specifications Index ── */}
-        <div className="lg:hidden w-full flex flex-col gap-2.5 relative z-10">
+        {/* ── MOBILE: Micro-Accordion Specifications Index ── */}
+        <div className="md:hidden w-full flex flex-col gap-2.5 relative z-10">
           {STAGES.map((stage, idx) => {
             const Icon = stage.icon;
             const isExpanded = expandedIndex === idx;
@@ -293,8 +295,8 @@ export default function Purification() {
                     <span className="text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#F8F9FA] md:bg-black/[0.02] text-brand-accent/60 border border-black/5 shrink-0 leading-none">
                       {stage.index.replace(' Certified', '').replace(' Compliant', '').replace(' Double Safe', '')}
                     </span>
-                    <span className={`text-[10px] text-brand-accent/30 transition-transform duration-300 font-bold shrink-0 ${isExpanded ? 'rotate-90 text-brand-secondary' : ''}`}>
-                      →
+                    <span className={`text-brand-accent/40 transition-transform duration-300 shrink-0 ${isExpanded ? 'rotate-180 text-brand-secondary' : ''}`}>
+                      <ChevronDown size={16} strokeWidth={2.5} />
                     </span>
                   </div>
                 </button>
