@@ -104,7 +104,7 @@ export default function Navbar() {
           className={`
             pointer-events-auto flex items-center justify-between transition-colors duration-300
             ${isMenuOpen 
-              ? 'w-full px-6 py-4 bg-white/95 backdrop-blur-2xl rounded-b-[32px] border-b border-black/5 shadow-lg' 
+              ? 'w-full px-6 py-5 bg-[#F2F2F7] border-b border-transparent' 
               : scrolled
                 ? 'w-auto px-4 py-2 sm:px-5 lg:py-2 bg-white/60 bg-[radial-gradient(120%_120%_at_50%_-20%,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.2)_100%)] backdrop-blur-[40px] border border-white/60 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] rounded-full gap-4 sm:gap-6'
                 : 'w-full max-w-[1400px] px-6 md:px-10 py-5 lg:py-6 bg-transparent border-b border-transparent'
@@ -192,8 +192,8 @@ export default function Navbar() {
               layout
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               whileTap={{ scale: 0.85 }}
-              className={`rounded-full flex items-center justify-center transition-colors lg:hidden bg-black/5 text-brand-accent hover:bg-black/10 focus:outline-none -webkit-tap-highlight-color-transparent
-                ${(scrolled && !isMenuOpen) ? 'w-8 h-8' : 'w-9 h-9'}
+              className={`rounded-full flex items-center justify-center transition-colors lg:hidden text-brand-accent focus:outline-none -webkit-tap-highlight-color-transparent
+                ${isMenuOpen ? 'bg-black/10 w-9 h-9' : scrolled ? 'bg-black/5 hover:bg-black/10 w-8 h-8' : 'bg-black/5 hover:bg-black/10 w-9 h-9'}
               `}
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -231,81 +231,72 @@ export default function Navbar() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="fixed inset-0 z-[150] lg:hidden bg-white flex flex-col pt-24 pb-10"
+            className="fixed inset-0 z-[150] lg:hidden bg-[#F2F2F7] flex flex-col pt-[100px] pb-10"
+            style={{ willChange: 'opacity, transform' }}
           >
             <div className="flex-1 overflow-y-auto px-5 space-y-6">
               {/* Navigation Group */}
-              <div className="bg-white rounded-[20px] shadow-sm divide-y divide-gray-50 overflow-hidden">
+              <div className="bg-white rounded-[22px] divide-y divide-gray-100 overflow-hidden border border-black/[0.03] shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
                 {navLinks.map((link, i) => (
                   <motion.button
                     key={link.id}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
+                    transition={{ delay: i * 0.04 }}
                     onClick={() => scrollTo(link.id)}
-                    className="w-full flex items-center justify-between p-5 active:bg-gray-50 transition-colors group"
+                    className="w-full flex items-center justify-between px-6 py-4.5 active:bg-gray-50 transition-colors group"
                   >
-                    <div className="flex flex-col items-start gap-0.5">
-                      <span className="text-[17px] font-semibold tracking-tight text-gray-900 group-active:text-brand-secondary transition-colors">
+                    <div className="flex flex-col items-start gap-1">
+                      <span className="text-[17px] font-bold tracking-[-0.01em] text-black group-active:text-brand-secondary transition-colors">
                         {link.name}
                       </span>
-                      <span className="text-[12px] text-gray-400 font-medium tracking-tight">
+                      <span className="text-[12px] text-[#8E8E93] font-medium tracking-tight">
                         {link.desc}
                       </span>
                     </div>
-                    <ChevronRight size={18} className="text-gray-300" />
+                    <ChevronRight size={18} className="text-[#C7C7CC]" />
                   </motion.button>
                 ))}
               </div>
 
               {/* Contact Group */}
-              <div className="bg-white rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] divide-y divide-gray-100 overflow-hidden border border-black/[0.02]">
-                <a href="tel:+918149174975" className="w-full flex items-center gap-4 p-6 active:bg-gray-50 transition-colors">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#0D47A1]">
-                    <Phone size={18} strokeWidth={2} />
+              <div className="bg-white rounded-[22px] divide-y divide-gray-100 overflow-hidden border border-black/[0.03] shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+                <a href="tel:+918149174975" className="w-full flex items-center gap-5 p-6 active:bg-gray-50 transition-colors">
+                  <div className="w-[42px] h-[42px] rounded-full bg-[#007AFF]/10 flex items-center justify-center text-[#007AFF]">
+                    <Phone size={18} strokeWidth={2.5} />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[14px] font-bold text-gray-400 uppercase tracking-widest mb-0.5">Direct Call</span>
-                    <span className="text-[17px] font-black text-gray-900 tracking-tight">+91 81491 74975</span>
+                    <span className="text-[11px] font-bold text-[#8E8E93] uppercase tracking-widest mb-0.5">Direct Call</span>
+                    <span className="text-[18px] font-black text-black tracking-tight">+91 81491 74975</span>
                   </div>
                 </a>
-                <div className="p-6 flex items-center justify-between">
+                <div className="px-6 py-5 flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-500">
-                      <Globe size={18} strokeWidth={2} />
+                    <div className="w-[36px] h-[36px] rounded-full bg-[#F2F2F7] flex items-center justify-center text-[#8E8E93]">
+                      <Globe size={16} strokeWidth={2.5} />
                     </div>
-                    <span className="text-[15px] font-bold text-gray-900">Social Hub</span>
+                    <span className="text-[15px] font-bold text-black">Social Hub</span>
                   </div>
-                  <div className="flex gap-5">
-                    <a href="https://wa.me/918149174975" target="_blank" rel="noopener noreferrer">
-                      <motion.div whileTap={{ scale: 0.9 }}><MessageCircle size={20} className="text-gray-400 active:text-brand-secondary transition-colors" /></motion.div>
+                  <div className="flex gap-4">
+                    <a href="https://wa.me/918149174975" target="_blank" rel="noopener noreferrer" className="w-[36px] h-[36px] flex items-center justify-center rounded-full bg-[#25D366]/10 text-[#25D366] active:scale-95 transition-transform">
+                      <MessageCircle size={18} strokeWidth={2} />
                     </a>
-                    <a href="https://wa.me/918149174975?text=Hi%20PureHarvest%2C%20I%20would%20like%20to%20get%20in%20touch." target="_blank" rel="noopener noreferrer">
-                      <motion.div whileTap={{ scale: 0.9 }}><Send size={20} className="text-gray-400 active:text-brand-secondary transition-colors" /></motion.div>
-                    </a>
-                    <a href="https://www.instagram.com/pure_harvest.enterprise" target="_blank" rel="noopener noreferrer">
-                      <motion.div whileTap={{ scale: 0.9 }}><Globe size={20} className="text-gray-400 active:text-brand-secondary transition-colors" /></motion.div>
+                    <a href="https://www.instagram.com/pure_harvest.enterprise" target="_blank" rel="noopener noreferrer" className="w-[36px] h-[36px] flex items-center justify-center rounded-full bg-[#E1306C]/10 text-[#E1306C] active:scale-95 transition-transform">
+                      <Globe size={18} strokeWidth={2} />
                     </a>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Bottom Action Area (Optimized for Mobile) */}
-            <div className="px-5 mt-auto pb-8 relative z-50">
+            {/* Bottom Action Area (Sleek Apple style pill button) */}
+            <div className="px-5 mt-auto pt-6 pb-2 relative z-50">
               <button
                 onClick={() => scrollTo('onboarding')}
-                className="w-full bg-[#0D47A1] text-white py-5 h-[64px] rounded-[22px] text-[15px] font-black uppercase tracking-[0.2em] shadow-[0_20px_40px_-10px_rgba(13,71,161,0.4)] active:scale-[0.97] transition-all flex items-center justify-center gap-3 relative overflow-hidden group"
+                className="w-full bg-[#0B2147] text-white py-4.5 rounded-[18px] text-[15px] font-black uppercase tracking-[0.15em] shadow-[0_12px_24px_-8px_rgba(11,33,71,0.5)] active:scale-[0.98] transition-all flex items-center justify-center gap-3 relative overflow-hidden group"
               >
                 <span className="relative z-10">Get Started</span>
-                <ArrowUpRight size={18} strokeWidth={3} className="relative z-10 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                
-                {/* Shimmer Effect */}
-                <motion.div
-                  animate={{ x: ['-100%', '200%'] }}
-                  transition={{ repeat: Infinity, duration: 3, ease: 'linear', repeatDelay: 2 }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none"
-                />
+                <ArrowUpRight size={18} strokeWidth={2.5} className="relative z-10 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
             </div>
           </motion.div>
