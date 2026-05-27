@@ -85,6 +85,12 @@ export default function Hero() {
                   <span>Explore Solutions</span>
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform text-white/80" strokeWidth={3} />
                 </button>
+
+                {/* Trust Badge */}
+                <div className="flex items-center gap-2 lg:gap-3 px-4 py-2 lg:px-5 lg:py-2.5 bg-white/60 md:bg-white/80 backdrop-blur-md border border-[#0D47A1]/10 rounded-full shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] mt-1 lg:mt-2">
+                  <ShieldCheck className="w-4 h-4 lg:w-4 lg:h-4 text-[#0D47A1]" strokeWidth={2.5} />
+                  <span className="text-[9px] lg:text-[10px] font-black text-brand-accent uppercase tracking-[0.15em] pt-[1px]">BIS Approved & ISI Certified</span>
+                </div>
               </div>
             </MotionWrapper>
           </div>
