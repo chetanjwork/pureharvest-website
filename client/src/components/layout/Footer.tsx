@@ -36,8 +36,16 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-brand-accent font-black text-xs uppercase tracking-[0.3em] text-brand-accent/60">Contact</h4>
             <ul className="space-y-5">
-              <li className="text-brand-accent/70 text-sm font-bold">hello@pureharvestenterprises.com</li>
-              <li className="text-brand-accent/70 text-sm font-bold">Phone: +91 81491 74975</li>
+              <li>
+                <a href="mailto:hello@pureharvestenterprises.com" className="text-brand-accent/70 text-sm font-bold hover:text-brand-accent hover:translate-x-1 inline-block transition-all">
+                  hello@pureharvestenterprises.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+918149174975" className="text-brand-accent/70 text-sm font-bold hover:text-brand-accent hover:translate-x-1 inline-block transition-all">
+                  Phone: +91 81491 74975
+                </a>
+              </li>
             </ul>
           </div>
           
