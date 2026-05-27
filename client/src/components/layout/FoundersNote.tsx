@@ -23,7 +23,7 @@ export default function FoundersNote() {
 
           <MotionWrapper delay={0.2}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-black text-brand-accent mb-12 lg:mb-16 tracking-tight leading-tight">
-              A Standard of Purity, Crafted for Excellence
+              Premium Water for Premium Brands
             </h2>
           </MotionWrapper>
 
@@ -32,10 +32,10 @@ export default function FoundersNote() {
               <Quote className="absolute -top-6 left-0 md:-top-10 md:-left-4 w-12 h-12 md:w-16 md:h-16 text-[#D4AF37]/10 rotate-180" strokeWidth={1} />
               <div className="flex flex-col gap-5 md:gap-6">
                 <p className="font-sans text-[16px] md:text-[18px] lg:text-[20px] text-brand-accent/80 leading-[1.7] md:leading-[1.8] font-normal relative z-10">
-                  PureHarvest wasn’t simply built to manufacture bottles; it was created to solve a quiet problem in luxury hospitality. I realized that a truly premium hotel or corporate boardroom deserves more than just standard water - it requires an uncompromising aesthetic and absolute purity.
+                  PureHarvest was created to solve a simple problem: businesses need better water. I realized that a good hotel, restaurant, or office deserves more than just standard plastic bottles—they need premium glass bottles that look amazing.
                 </p>
                 <p className="font-sans text-[16px] md:text-[18px] lg:text-[20px] text-brand-accent/80 leading-[1.7] md:leading-[1.8] font-normal relative z-10">
-                  When you partner with us, you aren't just another account. We engineer our signature series with the exact same meticulous care you offer your own VIP guests - ensuring every table, event, and suite reflects absolute perfection. For us, the bottle is just the vessel; elevating your brand's experience is everything.
+                  When you work with us, we treat you like a VIP. We make sure every bottle is perfectly designed and delivered on time, so you can offer the best experience to your own customers.
                 </p>
               </div>
               <Quote className="absolute -bottom-6 right-0 md:-bottom-10 md:-right-4 w-12 h-12 md:w-16 md:h-16 text-[#D4AF37]/10" strokeWidth={1} />

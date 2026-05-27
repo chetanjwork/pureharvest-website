@@ -15,12 +15,12 @@ const industries = [
     Icon: Hotel,
     color: 'from-[#0A1128] to-[#030612]',
     iconColor: '#D4AF37', // Refined Gold
-    headline: 'Imperial Hotel Standard',
-    description: 'Establish a presence that lingers. Custom-etched PureHarvest vessels designed for the world’s most prestigious suites and fine-dining environments.',
+    headline: 'Luxury Hotels & Resorts',
+    description: 'Give your guests a premium experience. Our custom glass bottles are perfect for luxury hotel rooms and fine dining.',
     stat: 'Elite',
     statLabel: 'Hospitality',
     tags: ['Royal Suites', 'Concierge', 'Michelin Star'],
-    waMessage: 'Hi PureHarvest! I am interested in premium custom branded water bottles for our luxury hotel/resort suites.'
+    waMessage: 'Hi PureHarvest! I am interested in custom branded water bottles for our hotel.'
   },
   {
     id: 'cafes',
@@ -28,12 +28,12 @@ const industries = [
     Icon: Coffee,
     color: 'from-[#3A2218] to-[#1A0C05]',
     iconColor: '#D29C6B', // Warm Latte/Bronze
-    headline: 'Signature Café Identity',
-    description: 'Craft a narrative on every table. PureHarvest vessels provide the final touch of artisanal excellence for world-class roasteries and boutique cafés.',
+    headline: 'Cafés & Coffee Shops',
+    description: 'Add a special touch to every table. Premium branded water bottles that match your café’s unique style.',
     stat: '3×',
     statLabel: 'Visual Impact',
     tags: ['Artisanal Brew', 'Boutique Service', 'Signature Est.'],
-    waMessage: 'Hi PureHarvest! I would love to get a quote and mockups for custom branded bottles for our cafe/roastery.'
+    waMessage: 'Hi PureHarvest! I would love to get a quote for custom branded bottles for our cafe.'
   },
   {
     id: 'weddings',
@@ -41,12 +41,12 @@ const industries = [
     Icon: Gem,
     color: 'from-[#2A1017] to-[#12050A]',
     iconColor: '#E2A9B6', // Refined Rose Gold
-    headline: 'Unforgettable Celebrations',
-    description: 'Make every detail count. Custom PureHarvest bottles at wedding tables become cherished keepsakes for your guests.',
+    headline: 'Weddings & Events',
+    description: 'Make your special day even better. Custom water bottles that act as a beautiful and memorable gift for your wedding guests.',
     stat: '100%',
     statLabel: 'Personalized',
     tags: ['Custom Label', 'Guest Gifts', 'Premium'],
-    waMessage: 'Hi PureHarvest! I am interested in custom branded water bottles for an upcoming wedding/celebration.'
+    waMessage: 'Hi PureHarvest! I am interested in custom branded water bottles for an upcoming wedding/event.'
   },
   {
     id: 'corporate',
@@ -54,12 +54,12 @@ const industries = [
     Icon: Briefcase,
     color: 'from-[#0A1222] to-[#030712]',
     iconColor: '#8E9EAF', // Refined Silver
-    headline: 'Corporate Brand Statement',
-    description: 'From boardroom meetings to summit events - branded water communicates attention to detail and corporate excellence.',
+    headline: 'Corporate Offices',
+    description: 'Impress your clients in meetings and events with premium water bottles carrying your company logo.',
     stat: 'Fortune',
     statLabel: '500 Ready',
     tags: ['Events', 'Boardrooms', 'Conferences'],
-    waMessage: 'Hi PureHarvest! We would like to inquire about branded custom water bottles for our corporate boardrooms and corporate events.'
+    waMessage: 'Hi PureHarvest! We would like to inquire about branded custom water bottles for our corporate office.'
   },
   {
     id: 'restaurants',
@@ -67,12 +67,12 @@ const industries = [
     Icon: UtensilsCrossed,
     color: 'from-[#052219] to-[#010C09]',
     iconColor: '#639C8A', // Refined Jade
-    headline: 'Fine Dining Standards',
-    description: 'Complement your menu with a water experience that matches your culinary vision. Premium bottles that fit seamlessly into your story.',
+    headline: 'Restaurants & Fine Dining',
+    description: 'Upgrade your restaurant tables with beautiful, custom-branded water bottles that your customers will love.',
     stat: 'Premium',
     statLabel: 'Table Setting',
     tags: ['Fine Dining', 'Artisanal', 'Tasting Menu'],
-    waMessage: 'Hi PureHarvest! I am interested in premium custom branded water bottles to elevate our restaurant table settings.'
+    waMessage: 'Hi PureHarvest! I am interested in custom branded water bottles for our restaurant.'
   },
 ];
 
@@ -87,10 +87,10 @@ export default function Industries() {
         <div className="text-center mb-16">
           <span className="text-brand-accent/40 font-bold tracking-[0.3em] uppercase text-xs mb-6 block">Who We Serve</span>
           <Heading level={2} className="text-brand-accent mb-6">
-            Elite Industries We Serve <br />with Custom Branded Water
+            Industries We Serve <br />with Custom Branded Water
           </Heading>
           <p className="text-brand-accent/60 text-lg font-medium max-w-2xl mx-auto">
-            From luxury hospitality suites to global corporate headquarters, we codify brand excellence through premium hydration solutions.
+            From luxury hotels to modern cafes and corporate offices, we provide high-quality custom water bottles for your business.
           </p>
         </div>
 

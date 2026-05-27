@@ -70,21 +70,21 @@ export default function Hero({ industry, location }: HeroProps = {}) {
           <div className="w-full lg:w-[35%] flex flex-col justify-center items-center lg:items-start text-center lg:text-left z-30 order-1 lg:order-none mb-10 lg:mb-0">
             <MotionWrapper delay={0.1}>
               <span className="text-[#0D47A1] font-bold tracking-[0.25em] uppercase text-[9px] sm:text-[10px] mb-3 lg:mb-5 block">
-                Premium Custom Hydration
+                Custom Branded Water
               </span>
             </MotionWrapper>
 
             <MotionWrapper delay={0.2}>
               <h1 className="!font-sans !font-black leading-[0.95] lg:leading-[1.0] tracking-[-0.04em] text-[3.2rem] sm:text-[5rem] lg:text-[5.5rem] xl:text-[6.2rem] uppercase mb-4 lg:mb-5 flex flex-col lg:flex-row">
-                <span className="text-brand-accent">{industry ? `ELEVATING ${industry.toUpperCase()}` : "PREMIUM BRANDED"}</span>
+                <span className="text-brand-accent">{industry ? `CUSTOM WATER FOR ${industry.toUpperCase()}` : "PREMIUM CUSTOM"}</span>
                 <span className="text-[#0D47A1] lg:ml-4">{industry && location ? `IN ${location.toUpperCase()}` : location ? location.toUpperCase() : "WATER"}</span>
               </h1>
             </MotionWrapper>
 
             <TextReveal
               text={industry && location
-                ? `Your ${industry.toLowerCase()} brand in ${location} deserves water that makes a statement. We put your logo on premium bottles - so every sip feels like an experience.`
-                : "Your brand deserves water that makes a statement. We put your logo on premium bottles - so every sip feels like an experience."}
+                ? `Show off your ${industry.toLowerCase()} brand in ${location} with premium custom water bottles. We put your logo on high-quality glass bottles, perfect for your guests and clients.`
+                : "Show off your brand with premium custom water bottles. We put your logo on high-quality glass bottles, perfect for your guests and clients."}
               delay={0.3}
               className="text-[#4B5563] text-[14px] sm:text-[15px] max-w-[320px] lg:max-w-[450px] font-medium leading-[1.6] mb-8 lg:mb-10 mx-auto lg:mx-0 justify-center lg:justify-start"
             />

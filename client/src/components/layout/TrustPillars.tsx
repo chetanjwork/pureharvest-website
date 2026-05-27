@@ -8,28 +8,28 @@ import { ShieldCheck, Award, Palette, Hotel, Zap } from 'lucide-react';
 
 const pillars = [
   {
-    title: 'Premium Sustainability',
-    desc: 'Displace single-use plastics. We supply lead-free Borosilicate and ultra-clear tempered Clarity Glass options to match the ecological commitments of elite hospitality and corporate venues.',
+    title: 'Eco-Friendly Glass',
+    desc: 'No more plastic bottles. We supply high-quality glass bottles that are safe and environmentally friendly.',
     icon: ShieldCheck,
   },
   {
-    title: 'Signature Identity',
-    desc: 'Your logo, beautifully printed or branded on the bottle. Every bottle becomes a premium asset for your brand.',
+    title: 'Your Custom Logo',
+    desc: 'We beautifully print your logo directly on the bottle to make your brand stand out.',
     icon: Palette,
   },
   {
-    title: 'Artisanal Mastery',
-    desc: 'Stunning design details and custom caps that get noticed by everyone.',
+    title: 'Premium Quality',
+    desc: 'Beautiful bottle designs and custom caps that look great on any table.',
     icon: Award,
   },
   {
-    title: 'Hospitality DNA',
-    desc: 'We understand premium hospitality. Built specifically for hotels, corporate offices, cafes, and exclusive suites.',
+    title: 'Made for Businesses',
+    desc: 'We know what hotels, restaurants, and offices need, and we deliver exactly that.',
     icon: Hotel,
   },
   {
-    title: 'Seamless Delivery',
-    desc: 'You focus on your guests while we handle all the design, production, and on-time delivery across Mumbai & Thane.',
+    title: 'Fast & Easy Delivery',
+    desc: 'You focus on your customers, and we handle the production and delivery across Mumbai & Thane.',
     icon: Zap,
   },
 ];
@@ -41,12 +41,12 @@ export default function TrustPillars() {
         <div className="flex flex-col lg:flex-row gap-20 items-start">
           <div className="lg:w-1/3 relative lg:sticky lg:top-32 z-10 mb-8 lg:mb-0">
             <MotionWrapper>
-              <span className="text-white/20 font-black tracking-[0.4em] uppercase text-[10px] mb-6 block">The Value Proposition</span>
+              <span className="text-white/20 font-black tracking-[0.4em] uppercase text-[10px] mb-6 block">Why Choose Us</span>
               <Heading level={2} className="text-5xl md:text-6xl font-black tracking-tighter mb-8">
-                Why Business <br />Leaders Choose <br /><span className="text-white/40">PureHarvest.</span>
+                Why Businesses <br />Trust <br /><span className="text-white/40">PureHarvest.</span>
               </Heading>
               <p className="text-white/40 text-xl font-light leading-relaxed max-w-sm">
-                We don't just deliver water. We help you make a premium statement that your clients and guests will always remember.
+                We don't just deliver water. We help you make a great impression that your clients and guests will remember.
               </p>
             </MotionWrapper>
           </div>

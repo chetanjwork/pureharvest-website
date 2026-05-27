@@ -26,7 +26,7 @@ export default function Footer() {
               <span className="text-2xl font-black tracking-widest uppercase text-brand-accent">PureHarvest</span>
             </div>
             <p className="text-brand-accent/60 text-sm max-w-sm leading-relaxed mb-6 font-medium">
-              Premium custom branded water. We deliver custom glass bottles and pure, refreshing water for hotels, offices, cafes, and celebrations.
+              We supply premium custom-branded glass water bottles for hotels, restaurants, cafes, and offices.
             </p>
             <div className="text-brand-accent/60 text-[11px] uppercase tracking-[0.2em] font-black flex flex-col gap-1.5">
               <span>GST NO: 27GVMPD4986B1ZA</span>
