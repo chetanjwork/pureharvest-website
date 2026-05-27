@@ -38,7 +38,7 @@ export default function Hero() {
   const bottleOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={containerRef} className="relative min-h-screen pt-[10vh] lg:pt-[12vh] pb-[6vh] lg:pb-[8vh] bg-[#F3F4F6] overflow-hidden flex flex-col snap-start snap-always" id="hero">
+    <section ref={containerRef} className="relative min-h-[100svh] will-change-transform pt-[10vh] lg:pt-[12vh] pb-[6vh] lg:pb-[8vh] bg-[#F3F4F6] overflow-hidden flex flex-col snap-start snap-always" id="hero">
 
       {/* 1. Cinematic Studio Spotlight (Radial Gradient) */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_#FFFFFF_0%,_#F3F4F6_50%,_#E5E7EB_100%)] z-0" />
