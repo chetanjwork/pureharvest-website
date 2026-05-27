@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Hero from '@/components/layout/Hero';
+import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
 
 const SectionSkeleton = ({ title }: { title: string }) => (
@@ -66,55 +67,7 @@ export default async function SolutionsPage({ params }: { params: Promise<{ slug
       
       <Purification />
 
-      {/* Reused Footer from main page */}
-      <footer className="py-20 bg-[#F8F9FA] text-brand-accent relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-accent/10 to-transparent" />
-        
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-20 relative z-10">
-            <div className="lg:col-span-2">
-              <Link href="/" className="inline-block mb-8">
-                <span className="text-xl font-sans font-black tracking-[0.15em] uppercase text-brand-accent">
-                  PureHarvest
-                </span>
-              </Link>
-              <p className="text-brand-accent/60 text-sm max-w-sm leading-relaxed mb-8 font-medium">
-                Premium custom branded water. We deliver custom glass bottles and pure, refreshing water for hotels, offices, cafes, and celebrations.
-              </p>
-              <div className="text-brand-accent/60 text-[11px] uppercase tracking-[0.2em] font-black">
-                GST NO: 27GVMPD4986B1ZA
-              </div>
-            </div>
-            
-            <div className="space-y-6">
-              <h4 className="text-brand-accent font-black text-xs uppercase tracking-[0.3em] text-brand-accent/60">Information</h4>
-              <ul className="space-y-5">
-                <li><Link href="/faq" className="text-brand-accent/70 text-sm hover:text-brand-accent hover:translate-x-1 inline-block transition-all font-bold">Frequently Asked Qs</Link></li>
-                <li><Link href="/privacy" className="text-brand-accent/70 text-sm hover:text-brand-accent hover:translate-x-1 inline-block transition-all font-bold">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="text-brand-accent/70 text-sm hover:text-brand-accent hover:translate-x-1 inline-block transition-all font-bold">Terms of Service</Link></li>
-              </ul>
-            </div>
-            
-            <div className="space-y-6">
-              <h4 className="text-brand-accent font-black text-xs uppercase tracking-[0.3em] text-brand-accent/60">Social</h4>
-              <ul className="space-y-5">
-                <li><a href="https://wa.me/918149174975" target="_blank" rel="noopener noreferrer" className="text-brand-accent/70 text-sm hover:text-brand-accent hover:translate-x-1 inline-block transition-all font-bold">WhatsApp</a></li>
-                <li><a href="https://www.instagram.com/pure_harvest.enterprise" target="_blank" rel="noopener noreferrer" className="text-brand-accent/70 text-sm hover:text-brand-accent hover:translate-x-1 inline-block transition-all font-bold">Instagram</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="pt-10 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
-            <p className="text-brand-accent/60 text-[9px] uppercase tracking-[0.3em] font-black text-center md:text-left leading-relaxed max-w-md">
-              © 2026 PureHarvest Enterprises. <br className="md:hidden" />Crafted for Excellence.
-            </p>
-            <div className="flex gap-4 items-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-black/20" />
-              <span className="text-brand-accent/60 text-[9px] uppercase tracking-[0.3em] font-black">All Rights Reserved</span>
-            </div>
-          </div>
-        </Container>
-      </footer>
+      <Footer />
     </main>
   );
 }
