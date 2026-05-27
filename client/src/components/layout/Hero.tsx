@@ -184,12 +184,12 @@ export default function Hero() {
       </div>
 
       {/* BOTTOM MARQUEE / TRUSTED BY */}
-      <div className="absolute bottom-0 left-0 right-0 w-full z-20 py-4 lg:py-5 overflow-hidden bg-white/95 md:bg-white/80 md:backdrop-blur-md border-t border-black/[0.05] shadow-[0_-8px_30px_rgba(0,0,0,0.04)]">
-        <div className="max-w-[1400px] mx-auto px-4 lg:px-10 flex items-center opacity-90 transition-all duration-500">
+      <div className="absolute bottom-0 left-0 right-0 w-full z-20 py-4 lg:py-5 overflow-hidden bg-[#0A192F] bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 border-t border-white/10 shadow-[0_-8px_30px_rgba(0,30,100,0.2)]">
+        <div className="max-w-[1400px] mx-auto px-4 lg:px-10 flex items-center opacity-100 transition-all duration-500">
 
           {/* Trusted By Text - Static */}
           <div className="w-auto pr-4 lg:pr-12 relative z-20">
-            <span className="text-[8px] lg:text-[9px] font-black uppercase tracking-[0.2em] lg:tracking-[0.3em] text-brand-accent/60 whitespace-nowrap">Trusted By</span>
+            <span className="text-[8px] lg:text-[9px] font-black uppercase tracking-[0.2em] lg:tracking-[0.3em] text-blue-200/80 whitespace-nowrap">Trusted By</span>
           </div>
 
           {/* Animated Scrolling Logos Marquee */}
@@ -213,8 +213,8 @@ export default function Hero() {
             `}} />
 
             {/* Left/Right Fade Gradients for seamless edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-8 lg:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-8 lg:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-8 lg:w-32 bg-gradient-to-r from-blue-900 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-8 lg:w-32 bg-gradient-to-l from-blue-900 to-transparent z-10 pointer-events-none" />
 
             <div className="animate-marquee-scroll items-center gap-6 lg:gap-12 pl-4 lg:pl-8">
               {[0, 1].map((set) => (
@@ -223,11 +223,11 @@ export default function Hero() {
                     const Icon = client.icon;
                     return (
                       <div key={index} className="flex items-center gap-3 lg:gap-4.5">
-                        <Icon className="text-brand-secondary/80 w-[12px] h-[12px] lg:w-[15px] lg:h-[15px] stroke-[2]" />
-                        <span className={`font-sans font-black text-[11px] lg:text-[13px] ${client.tracking} text-brand-accent/90 uppercase whitespace-nowrap`}>
+                        <Icon className="text-blue-300 w-[12px] h-[12px] lg:w-[15px] lg:h-[15px] stroke-[2]" />
+                        <span className={`font-sans font-black text-[11px] lg:text-[13px] ${client.tracking} text-white uppercase whitespace-nowrap`}>
                           {client.name}
                         </span>
-                        <span className="h-3.5 w-[1px] bg-black/10 block ml-3.5 lg:ml-7" />
+                        <span className="h-3.5 w-[1px] bg-white/20 block ml-3.5 lg:ml-7" />
                       </div>
                     );
                   })}
