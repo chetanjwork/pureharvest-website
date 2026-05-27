@@ -38,7 +38,7 @@ export default function Navbar() {
     restDelta: 0.001
   });
 
-  // Robust native scroll listener for mobile-friendly, lag-free triggers (handles Safari/Chrome global overflow-x bugs)
+  // Robust native scroll listener using capture phase to catch non-bubbling scroll events on all mobile scrollers
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -46,12 +46,11 @@ export default function Navbar() {
     };
     
     handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    document.addEventListener('scroll', handleScroll, { passive: true });
+    // Listening in capture phase is critical because scroll events do not bubble in the DOM
+    window.addEventListener('scroll', handleScroll, { capture: true, passive: true });
     
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll, { capture: true });
     };
   }, []);
 
