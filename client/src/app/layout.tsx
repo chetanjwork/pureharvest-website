@@ -7,7 +7,6 @@ import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import LoadingAnimation from "@/components/ui/LoadingAnimation";
 import CookieConsent from "@/components/layout/CookieConsent";
 import CodeProtection from "@/components/providers/CodeProtection";
-import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -320,13 +319,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* All JSON-LD schemas */}
-        <Script id="json-ld-local" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} strategy="beforeInteractive" />
-        <Script id="json-ld-org" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} strategy="beforeInteractive" />
-        <Script id="json-ld-service" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} strategy="beforeInteractive" />
-        <Script id="json-ld-signature" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(signatureProductSchema) }} strategy="beforeInteractive" />
-        <Script id="json-ld-classic" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(classicProductSchema) }} strategy="beforeInteractive" />
-        <Script id="json-ld-breadcrumb" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} strategy="beforeInteractive" />
-        <Script id="json-ld-website" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} strategy="beforeInteractive" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(signatureProductSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(classicProductSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       </head>
       <body className="font-sans w-full max-w-[100vw]">
         <CodeProtection />
