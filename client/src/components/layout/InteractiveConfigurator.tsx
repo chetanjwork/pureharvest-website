@@ -134,6 +134,8 @@ export default function InteractiveConfigurator() {
                   <img
                     src={activeSeries.frontImage}
                     alt={activeSeries.name}
+                    loading="lazy"
+                    decoding="async"
                     style={{
                       width: 'auto',
                       height: isMobile ? 'min(45vh, 320px)' : 'min(72vh, 640px)',

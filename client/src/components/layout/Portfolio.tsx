@@ -363,6 +363,8 @@ export default function Portfolio() {
                     src={item.image}
                     alt={item.client}
                     draggable={false}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-auto object-contain select-none z-10"
                     style={{
                       imageRendering: 'auto',

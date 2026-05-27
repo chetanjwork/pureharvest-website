@@ -4,14 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import Hero from '@/components/layout/Hero';
-import InteractiveConfigurator from '@/components/layout/InteractiveConfigurator';
-import Services from '@/components/layout/Services';
-import Portfolio from '@/components/layout/Portfolio';
-import Process from '@/components/layout/Process';
-import Industries from '@/components/layout/Industries';
-import TrustPillars from '@/components/layout/TrustPillars';
-import FAQ from '@/components/layout/FAQ';
-import Purification from '@/components/layout/Purification';
 import Container from '@/components/ui/Container';
 import MotionWrapper from '@/components/motion/MotionWrapper';
 import Heading from '@/components/ui/Heading';
@@ -20,7 +12,43 @@ import { motion } from 'framer-motion';
 
 import { useEffect } from 'react';
 
+// Premium Skeleton Component Factory for uniform lazy loading
+const SectionSkeleton = ({ title }: { title: string }) => (
+  <div className="w-full py-32 flex flex-col items-center justify-center bg-[#F3F4F6] gap-4">
+    <div className="w-8 h-8 rounded-full border-2 border-brand-accent border-t-transparent animate-spin" />
+    <span className="text-[10px] font-black uppercase tracking-[0.25em] text-brand-accent/40 animate-pulse">
+      Loading {title}...
+    </span>
+  </div>
+);
 
+// Dynamic Imports with Skeletons
+const Services = dynamic(() => import('@/components/layout/Services'), {
+  loading: () => <SectionSkeleton title="Solutions" />
+});
+const InteractiveConfigurator = dynamic(() => import('@/components/layout/InteractiveConfigurator'), {
+  ssr: false,
+  loading: () => <SectionSkeleton title="Configurator" />
+});
+const Purification = dynamic(() => import('@/components/layout/Purification'), {
+  loading: () => <SectionSkeleton title="Purification" />
+});
+const Industries = dynamic(() => import('@/components/layout/Industries'), {
+  loading: () => <SectionSkeleton title="Industries" />
+});
+const Process = dynamic(() => import('@/components/layout/Process'), {
+  loading: () => <SectionSkeleton title="Process" />
+});
+const TrustPillars = dynamic(() => import('@/components/layout/TrustPillars'), {
+  loading: () => <SectionSkeleton title="Trust Pillars" />
+});
+const Portfolio = dynamic(() => import('@/components/layout/Portfolio'), {
+  ssr: false, // Disabling SSR for heavy 3D WebGL/Image processing
+  loading: () => <SectionSkeleton title="Portfolio Renders" />
+});
+const FAQ = dynamic(() => import('@/components/layout/FAQ'), {
+  loading: () => <SectionSkeleton title="FAQ" />
+});
 
 const EnterpriseOnboarding = dynamic(() => import('@/components/layout/EnterpriseOnboarding'), {
   ssr: false,
