@@ -29,7 +29,7 @@ export function useIsMobile(breakpoint = 768) {
       return () => mediaQuery.removeEventListener('change', checkMobile);
     } else {
       // Fallback for older browsers
-      window.addEventListener('resize', checkMobile);
+      window.addEventListener('resize', checkMobile, { passive: true });
       return () => window.removeEventListener('resize', checkMobile);
     }
   }, [breakpoint]);

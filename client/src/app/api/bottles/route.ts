@@ -19,7 +19,14 @@ export async function GET() {
         return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
       });
       
-    return NextResponse.json({ success: true, bottles: bottleFiles });
+    return NextResponse.json(
+      { success: true, bottles: bottleFiles },
+      { 
+        headers: { 
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400' 
+        } 
+      }
+    );
   } catch (error: any) {
     console.error('Error listing dynamic bottle assets:', error);
     return NextResponse.json(

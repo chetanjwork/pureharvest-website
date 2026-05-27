@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import Section from '../ui/Section';
 import Container from '../ui/Container';
 import Heading from '../ui/Heading';
@@ -153,7 +154,7 @@ export default function Portfolio() {
       setIsMobile(window.innerWidth < 1024);
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener('resize', checkMobile, { passive: true });
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -358,16 +359,15 @@ export default function Portfolio() {
               >
                 {/* Bottle Relative Wrapper to guarantee pixel-perfect shadow anchoring at the very bottom */}
                 <div className="relative flex items-center justify-center h-[95%] max-h-[480px] aspect-[2/3]">
-                  {/* Bottle Image */}
-                  <img
+                  {/* Bottle Image using highly optimized Next.js component */}
+                  <Image
                     src={item.image}
                     alt={item.client}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     draggable={false}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-auto object-contain select-none z-10"
+                    className="object-contain select-none z-10"
                     style={{
-                      imageRendering: 'auto',
                       // Contoured drop shadow on the glass/PET itself that shifts with mouse movement
                       filter: isActive
                         ? (isMobile 

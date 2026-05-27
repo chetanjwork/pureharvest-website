@@ -109,56 +109,55 @@ export default function EnterpriseOnboarding() {
     }
   };
 
-  const handleFinish = async () => {
-    setIsSubmitting(true);
-    try {
-      const message = [
-        `Industry: ${selections.industry}`,
-        `Volume: ${selections.volume} units/month`,
-        `Customizations: ${selections.customization.length > 0 ? selections.customization.join(', ') : 'None specified'}`,
-        `WhatsApp: ${selections.whatsapp}`,
-        `Email: ${selections.email || 'None provided'}`,
-      ].join('\n');
+  const handleFinish = () => {
+    // 1. Optimistic UI: Instantly show success state without waiting for the server
+    setIsSuccess(true);
+    setIsSubmitting(false);
 
-      const res = await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: selections.name,
-          whatsapp: selections.whatsapp,
-          email: selections.email,
-          company: selections.company,
-          industry: selections.industry,
-          volume: selections.volume,
-          customization: selections.customization,
-          message,
-        }),
-      });
+    const message = [
+      `Industry: ${selections.industry}`,
+      `Volume: ${selections.volume} units/month`,
+      `Customizations: ${selections.customization.length > 0 ? selections.customization.join(', ') : 'None specified'}`,
+      `WhatsApp: ${selections.whatsapp}`,
+      `Email: ${selections.email || 'None provided'}`,
+    ].join('\n');
 
+    const waText = encodeURIComponent(
+      `Hi PureHarvest! I'm ${selections.name} from ${selections.company}.\n` +
+      `Industry: ${selections.industry} | Volume: ${selections.volume}/month\n` +
+      `Customization: ${selections.customization.length > 0 ? selections.customization.join(', ') : 'None'}\n` +
+      `Please get in touch!`
+    );
+    
+    // 2. Trigger WhatsApp redirect after user sees the success checkmark
+    setTimeout(() => {
+      window.location.href = `https://wa.me/918149174975?text=${waText}`;
+    }, 1500);
+
+    // 3. Fire backend API asynchronously in the background
+    fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: selections.name,
+        whatsapp: selections.whatsapp,
+        email: selections.email,
+        company: selections.company,
+        industry: selections.industry,
+        volume: selections.volume,
+        customization: selections.customization,
+        message,
+      }),
+    })
+    .then(async (res) => {
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData.details || errorData.error || 'Submission failed');
+        console.error('Background submission failed:', errorData);
       }
-
-      setIsSuccess(true);
-
-      // Mobile-friendly direct location redirection to prevent mobile browsers from blocking popups
-      const waText = encodeURIComponent(
-        `Hi PureHarvest! I'm ${selections.name} from ${selections.company}.\n` +
-        `Industry: ${selections.industry} | Volume: ${selections.volume}/month\n` +
-        `Customization: ${selections.customization.length > 0 ? selections.customization.join(', ') : 'None'}\n` +
-        `Please get in touch!`
-      );
-      
-      setTimeout(() => {
-        window.location.href = `https://wa.me/918149174975?text=${waText}`;
-      }, 1500);
-
-    } catch (err: any) {
-      alert(`Error: ${err.message}. Please WhatsApp us directly at +91 8149174975`);
-    } finally {
-      setIsSubmitting(false);
-    }
+    })
+    .catch((err) => {
+      console.error('Background submission error:', err);
+    });
   };
 
   return (
