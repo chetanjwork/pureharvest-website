@@ -30,17 +30,17 @@ export default function Hero() {
     offset: ["start start", "end start"]
   });
 
-  // Apply a spring for buttery smooth, delayed tracking (removes raw mobile scroll stutter)
+  // Apply a spring for buttery smooth, heavily delayed tracking (makes it move slower and lazier)
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 70,
-    damping: 25,
-    mass: 1.2
+    stiffness: 40,
+    damping: 30,
+    mass: 1.5
   });
 
-  // Calculate GPU-accelerated transforms - reduced distance for slower perceived speed
-  const bottleY = useTransform(smoothProgress, [0, 1], ["0px", "450px"]);
-  const bottleScale = useTransform(smoothProgress, [0, 1], [1.15, 0.85]);
-  const bottleRotate = useTransform(smoothProgress, [0, 1], [0, 25]);
+  // Calculate GPU-accelerated transforms - drastically reduced distance for very slow perceived speed
+  const bottleY = useTransform(smoothProgress, [0, 1], ["0px", "200px"]);
+  const bottleScale = useTransform(smoothProgress, [0, 1], [1.15, 0.90]);
+  const bottleRotate = useTransform(smoothProgress, [0, 1], [0, 15]);
   const bottleOpacity = useTransform(smoothProgress, [0, 0.8], [1, 0]);
 
   return (
