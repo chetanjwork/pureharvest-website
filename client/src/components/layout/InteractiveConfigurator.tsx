@@ -115,7 +115,7 @@ export default function InteractiveConfigurator() {
             {/* Bottom fade */}
             <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#f4f4f4]/80 to-transparent pointer-events-none z-10" />
 
-            {/* ── Bottle (explicit width/height — never collapses) ── */}
+            {/* -- Bottle (explicit width/height - never collapses) -- */}
             <motion.div
               animate={isMobile ? { y: 0 } : { y: [0, -14, 0] }}
               transition={isMobile ? { duration: 0.1 } : { duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
@@ -151,7 +151,7 @@ export default function InteractiveConfigurator() {
               </AnimatePresence>
             </motion.div>
 
-            {/* Floor contact shadow — synced to float */}
+            {/* Floor contact shadow - synced to float */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
               <motion.div
                 animate={isMobile ? { scaleX: 1, opacity: 0.14 } : { scaleX: [1, 0.88, 1], opacity: [0.10, 0.18, 0.10] }}

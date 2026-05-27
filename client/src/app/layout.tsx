@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "PureHarvest | Premium Branded Water Supplier Mumbai & Thane | Custom Bottles",
-  description: "PureHarvest Enterprises — Mumbai & Thane's leading supplier of premium custom-branded packaged drinking water. 10-stage purification. Serving luxury hotels, corporates, cafés & wedding events across Maharashtra. GST: 27GVMPD4986B1ZA.",
+  description: "PureHarvest Enterprises - Mumbai & Thane's leading supplier of premium custom-branded packaged drinking water. 10-stage purification. Serving luxury hotels, corporates, cafés & wedding events across Maharashtra. GST: 27GVMPD4986B1ZA.",
   keywords: [
     "branded water bottles Mumbai",
     "custom water bottles Thane",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "PureHarvest | Premium Branded Water — Mumbai & Thane",
+    title: "PureHarvest | Premium Branded Water - Mumbai & Thane",
     description: "Custom-branded packaged drinking water for luxury hotels, corporates & events. 10-stage purification. Serving Mumbai, Thane & all of Maharashtra.",
     url: "https://pureharvest.in",
     siteName: "PureHarvest Enterprises",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "PureHarvest Premium Branded Water — Mumbai & Thane",
+        alt: "PureHarvest Premium Branded Water - Mumbai & Thane",
       },
     ],
     locale: "en_IN",
@@ -208,11 +208,11 @@ const organizationSchema = {
   ]
 };
 
-// ── Schema: Product — Signature Series ───────────────────────────
+// -- Schema: Product - Signature Series ---------------------------
 const signatureProductSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Signature Series — Custom Branded Water Bottle",
+  "name": "Signature Series - Custom Branded Water Bottle",
   "brand": { "@type": "Brand", "name": "PureHarvest Enterprises" },
   "manufacturer": { "@type": "Organization", "name": "PureHarvest Enterprises", "address": { "@type": "PostalAddress", "addressLocality": "Thane", "addressRegion": "Maharashtra", "addressCountry": "IN" }},
   "description": "Premium borosilicate glass water bottle with precision laser etching and matte aluminium seal. Designed for VIP boardrooms, 5-star hotels, and fine dining across Mumbai and Thane.",
@@ -226,11 +226,11 @@ const signatureProductSchema = {
   }
 };
 
-// ── Schema: Product — Classic Series ─────────────────────────────
+// -- Schema: Product - Classic Series -----------------------------
 const classicProductSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Classic Series — Custom Branded Water Bottle",
+  "name": "Classic Series - Custom Branded Water Bottle",
   "brand": { "@type": "Brand", "name": "PureHarvest Enterprises" },
   "manufacturer": { "@type": "Organization", "name": "PureHarvest Enterprises" },
   "description": "High-durability clarity glass water bottle with brushed silver cap and organic screen printing. Ideal for premium cafés, hospitality venues, and high-volume events in Mumbai and Thane.",

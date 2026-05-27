@@ -55,7 +55,7 @@ const industries = [
     color: 'from-slate-200/60 to-slate-100/20',
     iconColor: '#5C6B7A',
     headline: 'Corporate Brand Statement',
-    description: 'From boardroom meetings to summit events — branded water communicates attention to detail and corporate excellence.',
+    description: 'From boardroom meetings to summit events - branded water communicates attention to detail and corporate excellence.',
     stat: 'Fortune',
     statLabel: '500 Ready',
     tags: ['Events', 'Boardrooms', 'Conferences'],

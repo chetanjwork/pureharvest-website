@@ -8,15 +8,21 @@ import TextReveal from '../motion/TextReveal';
 import { ArrowRight, Users, Droplet, Target, MessageCircle, Sparkles, ShieldCheck, Utensils, Coffee, GlassWater, Wine, Flame, Compass, Waves } from 'lucide-react';
 
 const CLIENT_BRANDS = [
-  { name: "Siro Eatery", icon: Utensils, tracking: "tracking-[0.25em]" },
-  { name: "Copper Chimney", icon: Flame, tracking: "tracking-[0.22em]" },
   { name: "Brews & Beans", icon: Coffee, tracking: "tracking-[0.2em]" },
   { name: "Error 101", icon: GlassWater, tracking: "tracking-[0.35em]" },
   { name: "Martini 56", icon: Wine, tracking: "tracking-[0.25em]" },
-  { name: "Anotti Bistro", icon: Utensils, tracking: "tracking-[0.22em]" },
   { name: "Tandoor Cuisine", icon: Flame, tracking: "tracking-[0.22em]" },
   { name: "Sairaj Resort", icon: Compass, tracking: "tracking-[0.25em]" },
-  { name: "Mahesh Fine Dine", icon: Waves, tracking: "tracking-[0.2em]" }
+  { name: "Master Sandwich", icon: Utensils, tracking: "tracking-[0.2em]" },
+  { name: "Delicious Snacks Corner", icon: Utensils, tracking: "tracking-[0.15em]" },
+  { name: "Hotel Patil Wada", icon: Compass, tracking: "tracking-[0.2em]" },
+  { name: "Hotel Sai Sadguru", icon: Compass, tracking: "tracking-[0.2em]" },
+  { name: "Purohit Bhojanalay", icon: Utensils, tracking: "tracking-[0.2em]" },
+  { name: "Dreams Cafe", icon: Coffee, tracking: "tracking-[0.25em]" },
+  { name: "China YAKI", icon: Flame, tracking: "tracking-[0.25em]" },
+  { name: "Bowl Bliss", icon: Utensils, tracking: "tracking-[0.25em]" },
+  { name: "Greek Village", icon: Compass, tracking: "tracking-[0.2em]" },
+  { name: "Mahesh Fine Dine Restaurant", icon: Waves, tracking: "tracking-[0.15em]" }
 ];
 
 export default function Hero() {
@@ -71,7 +77,7 @@ export default function Hero() {
             </MotionWrapper>
 
             <TextReveal
-              text="Your brand deserves water that makes a statement. We put your logo on premium bottles — so every sip feels like an experience."
+              text="Your brand deserves water that makes a statement. We put your logo on premium bottles - so every sip feels like an experience."
               delay={0.3}
               className="text-[#4B5563] text-[14px] sm:text-[15px] max-w-[320px] lg:max-w-[450px] font-medium leading-[1.6] mb-8 lg:mb-10 mx-auto lg:mx-0 justify-center lg:justify-start"
             />

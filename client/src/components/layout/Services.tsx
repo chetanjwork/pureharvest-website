@@ -24,7 +24,7 @@ function BentoCard({ children, className, delay = 0 }: { children: React.ReactNo
         onMouseMove={onMouseMove}
         whileHover={{ y: -4, scale: 1.005 }}
         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-        className="group p-8 md:p-12 rounded-[32px] md:rounded-[40px] bg-brand-primary shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] border border-brand-accent/5 transition-all cursor-pointer h-full flex flex-col relative overflow-hidden"
+        className="group p-8 md:p-12 rounded-[32px] md:rounded-[40px] bg-gradient-to-br from-white to-gray-50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] border border-black/[0.03] transition-all cursor-pointer h-full flex flex-col relative overflow-hidden"
       >
         {/* MAGNETIC GLOW EFFECT */}
         <motion.div
@@ -57,7 +57,7 @@ export default function Services() {
               Everything You Need,<br />In One Place
             </h2>
             <p className="text-brand-accent/60 text-lg font-medium">
-              From design to delivery — we handle your branded water, end to end.
+              From design to delivery - we handle your branded water, end to end.
             </p>
           </MotionWrapper>
         </div>
@@ -67,16 +67,17 @@ export default function Services() {
           
           {/* BENTO 1: Signature Branding */}
           <BentoCard className="lg:col-span-2 lg:row-span-2" delay={0.1}>
-            <div className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-brand-secondary/10 to-transparent blur-[80px] rounded-full group-hover:scale-150 transition-transform duration-1000 ease-out" />
+            <div className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-brand-secondary/10 to-transparent blur-[80px] rounded-full group-hover:scale-150 transition-transform duration-1000 ease-out z-0" />
+            <img src="/pureharvestherobottle.png" alt="" className="absolute -right-10 -bottom-10 w-[120%] max-w-[500px] opacity-[0.03] pointer-events-none group-hover:scale-[1.02] group-hover:-translate-y-2 transition-transform duration-1000 ease-out z-0" />
             
             <motion.div
               whileHover={{ scale: 1.05, rotate: 5 }}
-              className="w-16 h-16 bg-brand-accent text-brand-primary rounded-2xl flex items-center justify-center mb-8 flex-shrink-0 relative z-10 shadow-2xl"
+              className="w-16 h-16 bg-gradient-to-br from-[#0B2147] to-[#1E3A8A] text-white rounded-2xl flex items-center justify-center mb-8 flex-shrink-0 relative z-10 shadow-[0_10px_30px_rgba(11,33,71,0.2)] border border-white/10"
             >
-              <Palette size={28} strokeWidth={1.5} />
+              <Palette size={28} strokeWidth={2} />
             </motion.div>
-            <h3 className="text-3xl lg:text-4xl font-black mb-4 text-brand-accent tracking-tight leading-none relative z-10">Signature<br/>Branding</h3>
-            <p className="text-brand-accent/60 leading-relaxed text-[16px] font-medium max-w-sm relative z-10 mt-auto">
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-brand-accent tracking-tighter leading-[0.95] relative z-10">Signature<br/>Branding</h3>
+            <p className="text-brand-accent/60 leading-relaxed text-[16px] md:text-[18px] font-medium max-w-sm relative z-10 mt-auto">
               Your logo. Your brand. On every bottle. We design it to look so good, people notice before they even take a sip.
             </p>
           </BentoCard>
@@ -85,19 +86,17 @@ export default function Services() {
           <BentoCard className="lg:col-span-2 lg:row-span-1" delay={0.2}>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--color-brand-accent)/0.02_0%,_transparent_60%)]" />
             
-            <div className="relative z-10 flex-1 pr-8 flex flex-col lg:flex-row lg:items-center justify-between">
-              <div>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="w-12 h-12 bg-brand-accent/5 text-brand-accent rounded-2xl flex items-center justify-center mb-6 flex-shrink-0"
-                >
-                  <Globe size={20} strokeWidth={1.5} />
-                </motion.div>
-                <h3 className="text-2xl font-black mb-2 text-brand-accent tracking-tight">Global Logistics</h3>
-                <p className="text-brand-accent/60 leading-relaxed text-[14px] font-medium max-w-xs">
-                  We deliver on time, every time — across Mumbai, Thane, and all of Maharashtra.
-                </p>
-              </div>
+            <div className="relative z-10 flex-1 flex flex-col justify-center">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="w-14 h-14 bg-gradient-to-br from-gray-100 to-white text-brand-accent rounded-2xl flex items-center justify-center mb-6 flex-shrink-0 shadow-sm border border-black/5"
+              >
+                <Globe size={24} strokeWidth={2} />
+              </motion.div>
+              <h3 className="text-2xl md:text-3xl font-black mb-3 text-brand-accent tracking-tight">Global Logistics</h3>
+              <p className="text-brand-accent/60 leading-relaxed text-[15px] font-medium max-w-md">
+                We deliver on time, every time - across Mumbai, Thane, and all of Maharashtra.
+              </p>
             </div>
           </BentoCard>
 
@@ -105,12 +104,12 @@ export default function Services() {
           <BentoCard className="lg:col-span-1 lg:row-span-1" delay={0.3}>
             <motion.div
               whileHover={{ scale: 1.05, y: -5 }}
-              className="w-12 h-12 bg-brand-secondary/10 text-brand-secondary rounded-2xl flex items-center justify-center mb-6 flex-shrink-0"
+              className="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100/50 text-[#0066FF] rounded-2xl flex items-center justify-center mb-6 flex-shrink-0 shadow-sm border border-blue-500/10"
             >
-              <Droplet size={20} strokeWidth={2} />
+              <Droplet size={24} strokeWidth={2} />
             </motion.div>
-            <h3 className="text-xl font-black mb-2 text-brand-accent tracking-tight">Crystal Clear Water</h3>
-            <p className="text-brand-accent/60 leading-relaxed text-[13px] font-medium mt-auto">
+            <h3 className="text-xl md:text-2xl font-black mb-3 text-brand-accent tracking-tight leading-tight">Crystal Clear<br/>Water</h3>
+            <p className="text-brand-accent/60 leading-relaxed text-[14px] font-medium mt-auto">
               10-stage purified. No shortcuts. Just clean, great-tasting water.
             </p>
           </BentoCard>
@@ -119,12 +118,12 @@ export default function Services() {
           <BentoCard className="lg:col-span-1 lg:row-span-1" delay={0.4}>
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="w-12 h-12 bg-brand-accent/5 text-brand-accent rounded-2xl flex items-center justify-center mb-6 flex-shrink-0"
+              className="w-14 h-14 bg-gradient-to-br from-gray-100 to-white text-brand-accent rounded-2xl flex items-center justify-center mb-6 flex-shrink-0 shadow-sm border border-black/5"
             >
-              <ShieldCheck size={20} strokeWidth={2} />
+              <ShieldCheck size={24} strokeWidth={2} />
             </motion.div>
-            <h3 className="text-xl font-black mb-2 text-brand-accent tracking-tight">100% Safe & Certified</h3>
-            <p className="text-brand-accent/60 leading-relaxed text-[13px] font-medium mt-auto">
+            <h3 className="text-xl md:text-2xl font-black mb-3 text-brand-accent tracking-tight leading-tight">100% Safe &<br/>Certified</h3>
+            <p className="text-brand-accent/60 leading-relaxed text-[14px] font-medium mt-auto">
               Every batch is tested. You serve it with confidence.
             </p>
           </BentoCard>

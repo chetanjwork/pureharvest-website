@@ -26,6 +26,9 @@ const SectionSkeleton = ({ title }: { title: string }) => (
 const Services = dynamic(() => import('@/components/layout/Services'), {
   loading: () => <SectionSkeleton title="Solutions" />
 });
+const FoundersNote = dynamic(() => import('@/components/layout/FoundersNote'), {
+  loading: () => <SectionSkeleton title="Founder's Note" />
+});
 const InteractiveConfigurator = dynamic(() => import('@/components/layout/InteractiveConfigurator'), {
   ssr: false,
   loading: () => <SectionSkeleton title="Configurator" />
@@ -87,6 +90,8 @@ export default function Home() {
 
       <TrustPillars />
 
+      <FoundersNote />
+
       <FAQ />
 
       <EnterpriseOnboarding />
@@ -114,7 +119,7 @@ export default function Home() {
                 Ready to elevate <br />your brand experience?
               </Heading>
               <p className="text-brand-accent/60 text-lg font-medium leading-relaxed">
-                Chat with our team for custom design mockups, bulk pricing, and samples — made for your business.
+                Chat with our team for custom design mockups, bulk pricing, and samples - made for your business.
               </p>
             </div>
             

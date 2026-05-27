@@ -41,7 +41,7 @@ export default function Showcase() {
           </div>
           <div className="flex justify-center mt-8">
             <ScrollTextReveal 
-              text="From luxury hotel suites to intimate weddings — we craft experiences that your guests remember long after the last drop." 
+              text="From luxury hotel suites to intimate weddings - we craft experiences that your guests remember long after the last drop." 
               className="text-brand-accent/60 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed text-center"
             />
           </div>

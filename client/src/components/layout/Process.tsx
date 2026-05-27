@@ -23,13 +23,13 @@ const steps = [
   {
     number: '03',
     title: 'We Make It',
-    description: 'Your branded bottles are produced with precision — clean, safe, and quality-checked at every step.',
+    description: 'Your branded bottles are produced with precision - clean, safe, and quality-checked at every step.',
     Icon: Zap,
   },
   {
     number: '04',
     title: 'Delivered To You',
-    description: 'We deliver directly to your hotel, office, café, or event — on time, every time, anywhere in Mumbai & Thane.',
+    description: 'We deliver directly to your hotel, office, café, or event - on time, every time, anywhere in Mumbai & Thane.',
     Icon: Truck,
   },
 ];

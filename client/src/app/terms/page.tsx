@@ -156,7 +156,7 @@ export default function TermsPage() {
                   </div>
                   <div className="lg:pl-16 space-y-6 text-brand-accent/60 text-base md:text-lg font-medium leading-[1.8] max-w-3xl">
                     <p className="hover:text-brand-accent/80 transition-colors duration-300">
-                      All PureHarvest solutions—from custom etching to global supply logistics—are delivered under strict quality control protocols. 
+                      All PureHarvest solutions - from custom etching to global supply logistics - are delivered under strict quality control protocols. 
                     </p>
                     <p className="hover:text-brand-accent/80 transition-colors duration-300">
                       Our digital presence serves as a portal for inquiry and brand presentation. Definitive service terms, including glass purity and delivery velocity, are codified in individual enterprise contracts.
