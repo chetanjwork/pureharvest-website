@@ -321,7 +321,7 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       </head>
-      <body className="font-sans overflow-x-hidden w-full max-w-[100vw]">
+      <body className="font-sans w-full max-w-[100vw]">
         <CodeProtection />
         <SmoothScroll>
           <LoadingAnimation />

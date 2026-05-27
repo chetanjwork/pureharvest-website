@@ -38,14 +38,21 @@ export default function Navbar() {
     restDelta: 0.001
   });
 
-  // Robust native scroll listener for mobile-friendly, lag-free triggers
+  // Robust native scroll listener for mobile-friendly, lag-free triggers (handles Safari/Chrome global overflow-x bugs)
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      setScrolled(scrollPos > 20);
     };
+    
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   // Lock scroll when menu is open
