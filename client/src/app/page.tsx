@@ -75,6 +75,8 @@ export default function Home() {
       
       <Services />
 
+      <Portfolio />
+
       <InteractiveConfigurator />
 
       <Purification />
@@ -84,8 +86,6 @@ export default function Home() {
       <Process />
 
       <TrustPillars />
-
-      <Portfolio />
 
       <FAQ />
 
