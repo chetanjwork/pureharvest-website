@@ -38,21 +38,14 @@ export default function Navbar() {
     restDelta: 0.001
   });
 
-  // Robust native scroll listener using capture phase to catch non-bubbling scroll events on all mobile scrollers
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      setScrolled(scrollPos > 20);
-    };
-    
-    handleScroll();
-    // Listening in capture phase is critical because scroll events do not bubble in the DOM
-    window.addEventListener('scroll', handleScroll, { capture: true, passive: true });
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll, { capture: true });
-    };
-  }, []);
+  // Apple/Zomato style zero-JS scroll tracking hooking directly into Framer's render loop
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    // Only trigger React state updates when necessary to prevent layout thrashing
+    const isScrolled = latest > 20;
+    if (scrolled !== isScrolled) {
+      setScrolled(isScrolled);
+    }
+  });
 
   // Lock scroll when menu is open
   useEffect(() => {

@@ -30,18 +30,12 @@ export default function Hero() {
     offset: ["start start", "end start"]
   });
 
-  // Apply a spring for buttery smooth, heavily delayed tracking (makes it move slower and lazier)
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 40,
-    damping: 30,
-    mass: 1.5
-  });
-
-  // Calculate GPU-accelerated transforms - drastically reduced distance for very slow perceived speed
-  const bottleY = useTransform(smoothProgress, [0, 1], ["0px", "200px"]);
-  const bottleScale = useTransform(smoothProgress, [0, 1], [1.15, 0.90]);
-  const bottleRotate = useTransform(smoothProgress, [0, 1], [0, 15]);
-  const bottleOpacity = useTransform(smoothProgress, [0, 0.8], [1, 0]);
+  // Bypass heavy physics engines (useSpring) and connect directly to raw hardware-accelerated scroll.
+  // This completely eliminates Main Thread math blocking on initial load for older phones.
+  const bottleY = useTransform(scrollYProgress, [0, 1], ["0px", "200px"]);
+  const bottleScale = useTransform(scrollYProgress, [0, 1], [1.15, 0.90]);
+  const bottleRotate = useTransform(scrollYProgress, [0, 1], [0, 15]);
+  const bottleOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <section ref={containerRef} className="relative min-h-screen pt-[10vh] lg:pt-[12vh] pb-[6vh] lg:pb-[8vh] bg-[#F3F4F6] overflow-hidden flex flex-col snap-start snap-always" id="hero">
@@ -95,7 +89,6 @@ export default function Hero() {
             </MotionWrapper>
           </div>
 
-          {/* CENTER COLUMN: The Hero Bottle (Visual Anchor) with GPU-promoted scroll parallax & rolling rotation */}
           {disableAnimations ? (
             <div className="w-full flex items-center justify-center z-10 order-2 py-6 pointer-events-none">
               <div className="relative w-full h-full flex items-center justify-center animate-mobile-hero">
@@ -104,6 +97,7 @@ export default function Hero() {
                   alt="PureHarvest Premium Branded Water Bottle"
                   width={1536}
                   height={1024}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   priority
                   className="object-contain drop-shadow-[0_24px_48px_rgba(0,0,0,0.12)] max-h-[50vh]"
                 />
@@ -117,6 +111,7 @@ export default function Hero() {
                 scale: bottleScale,
                 rotate: bottleRotate,
                 opacity: bottleOpacity,
+                z: 0, // Forces GPU hardware acceleration layer
                 willChange: "transform, opacity"
               }}
             >
@@ -127,6 +122,7 @@ export default function Hero() {
                   opacity: { duration: 0.8 },
                   y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                 }}
+                style={{ z: 0 }}
                 className="relative w-full h-full flex items-center justify-center"
               >
                 <Image
@@ -134,6 +130,7 @@ export default function Hero() {
                   alt="PureHarvest Premium Branded Water Bottle"
                   width={1536}
                   height={1024}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   priority
                   className="object-contain drop-shadow-[0_40px_70px_rgba(0,0,0,0.18)] max-h-[82vh]"
                 />
