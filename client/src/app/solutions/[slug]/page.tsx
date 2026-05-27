@@ -15,7 +15,6 @@ const SectionSkeleton = ({ title }: { title: string }) => (
 );
 
 const InteractiveConfigurator = dynamic(() => import('@/components/layout/InteractiveConfigurator'), {
-  ssr: false,
   loading: () => <SectionSkeleton title="Configurator" />
 });
 const Purification = dynamic(() => import('@/components/layout/Purification'), {

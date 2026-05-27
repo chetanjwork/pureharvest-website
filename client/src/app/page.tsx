@@ -64,6 +64,10 @@ const EnterpriseOnboarding = dynamic(() => import('@/components/layout/Enterpris
   )
 });
 
+const Contact = dynamic(() => import('@/components/layout/Contact'), {
+  loading: () => <SectionSkeleton title="Contact" />
+});
+
 export default function Home() {
   useEffect(() => {
     // Force scroll to top on page load/refresh
