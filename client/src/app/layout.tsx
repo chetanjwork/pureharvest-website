@@ -2,11 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
-import Navbar from "@/components/layout/Navbar";
-import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
-import LoadingAnimation from "@/components/ui/LoadingAnimation";
 import CookieConsent from "@/components/layout/CookieConsent";
 import CodeProtection from "@/components/providers/CodeProtection";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -184,10 +182,10 @@ const localBusinessSchema = {
   ]
 };
 
-// ── Schema: Organization ──────────────────────────────────────────
+// ── Schema: Organization & B2BBusiness ─────────────────────────────
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "B2BBusiness"],
   "@id": "https://pureharvest.in/#organization",
   "name": "PureHarvest Enterprises",
   "url": "https://pureharvest.in",
@@ -197,10 +195,16 @@ const organizationSchema = {
     "width": 512,
     "height": 512
   },
-  "description": "Premium branded packaged drinking water manufacturer based in Thane, Mumbai.",
+  "description": "Premium corporate and hospitality packaged drinking water supplier based in Maharashtra.",
   "foundingLocation": {
     "@type": "Place",
-    "name": "Thane, Maharashtra, India"
+    "name": "Badlapur, Maharashtra, India"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Badlapur",
+    "addressRegion": "Maharashtra",
+    "addressCountry": "IN"
   },
   "areaServed": "Maharashtra, India",
   "sameAs": [
@@ -215,7 +219,7 @@ const signatureProductSchema = {
   "name": "Signature Series - Custom Branded Water Bottle",
   "brand": { "@type": "Brand", "name": "PureHarvest Enterprises" },
   "manufacturer": { "@type": "Organization", "name": "PureHarvest Enterprises", "address": { "@type": "PostalAddress", "addressLocality": "Thane", "addressRegion": "Maharashtra", "addressCountry": "IN" }},
-  "description": "Premium borosilicate glass water bottle with precision laser etching and matte aluminium seal. Designed for VIP boardrooms, 5-star hotels, and fine dining across Mumbai and Thane.",
+  "description": "Premium borosilicate glass water bottle featuring 10-stage purification and custom B2B branding. Designed for VIP boardrooms, 5-star hotels, and fine dining.",
   "image": "https://pureharvest.in/signature.png",
   "category": "Branded Packaged Drinking Water",
   "offers": {
@@ -313,13 +317,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* All JSON-LD schemas */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(signatureProductSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(classicProductSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+        <Script id="json-ld-local" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} strategy="beforeInteractive" />
+        <Script id="json-ld-org" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} strategy="beforeInteractive" />
+        <Script id="json-ld-service" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} strategy="beforeInteractive" />
+        <Script id="json-ld-signature" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(signatureProductSchema) }} strategy="beforeInteractive" />
+        <Script id="json-ld-classic" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(classicProductSchema) }} strategy="beforeInteractive" />
+        <Script id="json-ld-breadcrumb" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} strategy="beforeInteractive" />
+        <Script id="json-ld-website" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} strategy="beforeInteractive" />
       </head>
       <body className="font-sans w-full max-w-[100vw]">
         <CodeProtection />

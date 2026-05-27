@@ -25,7 +25,12 @@ const CLIENT_BRANDS = [
   { name: "Mahesh Fine Dine Restaurant", icon: Waves, tracking: "tracking-[0.15em]" }
 ];
 
-export default function Hero() {
+interface HeroProps {
+  industry?: string;
+  location?: string;
+}
+
+export default function Hero({ industry, location }: HeroProps = {}) {
   const containerRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const disableAnimations = shouldReduceMotion;
@@ -71,13 +76,15 @@ export default function Hero() {
 
             <MotionWrapper delay={0.2}>
               <h1 className="!font-sans !font-black leading-[0.95] lg:leading-[1.0] tracking-[-0.04em] text-[3.2rem] sm:text-[5rem] lg:text-[5.5rem] xl:text-[6.2rem] uppercase mb-4 lg:mb-5 flex flex-col lg:flex-row">
-                <span className="text-brand-accent">PREMIUM BRANDED</span>
-                <span className="text-[#0D47A1] lg:ml-4">WATER</span>
+                <span className="text-brand-accent">{industry ? `ELEVATING ${industry.toUpperCase()}` : "PREMIUM BRANDED"}</span>
+                <span className="text-[#0D47A1] lg:ml-4">{industry && location ? `IN ${location.toUpperCase()}` : location ? location.toUpperCase() : "WATER"}</span>
               </h1>
             </MotionWrapper>
 
             <TextReveal
-              text="Your brand deserves water that makes a statement. We put your logo on premium bottles - so every sip feels like an experience."
+              text={industry && location
+                ? `Your ${industry.toLowerCase()} brand in ${location} deserves water that makes a statement. We put your logo on premium bottles - so every sip feels like an experience.`
+                : "Your brand deserves water that makes a statement. We put your logo on premium bottles - so every sip feels like an experience."}
               delay={0.3}
               className="text-[#4B5563] text-[14px] sm:text-[15px] max-w-[320px] lg:max-w-[450px] font-medium leading-[1.6] mb-8 lg:mb-10 mx-auto lg:mx-0 justify-center lg:justify-start"
             />
