@@ -17,6 +17,15 @@ import { useEffect } from 'react';
  */
 export default function CodeProtection() {
   useEffect(() => {
+    // 1. Check for mobile/touch devices. If true, we completely bypass mounting 
+    // these heavy security listeners to save main-thread CPU cycles.
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    const isSmallScreen = window.innerWidth < 768;
+    
+    if (isTouch || isSmallScreen) {
+      return;
+    }
+
     // Only run security controls in production mode to avoid hindering local development
     const isProduction = process.env.NODE_ENV === 'production';
 
