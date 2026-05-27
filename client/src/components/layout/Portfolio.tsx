@@ -266,8 +266,8 @@ export default function Portfolio() {
   return (
     <Section className="bg-brand-primary text-brand-accent pt-28 pb-20 sm:pt-36 sm:pb-28 overflow-hidden relative" id="portfolio">
       {/* Luxury Subtle Grid Pattern */}
-      <div 
-        className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.04] mix-blend-multiply" 
+      <div
+        className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.04] mix-blend-multiply"
         style={{
           backgroundImage: `radial-gradient(circle at 50% 40%, rgba(11,33,71,0.12) 0%, transparent 70%), 
                             linear-gradient(to right, rgba(11,33,71,0.15) 1px, transparent 1px), 
@@ -276,11 +276,11 @@ export default function Portfolio() {
           maskImage: 'radial-gradient(circle at 50% 40%, black 30%, transparent 75%)',
           WebkitMaskImage: 'radial-gradient(circle at 50% 40%, black 30%, transparent 75%)',
           zIndex: 0,
-        }} 
+        }}
       />
 
       {/* Dynamic Ambient Aura Glow (Shines through transparent glass bottles) */}
-      <div 
+      <div
         className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none transition-all duration-1000 ease-out"
         style={{
           width: 'min(480px, 90vw)',
@@ -330,8 +330,8 @@ export default function Portfolio() {
               : style.transform;
             const activeTransition = isActive
               ? (isTransitioning
-                  ? 'transform 0.65s cubic-bezier(0.22,1,0.36,1), opacity 0.65s ease, filter 0.65s ease'
-                  : 'transform 0.1s ease-out, opacity 0.65s ease, filter 0.65s ease')
+                ? 'transform 0.65s cubic-bezier(0.22,1,0.36,1), opacity 0.65s ease, filter 0.65s ease'
+                : 'transform 0.1s ease-out, opacity 0.65s ease, filter 0.65s ease')
               : 'transform 0.65s cubic-bezier(0.22,1,0.36,1), opacity 0.65s ease, filter 0.65s ease';
 
             return (
@@ -370,17 +370,17 @@ export default function Portfolio() {
                     style={{
                       // Contoured drop shadow on the glass/PET itself that shifts with mouse movement
                       filter: isActive
-                        ? (isMobile 
-                           ? 'none' 
-                           : `drop-shadow(${tilt.x * -0.8}px ${12 + tilt.y * 0.8}px ${18 + Math.abs(tilt.x) * 0.5}px rgba(11,33,71,0.12)) 
+                        ? (isMobile
+                          ? 'none'
+                          : `drop-shadow(${tilt.x * -0.8}px ${12 + tilt.y * 0.8}px ${18 + Math.abs(tilt.x) * 0.5}px rgba(11,33,71,0.12)) 
                               drop-shadow(${tilt.x * -0.3}px ${4 + tilt.y * 0.3}px 6px rgba(11,33,71,0.06))`)
                         : 'none',
                       transition: isTransitioning ? 'filter 0.5s ease' : 'none',
                     }}
                   />
-                  
+
                   {/* 1. Sharp dark contact shadow at the very bottom base */}
-                  <div 
+                  <div
                     className="absolute bottom-[-1px] left-1/2 -translate-x-1/2 rounded-full bg-black/40 pointer-events-none z-0"
                     style={{
                       width: isActive ? '45%' : '35%',
@@ -391,9 +391,9 @@ export default function Portfolio() {
                       transition: isTransitioning ? 'all 0.5s ease' : 'opacity 0.5s ease',
                     }}
                   />
-                  
+
                   {/* 2. Wider soft ambient shadow */}
-                  <div 
+                  <div
                     className="absolute bottom-[-4px] left-1/2 -translate-x-1/2 rounded-full bg-black/10 pointer-events-none z-0"
                     style={{
                       width: isActive ? '68%' : '50%',
@@ -404,9 +404,9 @@ export default function Portfolio() {
                       transition: isTransitioning ? 'all 0.5s ease' : 'opacity 0.5s ease',
                     }}
                   />
-                  
+
                   {/* 3. Glass refraction caustic colored glow (Simulates light refraction on the floor) */}
-                  <div 
+                  <div
                     className="absolute bottom-[-3px] left-1/2 -translate-x-1/2 rounded-full pointer-events-none z-0"
                     style={{
                       width: isActive ? '35%' : '24%',
@@ -430,7 +430,7 @@ export default function Portfolio() {
             aria-label="Previous"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="group-hover:-translate-x-0.5 transition-transform duration-300">
-              <path d="M15 19l-7-7 7-7" stroke="#0B2147" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M15 19l-7-7 7-7" stroke="#0B2147" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
 
@@ -441,7 +441,7 @@ export default function Portfolio() {
             aria-label="Next"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="group-hover:translate-x-0.5 transition-transform duration-300">
-              <path d="M9 5l7 7-7 7" stroke="#0B2147" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M9 5l7 7-7 7" stroke="#0B2147" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
