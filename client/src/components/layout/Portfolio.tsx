@@ -353,6 +353,7 @@ export default function Portfolio() {
                   ...style,
                   filter: isMobile ? 'none' : style.filter,
                   transform: activeTransform,
+                  willChange: 'transform, opacity, filter',
                 }}
               >
                 {/* Bottle Relative Wrapper to guarantee pixel-perfect shadow anchoring at the very bottom */}

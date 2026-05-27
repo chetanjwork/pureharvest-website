@@ -45,6 +45,7 @@ export default function TextReveal({ text, className = '', delay = 0, as = 'p' }
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0.6, y: 5 }}
         transition={{ duration: 0.4, ease: 'easeOut', delay }}
         className={className}
+        style={{ willChange: 'transform, opacity' }}
       >
         {text}
       </Component>

@@ -59,6 +59,7 @@ export default function MotionWrapper({
         delay,
         ease: [0.22, 1, 0.36, 1],
       }}
+      style={{ willChange: 'transform, opacity' }}
       className={className}
     >
       {children}

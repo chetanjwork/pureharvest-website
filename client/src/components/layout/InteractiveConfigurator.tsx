@@ -129,7 +129,7 @@ export default function InteractiveConfigurator() {
                   exit={{ opacity: 0, scale: 0.94 }}
                   transition={{ duration: 0.45, ease: 'easeInOut' }}
                   whileHover={isMobile ? {} : { scale: 1.025, rotate: 0.5 }}
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: 'pointer', willChange: 'transform' }}
                 >
                   <img
                     src={activeSeries.frontImage}
@@ -159,6 +159,7 @@ export default function InteractiveConfigurator() {
                   borderRadius: '50%',
                   background: 'rgba(0,0,0,0.9)',
                   filter: 'blur(8px)',
+                  willChange: 'transform, opacity',
                 }}
               />
             </div>
