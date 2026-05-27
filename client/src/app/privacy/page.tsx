@@ -63,7 +63,7 @@ export default function PrivacyPage() {
     <main className="min-h-screen bg-brand-primary text-brand-accent pt-40 pb-32 selection:bg-brand-accent selection:text-white">
       {/* Background Ambience */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-black/[0.02] blur-[150px] rounded-full translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#F8F9FA] md:bg-black/[0.02] blur-[150px] rounded-full translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-black/[0.01] blur-[120px] rounded-full -translate-x-1/2 translate-y-1/2" />
       </div>
 
@@ -95,8 +95,8 @@ export default function PrivacyPage() {
                 ))}
               </div>
 
-              <div className="p-8 rounded-[24px] bg-black/[0.02] border border-black/5 backdrop-blur-3xl space-y-6 hover:bg-white hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-all duration-500 cursor-default">
-                <div className="w-10 h-10 rounded-2xl bg-black/[0.03] border border-black/10 flex items-center justify-center text-brand-accent/40">
+              <div className="p-8 rounded-[24px] bg-[#F8F9FA] md:bg-black/[0.02] border border-black/5 md:backdrop-blur-3xl space-y-6 hover:bg-white hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-all duration-500 cursor-default">
+                <div className="w-10 h-10 rounded-2xl bg-[#F8F9FA] md:bg-black/[0.03] border border-black/10 flex items-center justify-center text-brand-accent/40">
                   <Lock size={18} strokeWidth={2} />
                 </div>
                 <div>

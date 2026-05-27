@@ -20,7 +20,7 @@ export default function FAQ() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.02] border border-black/[0.04] text-brand-secondary text-[9px] font-black uppercase tracking-[0.25em] mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F8F9FA] md:bg-black/[0.02] border border-black/[0.04] text-brand-secondary text-[9px] font-black uppercase tracking-[0.25em] mb-6"
           >
             <HelpCircle size={10} className="text-brand-secondary" />
             Knowledge Base

@@ -141,7 +141,7 @@ export default function FAQPage() {
 
       {/* Decorative Ambience elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-black/[0.02] blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#F8F9FA] md:bg-black/[0.02] blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#25D366]/[0.01] blur-[120px] rounded-full -translate-x-1/3 translate-y-1/3" />
       </div>
 
@@ -254,7 +254,7 @@ export default function FAQPage() {
               </div>
 
               {/* Verified Trust Pill */}
-              <div className="hidden lg:block mt-8 p-6 rounded-2xl bg-black/[0.02] border border-black/5 text-left">
+              <div className="hidden lg:block mt-8 p-6 rounded-2xl bg-[#F8F9FA] md:bg-black/[0.02] border border-black/5 text-left">
                 <ShieldCheck size={20} className="text-brand-secondary mb-4" />
                 <h4 className="text-[10px] font-black uppercase tracking-widest text-brand-accent mb-2">Verified Content</h4>
                 <p className="text-[11px] text-brand-accent/50 leading-relaxed font-semibold">

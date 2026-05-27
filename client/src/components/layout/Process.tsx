@@ -62,7 +62,7 @@ export default function Process() {
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                  className="flex flex-col h-full bg-white/50 backdrop-blur-sm rounded-[32px] p-8 border border-black/[0.03] shadow-[0_8px_32px_rgba(0,0,0,0.02)] hover:shadow-[0_16px_48px_rgba(0,0,0,0.06)] hover:bg-white transition-all duration-300 cursor-default"
+                  className="flex flex-col h-full bg-white/95 md:bg-white/50 md:backdrop-blur-sm rounded-[32px] p-8 border border-black/[0.03] shadow-[0_8px_32px_rgba(0,0,0,0.02)] hover:shadow-[0_16px_48px_rgba(0,0,0,0.06)] hover:bg-white transition-all duration-300 cursor-default"
                 >
                   {/* Step icon circle */}
                   <div className="w-16 h-16 rounded-[20px] bg-white shadow-sm border border-black/[0.04] flex items-center justify-center mb-8 relative group-hover:scale-105 transition-transform duration-500 ease-out">

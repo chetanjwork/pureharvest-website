@@ -103,7 +103,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 bg-black/[0.02] border border-black/5 backdrop-blur-md rounded-[48px] p-8 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 group hover:border-black/10 transition-all duration-500"
+            className="relative z-10 bg-[#F8F9FA] md:bg-black/[0.02] border border-black/5 md:backdrop-blur-md rounded-[48px] p-8 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 group hover:border-black/10 transition-all duration-500"
           >
             <div className="max-w-2xl text-center lg:text-left">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#25D366]/10 border border-[#25D366]/20 text-[#25D366] text-xs font-bold uppercase tracking-widest mb-6">
@@ -138,7 +138,7 @@ export default function Home() {
       
       <footer className="py-20 bg-brand-primary border-t border-black/5 relative overflow-hidden">
         {/* Subtle background glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-black/[0.02] blur-[100px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#F8F9FA] md:bg-black/[0.02] blur-[100px] rounded-full pointer-events-none" />
         
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16 mb-20">

@@ -151,7 +151,7 @@ export default function Purification() {
         {/* ── B2B Purity Checkpoints (Scannable Executive Summary) ── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16 relative z-10">
           <MotionWrapper delay={0.1}>
-            <div className="bg-white/40 backdrop-blur-md border border-black/[0.04] p-5 sm:p-6 rounded-2xl flex gap-4 hover:bg-white hover:border-brand-secondary/15 hover:shadow-[0_15px_30px_rgba(0,0,0,0.02)] transition-all duration-300">
+            <div className="bg-white/95 md:bg-white/40 md:backdrop-blur-md border border-black/[0.04] p-5 sm:p-6 rounded-2xl flex gap-4 hover:bg-white hover:border-brand-secondary/15 hover:shadow-[0_15px_30px_rgba(0,0,0,0.02)] transition-all duration-300">
               <div className="w-10 h-10 rounded-xl bg-brand-secondary/5 border border-brand-secondary/15 flex items-center justify-center text-brand-secondary shrink-0">
                 <Check size={18} strokeWidth={3} />
               </div>
@@ -163,7 +163,7 @@ export default function Purification() {
           </MotionWrapper>
 
           <MotionWrapper delay={0.15}>
-            <div className="bg-white/40 backdrop-blur-md border border-black/[0.04] p-5 sm:p-6 rounded-2xl flex gap-4 hover:bg-white hover:border-brand-secondary/15 hover:shadow-[0_15px_30px_rgba(0,0,0,0.02)] transition-all duration-300">
+            <div className="bg-white/95 md:bg-white/40 md:backdrop-blur-md border border-black/[0.04] p-5 sm:p-6 rounded-2xl flex gap-4 hover:bg-white hover:border-brand-secondary/15 hover:shadow-[0_15px_30px_rgba(0,0,0,0.02)] transition-all duration-300">
               <div className="w-10 h-10 rounded-xl bg-brand-secondary/5 border border-brand-secondary/15 flex items-center justify-center text-brand-secondary shrink-0">
                 <Check size={18} strokeWidth={3} />
               </div>
@@ -175,7 +175,7 @@ export default function Purification() {
           </MotionWrapper>
 
           <MotionWrapper delay={0.2}>
-            <div className="bg-white/40 backdrop-blur-md border border-black/[0.04] p-5 sm:p-6 rounded-2xl flex gap-4 hover:bg-white hover:border-emerald-500/15 hover:shadow-[0_15px_30px_rgba(0,0,0,0.02)] transition-all duration-300">
+            <div className="bg-white/95 md:bg-white/40 md:backdrop-blur-md border border-black/[0.04] p-5 sm:p-6 rounded-2xl flex gap-4 hover:bg-white hover:border-emerald-500/15 hover:shadow-[0_15px_30px_rgba(0,0,0,0.02)] transition-all duration-300">
               <div className="w-10 h-10 rounded-xl bg-[#10B981]/10 border border-[#10B981]/20 flex items-center justify-center text-[#10B981] shrink-0">
                 <Check size={18} strokeWidth={3} />
               </div>
@@ -188,7 +188,7 @@ export default function Purification() {
         </div>
 
         {/* ── DESKTOP: Laboratory Specifications Table ── */}
-        <div className="hidden lg:block w-full overflow-hidden bg-white/60 backdrop-blur-md border border-black/[0.03] rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.03)] relative z-10">
+        <div className="hidden lg:block w-full overflow-hidden bg-white/95 md:bg-white/60 md:backdrop-blur-md border border-black/[0.03] rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.03)] relative z-10">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-black/[0.05] bg-black/[0.01]">
@@ -215,7 +215,7 @@ export default function Purification() {
                       <td className="py-4 px-8 text-xs font-semibold text-brand-accent/30 tabular-nums">{stage.number}</td>
                       <td className="py-4 px-8">
                         <div className="flex items-center gap-3.5">
-                          <div className="w-8 h-8 rounded-xl bg-black/[0.02] border border-black/5 flex items-center justify-center text-brand-accent/50 shrink-0">
+                          <div className="w-8 h-8 rounded-xl bg-[#F8F9FA] md:bg-black/[0.02] border border-black/5 flex items-center justify-center text-brand-accent/50 shrink-0">
                             <Icon size={13} strokeWidth={1.8} />
                           </div>
                           <span className="text-xs font-bold text-brand-accent">
@@ -225,7 +225,7 @@ export default function Purification() {
                       </td>
                       <td className="py-4 px-8 text-xs font-semibold text-brand-accent/50">{stage.action}</td>
                       <td className="py-4 px-8">
-                        <span className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md bg-black/[0.02] text-brand-accent/65 border border-black/5">
+                        <span className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md bg-[#F8F9FA] md:bg-black/[0.02] text-brand-accent/65 border border-black/5">
                           {stage.index}
                         </span>
                       </td>
@@ -268,7 +268,7 @@ export default function Purification() {
             return (
               <div 
                 key={stage.number}
-                className={`bg-white/60 backdrop-blur-md border border-black/[0.03] rounded-2xl overflow-hidden transition-all duration-300 ${
+                className={`bg-white/95 md:bg-white/60 md:backdrop-blur-md border border-black/[0.03] rounded-2xl overflow-hidden transition-all duration-300 ${
                   isExpanded ? 'bg-white shadow-[0_12px_30px_rgba(0,0,0,0.03)] border-black/10' : ''
                 }`}
               >
@@ -279,7 +279,7 @@ export default function Purification() {
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-[10px] font-semibold text-brand-accent/30 tabular-nums w-4">{stage.number}</span>
-                    <div className="w-7 h-7 rounded-lg bg-black/[0.02] border border-black/5 flex items-center justify-center text-brand-accent/50 shrink-0">
+                    <div className="w-7 h-7 rounded-lg bg-[#F8F9FA] md:bg-black/[0.02] border border-black/5 flex items-center justify-center text-brand-accent/50 shrink-0">
                       <Icon size={12} strokeWidth={1.8} />
                     </div>
                     <div>
@@ -290,7 +290,7 @@ export default function Purification() {
                   </div>
                   
                   <div className="flex items-center gap-2.5">
-                    <span className="text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/[0.02] text-brand-accent/60 border border-black/5 shrink-0 leading-none">
+                    <span className="text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#F8F9FA] md:bg-black/[0.02] text-brand-accent/60 border border-black/5 shrink-0 leading-none">
                       {stage.index.replace(' Certified', '').replace(' Compliant', '').replace(' Double Safe', '')}
                     </span>
                     <span className={`text-[10px] text-brand-accent/30 transition-transform duration-300 font-bold shrink-0 ${isExpanded ? 'rotate-90 text-brand-secondary' : ''}`}>
@@ -343,10 +343,10 @@ export default function Purification() {
             PureHarvest Water Science Division · Certified Quality Control
           </p>
           <div className="flex gap-4">
-            <span className="text-brand-accent/20 text-[9px] font-black uppercase tracking-[0.25em] bg-black/[0.02] border border-black/[0.04] px-3 py-1 rounded-full">
+            <span className="text-brand-accent/20 text-[9px] font-black uppercase tracking-[0.25em] bg-[#F8F9FA] md:bg-black/[0.02] border border-black/[0.04] px-3 py-1 rounded-full">
               FSSAI Standard
             </span>
-            <span className="text-brand-accent/20 text-[9px] font-black uppercase tracking-[0.25em] bg-black/[0.02] border border-black/[0.04] px-3 py-1 rounded-full">
+            <span className="text-brand-accent/20 text-[9px] font-black uppercase tracking-[0.25em] bg-[#F8F9FA] md:bg-black/[0.02] border border-black/[0.04] px-3 py-1 rounded-full">
               BIS Standard
             </span>
           </div>

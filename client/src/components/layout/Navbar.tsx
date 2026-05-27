@@ -99,7 +99,7 @@ export default function Navbar() {
             ${isMenuOpen 
               ? 'w-full px-6 py-5 bg-[#F2F2F7] border-b border-transparent' 
               : scrolled
-                ? 'w-auto px-4 py-2 sm:px-5 lg:py-2 bg-white/60 bg-[radial-gradient(120%_120%_at_50%_-20%,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.2)_100%)] backdrop-blur-[40px] border border-white/60 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] rounded-full gap-4 sm:gap-6'
+                ? 'w-auto px-4 py-2 sm:px-5 lg:py-2 bg-white/95 md:bg-white/60 bg-[radial-gradient(120%_120%_at_50%_-20%,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.2)_100%)] md:backdrop-blur-[40px] border border-white/60 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] rounded-full gap-4 sm:gap-6'
                 : 'w-full max-w-[1400px] px-6 md:px-10 py-5 lg:py-6 bg-transparent border-b border-transparent'
             }
           `}
@@ -120,7 +120,7 @@ export default function Navbar() {
                 alt="PureHarvest Logo" 
                 width={40} 
                 height={40} 
-                className={`object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-500
+                className={`object-contain md:drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-500
                   ${(scrolled && !isMenuOpen) ? 'w-8 h-8' : 'w-10 h-10'}
                 `}
                 priority

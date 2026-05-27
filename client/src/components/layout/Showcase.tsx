@@ -66,12 +66,12 @@ export default function Showcase() {
               
               {/* Bottom Label */}
               <div className="absolute bottom-0 left-0 right-0 p-8">
-                <span className="text-[10px] uppercase tracking-[0.2em] text-white/80 font-bold drop-shadow-md">{item.tag}</span>
-                <h3 className="text-2xl font-heading font-semibold text-white mt-1 drop-shadow-lg tracking-tight">{item.label}</h3>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-white/80 font-bold md:drop-shadow-md">{item.tag}</span>
+                <h3 className="text-2xl font-heading font-semibold text-white mt-1 md:drop-shadow-lg tracking-tight">{item.label}</h3>
               </div>
               
               {/* Hover CTA */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 backdrop-blur-[2px]">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60 md:bg-black/20 md:backdrop-blur-[2px]">
                 <a
                   href={`https://wa.me/918149174975?text=Hello%20PureHarvest%2C%20I%20am%20interested%20in%20bottles%20for%20${encodeURIComponent(item.label)}.`}
                   target="_blank"

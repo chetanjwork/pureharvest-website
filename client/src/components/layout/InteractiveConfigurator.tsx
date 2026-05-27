@@ -142,7 +142,7 @@ export default function InteractiveConfigurator() {
                       maxWidth: '100%',
                       objectFit: 'contain',
                       filter: isMobile 
-                        ? 'drop-shadow(0 20px 40px rgba(0,0,0,0.08))' 
+                        ? 'none' 
                         : 'drop-shadow(0 40px 60px rgba(0,0,0,0.12)) drop-shadow(0 8px 16px rgba(0,0,0,0.06))',
                     }}
                   />
@@ -201,7 +201,7 @@ export default function InteractiveConfigurator() {
             </MotionWrapper>
 
             {/* Apple-style segmented toggle */}
-            <div className="bg-black/[0.03] border border-black/[0.06] p-1 rounded-full flex gap-1 mb-10 max-w-md backdrop-blur-sm">
+            <div className="bg-[#F8F9FA] md:bg-black/[0.03] border border-black/[0.06] p-1 rounded-full flex gap-1 mb-10 max-w-md md:backdrop-blur-sm">
               {SERIES_OPTIONS.map((series) => (
                 <button
                   key={series.id}
@@ -230,9 +230,9 @@ export default function InteractiveConfigurator() {
                   <MotionWrapper
                     key={spec.label}
                     delay={0.2 + i * 0.06}
-                    className="bg-white/50 backdrop-blur-md border border-white/70 p-5 rounded-2xl flex items-center gap-4 hover:border-black/10 hover:bg-white/70 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.04)] transition-all duration-400 group cursor-default"
+                    className="bg-white/95 md:bg-white/50 md:backdrop-blur-md border border-white/70 p-5 rounded-2xl flex items-center gap-4 hover:border-black/10 hover:bg-white/70 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.04)] transition-all duration-400 group cursor-default"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-black/[0.02] border border-black/[0.06] flex items-center justify-center text-brand-secondary group-hover:bg-brand-secondary/10 transition-all shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-[#F8F9FA] md:bg-black/[0.02] border border-black/[0.06] flex items-center justify-center text-brand-secondary group-hover:bg-brand-secondary/10 transition-all shrink-0">
                       <Icon size={16} strokeWidth={2} />
                     </div>
                     <div>

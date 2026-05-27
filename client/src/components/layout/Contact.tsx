@@ -74,7 +74,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="bg-black/[0.02] border border-black/5 backdrop-blur-xl p-10 md:p-12 rounded-[40px]">
+        <div className="bg-[#F8F9FA] md:bg-black/[0.02] border border-black/5 md:backdrop-blur-xl p-10 md:p-12 rounded-[40px]">
           {status === 'success' ? (
             <div className="py-12 text-center space-y-6">
               <div className="w-16 h-16 bg-[#25D366]/10 rounded-full flex items-center justify-center mx-auto text-[#25D366]">
@@ -88,23 +88,23 @@ export default function Contact() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-widest font-bold text-brand-accent/60 ml-1">Full Name</label>
-                  <input required type="text" placeholder="Arjun Sharma" className="w-full px-6 py-4 rounded-2xl bg-black/[0.03] border border-black/10 text-brand-accent placeholder:text-brand-accent/40 focus:outline-none focus:border-brand-accent/40 transition-all font-medium" value={formData.name} onChange={(e) => {
+                  <input required type="text" placeholder="Arjun Sharma" className="w-full px-6 py-4 rounded-2xl bg-[#F8F9FA] md:bg-black/[0.03] border border-black/10 text-brand-accent placeholder:text-brand-accent/40 focus:outline-none focus:border-brand-accent/40 transition-all font-medium" value={formData.name} onChange={(e) => {
                     const cleanValue = e.target.value.replace(/[^a-zA-Z\s]/g, '');
                     setFormData({ ...formData, name: cleanValue });
                   }} />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-widest font-bold text-brand-accent/60 ml-1">Email</label>
-                  <input required type="email" placeholder="arjun@enterprise.com" className="w-full px-6 py-4 rounded-2xl bg-black/[0.03] border border-black/10 text-brand-accent placeholder:text-brand-accent/40 focus:outline-none focus:border-brand-accent/40 transition-all font-medium" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
+                  <input required type="email" placeholder="arjun@enterprise.com" className="w-full px-6 py-4 rounded-2xl bg-[#F8F9FA] md:bg-black/[0.03] border border-black/10 text-brand-accent placeholder:text-brand-accent/40 focus:outline-none focus:border-brand-accent/40 transition-all font-medium" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] uppercase tracking-widest font-bold text-brand-accent/60 ml-1">Company</label>
-                <input type="text" placeholder="Organization Name" className="w-full px-6 py-4 rounded-2xl bg-black/[0.03] border border-black/10 text-brand-accent placeholder:text-brand-accent/40 focus:outline-none focus:border-brand-accent/40 transition-all font-medium" value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} />
+                <input type="text" placeholder="Organization Name" className="w-full px-6 py-4 rounded-2xl bg-[#F8F9FA] md:bg-black/[0.03] border border-black/10 text-brand-accent placeholder:text-brand-accent/40 focus:outline-none focus:border-brand-accent/40 transition-all font-medium" value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} />
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] uppercase tracking-widest font-bold text-brand-accent/60 ml-1">Message</label>
-                <textarea required rows={4} placeholder="Describe your requirements..." className="w-full px-6 py-4 rounded-2xl bg-black/[0.03] border border-black/10 text-brand-accent placeholder:text-brand-accent/40 focus:outline-none focus:border-brand-accent/40 transition-all font-medium resize-none" value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} />
+                <textarea required rows={4} placeholder="Describe your requirements..." className="w-full px-6 py-4 rounded-2xl bg-[#F8F9FA] md:bg-black/[0.03] border border-black/10 text-brand-accent placeholder:text-brand-accent/40 focus:outline-none focus:border-brand-accent/40 transition-all font-medium resize-none" value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} />
               </div>
               <button type="submit" disabled={status === 'loading'} className="w-full bg-brand-accent text-white py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-brand-accent/90 active:scale-[0.98] transition-all flex items-center justify-center gap-3">
                 {status === 'loading' ? 'Sending...' : 'Submit Inquiry'}

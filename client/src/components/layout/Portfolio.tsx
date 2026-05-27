@@ -371,7 +371,7 @@ export default function Portfolio() {
                       // Contoured drop shadow on the glass/PET itself that shifts with mouse movement
                       filter: isActive
                         ? (isMobile 
-                           ? 'drop-shadow(0 14px 20px rgba(11,33,71,0.12))' 
+                           ? 'none' 
                            : `drop-shadow(${tilt.x * -0.8}px ${12 + tilt.y * 0.8}px ${18 + Math.abs(tilt.x) * 0.5}px rgba(11,33,71,0.12)) 
                               drop-shadow(${tilt.x * -0.3}px ${4 + tilt.y * 0.3}px 6px rgba(11,33,71,0.06))`)
                         : 'none',
@@ -426,7 +426,7 @@ export default function Portfolio() {
           {/* Left Arrow (Sleek Glassmorphic Inset Control) */}
           <button
             onClick={() => handleNav('prev')}
-            className="absolute left-2 sm:left-[-2rem] md:left-[-3rem] top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/60 hover:bg-white/95 hover:scale-110 active:scale-95 backdrop-blur-md border border-white/80 flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 group cursor-pointer"
+            className="absolute left-2 sm:left-[-2rem] md:left-[-3rem] top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/90 md:bg-white/60 hover:bg-white/95 hover:scale-110 active:scale-95 md:backdrop-blur-md border border-white/80 flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 group cursor-pointer"
             aria-label="Previous"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="group-hover:-translate-x-0.5 transition-transform duration-300">
@@ -437,7 +437,7 @@ export default function Portfolio() {
           {/* Right Arrow (Sleek Glassmorphic Inset Control) */}
           <button
             onClick={() => handleNav('next')}
-            className="absolute right-2 sm:right-[-2rem] md:right-[-3rem] top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/60 hover:bg-white/95 hover:scale-110 active:scale-95 backdrop-blur-md border border-white/80 flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 group cursor-pointer"
+            className="absolute right-2 sm:right-[-2rem] md:right-[-3rem] top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/90 md:bg-white/60 hover:bg-white/95 hover:scale-110 active:scale-95 md:backdrop-blur-md border border-white/80 flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 group cursor-pointer"
             aria-label="Next"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="group-hover:translate-x-0.5 transition-transform duration-300">

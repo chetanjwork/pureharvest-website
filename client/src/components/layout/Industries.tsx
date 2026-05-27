@@ -96,7 +96,7 @@ export default function Industries() {
 
         {/* Tab Switcher - Apple Style Segmented Control */}
         <div className="flex justify-center mb-14 px-6">
-          <div className="flex gap-2 p-1.5 bg-black/[0.03] border border-black/[0.05] rounded-full overflow-x-auto no-scrollbar shadow-inner">
+          <div className="flex gap-2 p-1.5 bg-[#F8F9FA] md:bg-black/[0.03] border border-black/[0.05] rounded-full overflow-x-auto no-scrollbar shadow-inner">
             {industries.map((ind, i) => (
               <button
                 key={ind.id}
@@ -144,7 +144,7 @@ export default function Industries() {
               
               <div className="flex flex-wrap gap-2 mb-12">
                 {current.tags.map(tag => (
-                  <span key={tag} className="px-4 py-1.5 rounded-full bg-white/50 border border-black/[0.03] text-brand-accent/70 text-[10px] uppercase tracking-widest font-bold shadow-sm backdrop-blur-md">{tag}</span>
+                  <span key={tag} className="px-4 py-1.5 rounded-full bg-white/95 md:bg-white/50 border border-black/[0.03] text-brand-accent/70 text-[10px] uppercase tracking-widest font-bold shadow-sm md:backdrop-blur-md">{tag}</span>
                 ))}
               </div>
               
@@ -159,7 +159,7 @@ export default function Industries() {
                 </a>
                 <button
                   onClick={() => document.getElementById('onboarding')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/50 border border-black/[0.05] text-brand-accent px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors shadow-sm"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/95 md:bg-white/50 border border-black/[0.05] text-brand-accent px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors shadow-sm"
                 >
                   Request Samples
                   <ArrowUpRight size={14} />
@@ -169,7 +169,7 @@ export default function Industries() {
             
             {/* Minimal Stat Display (Apple Watch / Widget Style) */}
             <div className="flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[320px] aspect-square rounded-[40px] bg-white/40 border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] backdrop-blur-xl flex flex-col items-center justify-center p-8 overflow-hidden">
+              <div className="relative w-full max-w-[320px] aspect-square rounded-[40px] bg-white/95 md:bg-white/40 border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] md:backdrop-blur-xl flex flex-col items-center justify-center p-8 overflow-hidden">
                 <div 
                   className={`relative z-10 w-24 h-24 rounded-3xl bg-white shadow-sm border border-black/[0.02] flex items-center justify-center mb-6`}
                   style={{ color: current.iconColor }}

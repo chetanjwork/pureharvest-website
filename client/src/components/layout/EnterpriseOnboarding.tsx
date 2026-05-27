@@ -199,7 +199,7 @@ export default function EnterpriseOnboarding() {
           </div>
 
           {/* Main Interface */}
-          <div className="bg-white/60 backdrop-blur-3xl border border-black/[0.03] rounded-[48px] p-8 md:p-20 shadow-[0_32px_120px_-20px_rgba(0,0,0,0.08)] relative overflow-hidden">
+          <div className="bg-white/95 md:bg-white/60 md:backdrop-blur-3xl border border-black/[0.03] rounded-[48px] p-8 md:p-20 shadow-[0_32px_120px_-20px_rgba(0,0,0,0.08)] relative overflow-hidden">
             
             <AnimatePresence mode="wait">
               {isSuccess ? (
@@ -253,7 +253,7 @@ export default function EnterpriseOnboarding() {
                             } ${
                               selections.industry === ind.id 
                                 ? 'bg-brand-secondary border-brand-secondary shadow-[0_20px_50px_-10px_rgba(0,71,171,0.3)] scale-[1.03]' 
-                                : 'bg-white/40 border-black/[0.05] hover:border-black/10 hover:shadow-2xl hover:scale-[1.01]'
+                                : 'bg-white/95 md:bg-white/40 border-black/[0.05] hover:border-black/10 hover:shadow-2xl hover:scale-[1.01]'
                             }`}
                           >
                             {/* Inner Glow for selection */}
@@ -364,7 +364,7 @@ export default function EnterpriseOnboarding() {
                               className={`p-12 rounded-[36px] border transition-all duration-700 text-left flex flex-col justify-between h-[220px] w-full max-w-md relative overflow-hidden ${
                                 selections.customization.includes(opt.id)
                                   ? 'bg-brand-secondary border-brand-secondary shadow-[0_20px_50px_-10px_rgba(0,71,171,0.3)] scale-[1.02]'
-                                  : 'bg-white/40 border-black/[0.05] hover:border-black/10'
+                                  : 'bg-white/95 md:bg-white/40 border-black/[0.05] hover:border-black/10'
                               }`}
                             >
                               <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${selections.customization.includes(opt.id) ? 'bg-white/20' : 'bg-brand-secondary/5'}`}>
@@ -408,7 +408,7 @@ export default function EnterpriseOnboarding() {
                             <input 
                               type="text" 
                               placeholder="Full Name" 
-                              className={`w-full bg-white/50 border rounded-[24px] p-7 text-sm font-bold uppercase tracking-wider focus:outline-none focus:border-brand-secondary transition-all shadow-sm ${
+                              className={`w-full bg-white/95 md:bg-white/50 border rounded-[24px] p-7 text-sm font-bold uppercase tracking-wider focus:outline-none focus:border-brand-secondary transition-all shadow-sm ${
                                 errors.name ? 'border-red-500/80 focus:border-red-500' : 'border-black/5'
                               }`}
                               value={selections.name}
@@ -428,7 +428,7 @@ export default function EnterpriseOnboarding() {
                             <input 
                               type="text" 
                               placeholder="Company Name" 
-                              className="w-full bg-white/50 border border-black/5 rounded-[24px] p-7 text-sm font-bold uppercase tracking-wider focus:outline-none focus:border-brand-secondary transition-all shadow-sm"
+                              className="w-full bg-white/95 md:bg-white/50 border border-black/5 rounded-[24px] p-7 text-sm font-bold uppercase tracking-wider focus:outline-none focus:border-brand-secondary transition-all shadow-sm"
                               value={selections.company}
                               onChange={(e) => setSelections({ ...selections, company: e.target.value })}
                             />
@@ -446,7 +446,7 @@ export default function EnterpriseOnboarding() {
                             <input 
                               type="tel" 
                               placeholder="WhatsApp Number" 
-                              className={`w-full bg-white/50 border rounded-[24px] p-7 pl-32 text-sm font-bold uppercase tracking-wider focus:outline-none focus:border-brand-secondary transition-all shadow-sm ${
+                              className={`w-full bg-white/95 md:bg-white/50 border rounded-[24px] p-7 pl-32 text-sm font-bold uppercase tracking-wider focus:outline-none focus:border-brand-secondary transition-all shadow-sm ${
                                 errors.whatsapp ? 'border-red-500/80 focus:border-red-500' : 'border-black/5'
                               }`}
                               value={selections.whatsapp.replace(/^\+91\s*/, '')}
@@ -477,7 +477,7 @@ export default function EnterpriseOnboarding() {
                             <input 
                               type="email" 
                               placeholder="Email ID" 
-                              className={`w-full bg-white/50 border rounded-[24px] p-7 pl-20 text-sm font-bold uppercase tracking-wider focus:outline-none focus:border-brand-secondary transition-all shadow-sm ${
+                              className={`w-full bg-white/95 md:bg-white/50 border rounded-[24px] p-7 pl-20 text-sm font-bold uppercase tracking-wider focus:outline-none focus:border-brand-secondary transition-all shadow-sm ${
                                 errors.email ? 'border-red-500/80 focus:border-red-500' : 'border-black/5'
                               }`}
                               value={selections.email}
