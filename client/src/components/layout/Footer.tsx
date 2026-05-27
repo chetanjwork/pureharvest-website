@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
@@ -74,9 +76,27 @@ export default function Footer() {
           <p className="text-brand-accent/60 text-[9px] uppercase tracking-[0.3em] font-black text-center md:text-left leading-relaxed max-w-md">
             © 2026 PureHarvest Enterprises. <br className="md:hidden" />Crafted for Excellence.
           </p>
-          <div className="flex gap-4 items-center">
-            <span className="w-1.5 h-1.5 rounded-full bg-black/20" />
-            <span className="text-brand-accent/60 text-[9px] uppercase tracking-[0.3em] font-black">All Rights Reserved</span>
+          
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="group flex items-center gap-2 text-brand-accent/70 hover:text-brand-accent transition-colors"
+              aria-label="Scroll to top"
+            >
+              <span className="text-[9px] uppercase tracking-[0.3em] font-black">Back to Top</span>
+              <div className="w-6 h-6 rounded-full border border-brand-accent/20 group-hover:border-brand-accent flex items-center justify-center transition-colors">
+                <svg className="w-3 h-3 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                </svg>
+              </div>
+            </button>
+            
+            <div className="hidden md:block w-[1px] h-4 bg-brand-accent/10" />
+            
+            <div className="flex gap-4 items-center">
+              <span className="w-1.5 h-1.5 rounded-full bg-black/20 md:hidden" />
+              <span className="text-brand-accent/60 text-[9px] uppercase tracking-[0.3em] font-black">All Rights Reserved</span>
+            </div>
           </div>
         </div>
       </Container>
