@@ -156,7 +156,7 @@ export default function Purification() {
                 <Check size={18} strokeWidth={3} />
               </div>
               <div>
-                <h4 className="text-[11px] font-black uppercase tracking-wider text-brand-accent mb-1">Biological Sterility</h4>
+                <h3 className="text-[11px] font-black uppercase tracking-wider text-brand-accent mb-1">Biological Sterility</h3>
                 <p className="text-[11px] text-brand-accent/50 leading-relaxed font-semibold">Dual high-intensity UV sterilisation and active ozone packaging ensures 100% germ-free hydration.</p>
               </div>
             </div>
@@ -168,7 +168,7 @@ export default function Purification() {
                 <Check size={18} strokeWidth={3} />
               </div>
               <div>
-                <h4 className="text-[11px] font-black uppercase tracking-wider text-brand-accent mb-1">Mineral Balance (7.2 pH)</h4>
+                <h3 className="text-[11px] font-black uppercase tracking-wider text-brand-accent mb-1">Mineral Balance (7.2 pH)</h3>
                 <p className="text-[11px] text-brand-accent/50 leading-relaxed font-semibold">Optimal TDS calibration infused with healthy Calcium, Magnesium, and Potassium electrolytes.</p>
               </div>
             </div>
@@ -180,7 +180,7 @@ export default function Purification() {
                 <Check size={18} strokeWidth={3} />
               </div>
               <div>
-                <h4 className="text-[11px] font-black uppercase tracking-wider text-brand-accent mb-1">FSSAI & BIS Compliant</h4>
+                <h3 className="text-[11px] font-black uppercase tracking-wider text-brand-accent mb-1">FSSAI & BIS Compliant</h3>
                 <p className="text-[11px] text-brand-accent/50 leading-relaxed font-semibold">Fully certified under mandatory national IS 14543 water codes for legal B2B procurement.</p>
               </div>
             </div>
@@ -285,9 +285,9 @@ export default function Purification() {
                       <Icon size={12} strokeWidth={1.8} />
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-brand-accent leading-none">
+                      <h3 className="text-xs font-bold text-brand-accent leading-none">
                         {stage.name}
-                      </h4>
+                      </h3>
                     </div>
                   </div>
                   

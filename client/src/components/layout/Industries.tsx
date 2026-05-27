@@ -142,7 +142,7 @@ export default function Industries() {
                 </div>
                 <span className="text-[11px] uppercase tracking-widest text-white/50 font-bold">{current.label}</span>
               </div>
-              <h3 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-[1.1] tracking-tight">{current.headline}</h3>
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-[1.1] tracking-tight">{current.headline}</h2>
               <p className="text-white/70 text-lg leading-relaxed mb-10 font-medium">{current.description}</p>
               
               <div className="flex flex-wrap gap-2 mb-12">

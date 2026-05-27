@@ -54,13 +54,15 @@ export default function CookieConsent() {
             <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={decline}
-                className="text-[9px] font-black uppercase tracking-widest text-brand-accent/30 hover:text-brand-accent/60 transition-colors cursor-pointer px-3 py-2"
+                aria-label="Decline cookie consent"
+                className="text-[9px] font-black uppercase tracking-widest text-brand-accent/60 hover:text-brand-accent transition-colors cursor-pointer min-h-[44px] min-w-[44px] px-3 flex items-center justify-center"
               >
                 Decline
               </button>
               <button
                 onClick={accept}
-                className="text-[9px] font-black uppercase tracking-widest bg-brand-accent text-brand-primary px-5 py-2.5 rounded-full hover:bg-brand-accent/90 hover:scale-[1.03] active:scale-95 transition-all duration-200 cursor-pointer shadow-sm"
+                aria-label="Accept cookie consent"
+                className="text-[9px] font-black uppercase tracking-widest bg-brand-accent text-brand-primary min-h-[44px] px-5 rounded-full hover:bg-brand-accent/90 hover:scale-[1.03] active:scale-95 transition-all duration-200 cursor-pointer shadow-sm flex items-center justify-center"
               >
                 Accept
               </button>

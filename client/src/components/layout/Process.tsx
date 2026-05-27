@@ -73,9 +73,9 @@ export default function Process() {
                     </span>
                   </div>
 
-                  <h3 className="text-[19px] font-semibold mb-4 text-brand-accent tracking-tight">
+                  <h2 className="text-[19px] font-semibold mb-4 text-brand-accent tracking-tight">
                     {step.title}
-                  </h3>
+                  </h2>
                   <p className="text-brand-accent/60 leading-relaxed text-[15px] font-medium">
                     {step.description}
                   </p>

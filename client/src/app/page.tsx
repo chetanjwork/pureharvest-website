@@ -163,13 +163,13 @@ export default function Home() {
               <p className="text-brand-accent/60 text-sm max-w-sm leading-relaxed mb-8 font-medium">
                 Premium custom branded water. We deliver custom glass bottles and pure, refreshing water for hotels, offices, cafes, and celebrations.
               </p>
-              <div className="text-brand-accent/40 text-[11px] uppercase tracking-[0.2em] font-black">
+              <div className="text-brand-accent/60 text-[11px] uppercase tracking-[0.2em] font-black">
                 GST NO: 27GVMPD4986B1ZA
               </div>
             </div>
             
             <div className="space-y-6">
-              <h4 className="text-brand-accent font-black text-xs uppercase tracking-[0.3em] text-brand-accent/40">Information</h4>
+              <h4 className="text-brand-accent font-black text-xs uppercase tracking-[0.3em] text-brand-accent/60">Information</h4>
               <ul className="space-y-5">
                 <li><Link href="/faq" className="text-brand-accent/70 text-sm hover:text-brand-accent hover:translate-x-1 inline-block transition-all font-bold">Frequently Asked Qs</Link></li>
                 <li><Link href="/privacy" className="text-brand-accent/70 text-sm hover:text-brand-accent hover:translate-x-1 inline-block transition-all font-bold">Privacy Policy</Link></li>
@@ -178,7 +178,7 @@ export default function Home() {
             </div>
             
             <div className="space-y-6">
-              <h4 className="text-brand-accent font-black text-xs uppercase tracking-[0.3em] text-brand-accent/40">Social</h4>
+              <h4 className="text-brand-accent font-black text-xs uppercase tracking-[0.3em] text-brand-accent/60">Social</h4>
               <ul className="space-y-5">
                 <li><a href="https://wa.me/918149174975" target="_blank" rel="noopener noreferrer" className="text-brand-accent/70 text-sm hover:text-brand-accent hover:translate-x-1 inline-block transition-all font-bold">WhatsApp</a></li>
                 <li><a href="https://www.instagram.com/pure_harvest.enterprise" target="_blank" rel="noopener noreferrer" className="text-brand-accent/70 text-sm hover:text-brand-accent hover:translate-x-1 inline-block transition-all font-bold">Instagram</a></li>
@@ -186,13 +186,13 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="pt-10 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-brand-accent/30 text-[9px] uppercase tracking-[0.3em] font-black text-center md:text-left leading-relaxed max-w-md">
+          <div className="pt-10 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
+            <p className="text-brand-accent/60 text-[9px] uppercase tracking-[0.3em] font-black text-center md:text-left leading-relaxed max-w-md">
               © 2026 PureHarvest Enterprises. <br className="md:hidden" />Crafted for Excellence.
             </p>
             <div className="flex gap-4 items-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-black/10" />
-              <span className="text-brand-accent/20 text-[9px] uppercase tracking-[0.3em] font-black">All Rights Reserved</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-black/20" />
+              <span className="text-brand-accent/60 text-[9px] uppercase tracking-[0.3em] font-black">All Rights Reserved</span>
             </div>
           </div>
         </Container>

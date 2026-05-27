@@ -456,9 +456,9 @@ export default function Portfolio() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-brand-accent mb-1.5">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-brand-accent mb-1.5">
                 {bottle.title}
-              </h3>
+              </h2>
               <p className="text-brand-secondary font-black uppercase tracking-[0.25em] text-[10px] mb-3">
                 {bottle.client}
               </p>
@@ -470,21 +470,24 @@ export default function Portfolio() {
         </div>
 
         {/* Dot Navigation */}
-        <div className="flex items-center justify-center gap-2 mt-6 sm:mt-8">
+        <div className="flex items-center justify-center mt-6 sm:mt-8">
           {bottles.map((_, i) => (
             <button
               key={i}
               onClick={() => setActive(i)}
               aria-label={`Go to bottle ${i + 1}`}
-              className="transition-all duration-500 cursor-pointer"
-              style={{
-                width: i === active ? 24 : 8,
-                height: 8,
-                borderRadius: 99,
-                background: i === active ? '#0066FF' : '#0B2147',
-                opacity: i === active ? 1 : 0.15,
-              }}
-            />
+              className="w-11 h-11 flex items-center justify-center group cursor-pointer focus:outline-none -mx-1"
+            >
+              <div 
+                className="transition-all duration-500 rounded-full"
+                style={{
+                  width: i === active ? 24 : 8,
+                  height: 8,
+                  background: i === active ? '#0066FF' : '#0B2147',
+                  opacity: i === active ? 1 : 0.15,
+                }}
+              />
+            </button>
           ))}
         </div>
       </Container>

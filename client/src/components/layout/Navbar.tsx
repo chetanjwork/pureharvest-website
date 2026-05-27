@@ -184,6 +184,7 @@ export default function Navbar() {
             <motion.button
               layout
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               whileTap={{ scale: 0.85 }}
               className={`rounded-full flex items-center justify-center transition-colors lg:hidden text-brand-accent focus:outline-none -webkit-tap-highlight-color-transparent
                 ${isMenuOpen ? 'bg-black/10 w-11 h-11' : scrolled ? 'bg-black/5 hover:bg-black/10 w-11 h-11' : 'bg-black/5 hover:bg-black/10 w-11 h-11'}

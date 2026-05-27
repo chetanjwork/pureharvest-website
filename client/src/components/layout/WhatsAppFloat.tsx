@@ -43,6 +43,7 @@ export default function WhatsAppFloat() {
       {/* Main WhatsApp Button */}
       <motion.button
         onClick={() => setOpen(!open)}
+        aria-label={open ? "Close WhatsApp Menu" : "Open WhatsApp Menu"}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_4px_24px_rgba(37,211,102,0.4)] hover:shadow-[0_8px_32px_rgba(37,211,102,0.5)] transition-shadow"

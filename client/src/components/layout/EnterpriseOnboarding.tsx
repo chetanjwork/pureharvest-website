@@ -199,7 +199,7 @@ export default function EnterpriseOnboarding() {
           </div>
 
           {/* Main Interface */}
-          <div className="bg-white/95 md:bg-white/60 md:backdrop-blur-3xl border border-black/[0.03] rounded-[48px] p-5 md:p-20 shadow-[0_32px_120px_-20px_rgba(0,0,0,0.08)] relative overflow-hidden">
+          <div className="bg-white/95 md:bg-white/80 md:backdrop-blur-3xl border border-white/50 rounded-[48px] p-5 md:p-20 shadow-[0_32px_120px_-20px_rgba(0,0,0,0.1)] relative overflow-hidden">
             
             <AnimatePresence mode="wait">
               {isSuccess ? (
@@ -248,12 +248,12 @@ export default function EnterpriseOnboarding() {
                             key={ind.id}
                             disabled={isTransitioning}
                             onClick={() => handleStepAdvance({ ...selections, industry: ind.id })}
-                            className={`group p-5 md:p-8 rounded-[36px] border transition-all duration-700 flex flex-col items-start text-left gap-6 relative overflow-hidden ${
+                            className={`group p-5 md:p-8 rounded-[36px] border transition-all duration-500 flex flex-col items-start text-left gap-6 relative overflow-hidden ${
                               isTransitioning ? 'pointer-events-none' : ''
                             } ${
                               selections.industry === ind.id 
-                                ? 'bg-brand-secondary border-brand-secondary shadow-[0_20px_50px_-10px_rgba(0,71,171,0.3)] scale-[1.03]' 
-                                : 'bg-white/95 md:bg-white/40 border-black/[0.05] hover:border-black/10 hover:shadow-2xl hover:scale-[1.01]'
+                                ? 'bg-[#0A1128] border-[#0A1128] shadow-[0_20px_50px_-10px_rgba(10,17,40,0.4)] scale-[1.02]' 
+                                : 'bg-white md:bg-white/50 border-black/5 hover:border-black/15 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1'
                             }`}
                           >
                             {/* Inner Glow for selection */}
@@ -265,7 +265,7 @@ export default function EnterpriseOnboarding() {
                             )}
                             
                             <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 ${
-                              selections.industry === ind.id ? 'bg-white/20 text-white rotate-6' : 'bg-brand-secondary/5 text-brand-secondary'
+                              selections.industry === ind.id ? 'bg-[#D4AF37]/20 text-[#D4AF37] rotate-6' : 'bg-[#0A1128]/5 text-[#0A1128]'
                             }`}>
                               <ind.icon size={26} strokeWidth={1.5} />
                             </div>
@@ -300,21 +300,21 @@ export default function EnterpriseOnboarding() {
                             key={vol.id}
                             disabled={isTransitioning}
                             onClick={() => handleStepAdvance({ ...selections, volume: vol.id })}
-                            className={`group p-6 md:p-12 rounded-[40px] border transition-all duration-700 flex flex-col items-center text-center gap-8 relative overflow-hidden ${
+                            className={`group p-6 md:p-8 rounded-[36px] border transition-all duration-500 flex flex-col items-center text-center gap-6 relative overflow-hidden ${
                               isTransitioning ? 'pointer-events-none' : ''
                             } ${
                               selections.volume === vol.id 
-                                ? 'bg-brand-secondary border-brand-secondary shadow-[0_32px_80px_-20px_rgba(0,71,171,0.4)] scale-[1.02]' 
-                                : 'bg-white border-black/[0.02] hover:border-black/5 hover:shadow-2xl'
+                                ? 'bg-[#0A1128] border-[#0A1128] shadow-[0_20px_50px_-10px_rgba(10,17,40,0.4)] scale-[1.02]' 
+                                : 'bg-white md:bg-white/50 border-black/5 hover:border-black/15 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1'
                             }`}
                           >
                             <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${
-                              selections.volume === vol.id ? 'bg-white/10 text-white' : 'bg-brand-secondary/5 text-brand-secondary'
+                              selections.volume === vol.id ? 'bg-[#D4AF37]/20 text-[#D4AF37] rotate-6' : 'bg-[#0A1128]/5 text-[#0A1128]'
                             }`}>
                               <vol.icon size={20} strokeWidth={1.5} />
                             </div>
                             <div className="space-y-2">
-                              <div className={`text-3xl font-black tracking-tight transition-transform group-hover:scale-105 ${selections.volume === vol.id ? 'text-white' : 'text-brand-accent'}`}>
+                              <div className={`text-2xl md:text-3xl font-black tracking-tight whitespace-nowrap transition-transform group-hover:scale-105 ${selections.volume === vol.id ? 'text-white' : 'text-brand-accent'}`}>
                                 {vol.label}
                               </div>
                               <div className={`text-[9px] font-black uppercase tracking-[0.4em] ${selections.volume === vol.id ? 'text-white/40' : 'text-brand-accent/20'}`}>
@@ -361,14 +361,14 @@ export default function EnterpriseOnboarding() {
                                   customization: current.includes(opt.id) ? current.filter(i => i !== opt.id) : [...current, opt.id]
                                 });
                               }}
-                              className={`p-6 md:p-12 rounded-[36px] border transition-all duration-700 text-left flex flex-col justify-between h-[220px] w-full max-w-md relative overflow-hidden ${
+                              className={`p-6 md:p-12 rounded-[36px] border transition-all duration-500 text-left flex flex-col justify-between h-[220px] w-full max-w-md relative overflow-hidden ${
                                 selections.customization.includes(opt.id)
-                                  ? 'bg-brand-secondary border-brand-secondary shadow-[0_20px_50px_-10px_rgba(0,71,171,0.3)] scale-[1.02]'
-                                  : 'bg-white/95 md:bg-white/40 border-black/[0.05] hover:border-black/10'
+                                  ? 'bg-[#0A1128] border-[#0A1128] shadow-[0_20px_50px_-10px_rgba(10,17,40,0.4)] scale-[1.02]'
+                                  : 'bg-white md:bg-white/50 border-black/5 hover:border-black/15 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1'
                               }`}
                             >
-                              <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${selections.customization.includes(opt.id) ? 'bg-white/20' : 'bg-brand-secondary/5'}`}>
-                                <CheckCircle2 size={18} className={selections.customization.includes(opt.id) ? 'text-white' : 'text-brand-secondary'} />
+                              <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${selections.customization.includes(opt.id) ? 'bg-[#D4AF37]/20' : 'bg-[#0A1128]/5'}`}>
+                                <CheckCircle2 size={18} className={selections.customization.includes(opt.id) ? 'text-[#D4AF37]' : 'text-[#0A1128]'} />
                               </div>
                               <div>
                                 <div className={`font-black text-sm uppercase tracking-wider mb-2 ${selections.customization.includes(opt.id) ? 'text-white' : 'text-brand-accent'}`}>
@@ -402,14 +402,14 @@ export default function EnterpriseOnboarding() {
                         <h3 className="text-3xl font-black tracking-tight">Your Details</h3>
                         <p className="text-brand-accent/40 font-bold uppercase tracking-widest text-[10px]">How can we reach you?</p>
                       </div>
-                      <div className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-1 w-full">
                             <input 
                               type="text" 
                               placeholder="Full Name" 
-                              className={`w-full bg-white/95 md:bg-white/50 border rounded-[24px] p-7 text-sm font-bold uppercase tracking-wider focus:outline-none focus:border-brand-secondary transition-all shadow-sm ${
-                                errors.name ? 'border-red-500/80 focus:border-red-500' : 'border-black/5'
+                              className={`w-full bg-white md:bg-white/40 border rounded-2xl py-4 px-5 text-sm font-semibold uppercase tracking-wider text-brand-accent focus:bg-white focus:outline-none focus:border-[#0A1128] focus:ring-1 focus:ring-[#0A1128] transition-all shadow-sm ${
+                                errors.name ? 'border-red-500/80 focus:border-red-500 focus:ring-red-500' : 'border-black/[0.06] hover:border-black/15'
                               }`}
                               value={selections.name}
                               onChange={(e) => {
@@ -428,26 +428,26 @@ export default function EnterpriseOnboarding() {
                             <input 
                               type="text" 
                               placeholder="Company Name" 
-                              className="w-full bg-white/95 md:bg-white/50 border border-black/5 rounded-[24px] p-7 text-sm font-bold uppercase tracking-wider focus:outline-none focus:border-brand-secondary transition-all shadow-sm"
+                              className="w-full bg-white md:bg-white/40 border border-black/[0.06] hover:border-black/15 rounded-2xl py-4 px-5 text-sm font-semibold uppercase tracking-wider text-brand-accent focus:bg-white focus:outline-none focus:border-[#0A1128] focus:ring-1 focus:ring-[#0A1128] transition-all shadow-sm"
                               value={selections.company}
                               onChange={(e) => setSelections({ ...selections, company: e.target.value })}
                             />
                           </div>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-1 w-full relative group">
-                            <div className="absolute left-7 top-1/2 -translate-y-1/2 flex items-center gap-3.5 pointer-events-none">
-                              <MessageSquare className="text-brand-secondary transition-transform group-focus-within:scale-110" size={24} strokeWidth={1.5} />
-                              <div className="h-6 w-[1px] bg-black/10 group-focus-within:bg-brand-secondary/30 transition-colors" />
-                              <span className="text-sm font-black tracking-wider text-brand-accent/50 group-focus-within:text-brand-secondary transition-colors">
+                            <div className="absolute left-6 top-1/2 -translate-y-1/2 flex items-center gap-3.5 pointer-events-none">
+                              <MessageSquare className="text-[#0A1128]/30 transition-transform group-focus-within:scale-110 group-focus-within:text-[#D4AF37]" size={22} strokeWidth={1.8} />
+                              <div className="h-6 w-[1px] bg-black/10 group-focus-within:bg-[#D4AF37]/40 transition-colors" />
+                              <span className="text-sm font-black tracking-wider text-brand-accent/40 group-focus-within:text-[#0A1128] transition-colors">
                                 +91
                               </span>
                             </div>
                             <input 
                               type="tel" 
                               placeholder="WhatsApp Number" 
-                              className={`w-full bg-white/95 md:bg-white/50 border rounded-[24px] p-7 pl-32 text-sm font-bold uppercase tracking-wider focus:outline-none focus:border-brand-secondary transition-all shadow-sm ${
-                                errors.whatsapp ? 'border-red-500/80 focus:border-red-500' : 'border-black/5'
+                              className={`w-full bg-white md:bg-white/40 border rounded-2xl py-4 pr-5 pl-[104px] text-sm font-semibold uppercase tracking-wider text-brand-accent focus:bg-white focus:outline-none focus:border-[#0A1128] focus:ring-1 focus:ring-[#0A1128] transition-all shadow-sm ${
+                                errors.whatsapp ? 'border-red-500/80 focus:border-red-500 focus:ring-red-500' : 'border-black/[0.06] hover:border-black/15'
                               }`}
                               value={selections.whatsapp.replace(/^\+91\s*/, '')}
                               onChange={(e) => {
@@ -473,12 +473,12 @@ export default function EnterpriseOnboarding() {
                           </div>
 
                           <div className="space-y-1 w-full relative group">
-                            <Mail className="absolute left-7 top-1/2 -translate-y-1/2 text-brand-secondary transition-transform group-focus-within:scale-110" size={24} strokeWidth={1.5} />
+                            <Mail className="absolute left-6 top-1/2 -translate-y-1/2 text-[#0A1128]/30 transition-transform group-focus-within:scale-110 group-focus-within:text-[#D4AF37]" size={22} strokeWidth={1.8} />
                             <input 
                               type="email" 
                               placeholder="Email ID" 
-                              className={`w-full bg-white/95 md:bg-white/50 border rounded-[24px] p-7 pl-20 text-sm font-bold uppercase tracking-wider focus:outline-none focus:border-brand-secondary transition-all shadow-sm ${
-                                errors.email ? 'border-red-500/80 focus:border-red-500' : 'border-black/5'
+                              className={`w-full bg-white md:bg-white/40 border rounded-2xl py-4 pr-5 pl-14 text-sm font-semibold uppercase tracking-wider text-brand-accent focus:bg-white focus:outline-none focus:border-[#0A1128] focus:ring-1 focus:ring-[#0A1128] transition-all shadow-sm ${
+                                errors.email ? 'border-red-500/80 focus:border-red-500 focus:ring-red-500' : 'border-black/[0.06] hover:border-black/15'
                               }`}
                               value={selections.email}
                               onChange={(e) => {
@@ -520,10 +520,10 @@ export default function EnterpriseOnboarding() {
                   }
                   onClick={step === 4 ? handleFinishClick : nextStep}
                   className={`
-                    ${step === 4 ? 'bg-brand-secondary shadow-[0_20px_50px_-10px_rgba(0,71,171,0.3)]' : 'bg-brand-accent shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2)]'} 
+                    ${step === 4 ? 'bg-[#0A1128] shadow-[0_20px_50px_-10px_rgba(10,17,40,0.3)]' : 'bg-[#0A1128] shadow-[0_20px_50px_-10px_rgba(10,17,40,0.2)]'} 
                     text-white px-14 py-6 rounded-full text-[10px] font-black uppercase tracking-[0.3em] 
                     flex items-center gap-5 hover:scale-[1.05] active:scale-95 transition-all 
-                    disabled:opacity-10 relative overflow-hidden group
+                    disabled:bg-black/5 disabled:text-black/30 disabled:shadow-none disabled:hover:scale-100 disabled:pointer-events-none relative overflow-hidden group
                   `}
                 >
                   {isSubmitting ? (
