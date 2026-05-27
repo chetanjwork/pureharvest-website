@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion, useSpring } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import MotionWrapper from '../motion/MotionWrapper';
@@ -30,11 +30,18 @@ export default function Hero() {
     offset: ["start start", "end start"]
   });
 
-  // Calculate GPU-accelerated transforms
-  const bottleY = useTransform(scrollYProgress, [0, 1], ["0px", "650px"]);
-  const bottleScale = useTransform(scrollYProgress, [0, 1], [1.15, 0.75]);
-  const bottleRotate = useTransform(scrollYProgress, [0, 1], [0, 35]);
-  const bottleOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  // Apply a spring for buttery smooth, delayed tracking (removes raw mobile scroll stutter)
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 70,
+    damping: 25,
+    mass: 1.2
+  });
+
+  // Calculate GPU-accelerated transforms - reduced distance for slower perceived speed
+  const bottleY = useTransform(smoothProgress, [0, 1], ["0px", "450px"]);
+  const bottleScale = useTransform(smoothProgress, [0, 1], [1.15, 0.85]);
+  const bottleRotate = useTransform(smoothProgress, [0, 1], [0, 25]);
+  const bottleOpacity = useTransform(smoothProgress, [0, 0.8], [1, 0]);
 
   return (
     <section ref={containerRef} className="relative min-h-screen pt-[10vh] lg:pt-[12vh] pb-[6vh] lg:pb-[8vh] bg-[#F3F4F6] overflow-hidden flex flex-col snap-start snap-always" id="hero">

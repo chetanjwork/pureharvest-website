@@ -102,7 +102,7 @@ export default function Navbar() {
         <motion.div 
           layout
           className={`
-            pointer-events-auto flex items-center justify-between transition-all duration-500
+            pointer-events-auto flex items-center justify-between transition-colors duration-300
             ${isMenuOpen 
               ? 'w-full px-6 py-4 bg-white/95 backdrop-blur-2xl rounded-b-[32px] border-b border-black/5 shadow-lg' 
               : scrolled
