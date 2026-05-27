@@ -184,7 +184,7 @@ export default function Hero() {
       </div>
 
       {/* BOTTOM MARQUEE / TRUSTED BY */}
-      <div className="absolute bottom-0 left-0 right-0 w-full z-20 pb-4 lg:pb-8 overflow-hidden bg-gradient-to-t from-[#F3F4F6] via-[#F3F4F6] to-transparent pt-10">
+      <div className="absolute bottom-0 left-0 right-0 w-full z-20 py-4 lg:py-5 overflow-hidden bg-white/95 md:bg-white/80 md:backdrop-blur-md border-t border-black/[0.05] shadow-[0_-8px_30px_rgba(0,0,0,0.04)]">
         <div className="max-w-[1400px] mx-auto px-4 lg:px-10 flex items-center opacity-90 transition-all duration-500">
 
           {/* Trusted By Text - Static */}
@@ -213,8 +213,8 @@ export default function Hero() {
             `}} />
 
             {/* Left/Right Fade Gradients for seamless edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-8 lg:w-32 bg-gradient-to-r from-[#F3F4F6] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-8 lg:w-32 bg-gradient-to-l from-[#F3F4F6] to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-8 lg:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-8 lg:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
             <div className="animate-marquee-scroll items-center gap-6 lg:gap-12 pl-4 lg:pl-8">
               {[0, 1].map((set) => (
