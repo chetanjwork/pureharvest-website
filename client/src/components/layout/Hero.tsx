@@ -185,11 +185,11 @@ export default function Hero() {
 
       {/* BOTTOM MARQUEE / TRUSTED BY */}
       <div className="absolute bottom-0 left-0 right-0 w-full z-20 pb-4 lg:pb-8 overflow-hidden bg-gradient-to-t from-[#F3F4F6] via-[#F3F4F6] to-transparent pt-10">
-        <div className="max-w-[1400px] mx-auto px-4 lg:px-10 flex items-center opacity-[0.6] grayscale hover:grayscale-0 transition-all duration-500">
+        <div className="max-w-[1400px] mx-auto px-4 lg:px-10 flex items-center opacity-90 transition-all duration-500">
 
           {/* Trusted By Text - Static */}
           <div className="w-auto pr-4 lg:pr-12 relative z-20">
-            <span className="text-[8px] lg:text-[9px] font-bold uppercase tracking-[0.2em] lg:tracking-[0.3em] text-[#4B5563] whitespace-nowrap">Trusted By</span>
+            <span className="text-[8px] lg:text-[9px] font-black uppercase tracking-[0.2em] lg:tracking-[0.3em] text-brand-accent/60 whitespace-nowrap">Trusted By</span>
           </div>
 
           {/* Animated Scrolling Logos Marquee */}
@@ -224,7 +224,7 @@ export default function Hero() {
                     return (
                       <div key={index} className="flex items-center gap-3 lg:gap-4.5">
                         <Icon className="text-brand-secondary/80 w-[12px] h-[12px] lg:w-[15px] lg:h-[15px] stroke-[2]" />
-                        <span className={`font-sans font-black text-[11px] lg:text-[13px] ${client.tracking} text-brand-accent/75 uppercase whitespace-nowrap`}>
+                        <span className={`font-sans font-black text-[11px] lg:text-[13px] ${client.tracking} text-brand-accent/90 uppercase whitespace-nowrap`}>
                           {client.name}
                         </span>
                         <span className="h-3.5 w-[1px] bg-black/10 block ml-3.5 lg:ml-7" />
