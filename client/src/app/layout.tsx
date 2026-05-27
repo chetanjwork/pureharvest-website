@@ -4,6 +4,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 import LoadingAnimation from "@/components/ui/LoadingAnimation";
 import CookieConsent from "@/components/layout/CookieConsent";
 import CodeProtection from "@/components/providers/CodeProtection";
@@ -333,6 +334,7 @@ export default function RootLayout({
           <LoadingAnimation />
           <Navbar />
           {children}
+          <ScrollToTop />
           <WhatsAppFloat />
           <CookieConsent />
         </SmoothScroll>
