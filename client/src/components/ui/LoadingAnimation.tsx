@@ -33,9 +33,9 @@ export default function LoadingAnimation() {
       {isLoading && (
         <motion.div
           key="loader"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.02, filter: 'blur(30px)' }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ y: '0%', opacity: 1 }}
+          exit={{ y: '-100%', opacity: 1 }}
+          transition={{ duration: 1.2, ease: [0.85, 0, 0.15, 1] }}
           className="fixed inset-0 z-[999] bg-[#FFFFFF] flex items-center justify-center overflow-hidden"
         >
           <style dangerouslySetInnerHTML={{__html: `

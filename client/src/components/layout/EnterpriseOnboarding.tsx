@@ -120,7 +120,7 @@ export default function EnterpriseOnboarding() {
         `Email: ${selections.email || 'None provided'}`,
       ].join('\n');
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001'}/api/leads`, {
+      const res = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -135,7 +135,10 @@ export default function EnterpriseOnboarding() {
         }),
       });
 
-      if (!res.ok) throw new Error('Submission failed');
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.details || errorData.error || 'Submission failed');
+      }
 
       setIsSuccess(true);
 
@@ -151,8 +154,8 @@ export default function EnterpriseOnboarding() {
         window.location.href = `https://wa.me/918149174975?text=${waText}`;
       }, 1500);
 
-    } catch (err) {
-      alert('Something went wrong. Please WhatsApp us directly at +91 8149174975');
+    } catch (err: any) {
+      alert(`Error: ${err.message}. Please WhatsApp us directly at +91 8149174975`);
     } finally {
       setIsSubmitting(false);
     }
