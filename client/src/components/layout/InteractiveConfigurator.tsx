@@ -131,11 +131,12 @@ export default function InteractiveConfigurator() {
                   whileHover={isMobile ? {} : { scale: 1.025, rotate: 0.5 }}
                   style={{ cursor: 'pointer', willChange: 'transform' }}
                 >
-                  <img
+                  <Image
                     src={activeSeries.frontImage}
                     alt={activeSeries.name}
-                    loading="lazy"
-                    decoding="async"
+                    width={activeSeries.width}
+                    height={activeSeries.height}
+                    sizes="(max-width: 1024px) 50vw, 30vw"
                     style={{
                       width: 'auto',
                       height: isMobile ? 'min(45vh, 320px)' : 'min(72vh, 640px)',

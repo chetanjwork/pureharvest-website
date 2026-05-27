@@ -186,7 +186,7 @@ export default function Navbar() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               whileTap={{ scale: 0.85 }}
               className={`rounded-full flex items-center justify-center transition-colors lg:hidden text-brand-accent focus:outline-none -webkit-tap-highlight-color-transparent
-                ${isMenuOpen ? 'bg-black/10 w-9 h-9' : scrolled ? 'bg-black/5 hover:bg-black/10 w-8 h-8' : 'bg-black/5 hover:bg-black/10 w-9 h-9'}
+                ${isMenuOpen ? 'bg-black/10 w-11 h-11' : scrolled ? 'bg-black/5 hover:bg-black/10 w-11 h-11' : 'bg-black/5 hover:bg-black/10 w-11 h-11'}
               `}
             >
               <AnimatePresence mode="wait" initial={false}>

@@ -199,7 +199,7 @@ export default function EnterpriseOnboarding() {
           </div>
 
           {/* Main Interface */}
-          <div className="bg-white/95 md:bg-white/60 md:backdrop-blur-3xl border border-black/[0.03] rounded-[48px] p-8 md:p-20 shadow-[0_32px_120px_-20px_rgba(0,0,0,0.08)] relative overflow-hidden">
+          <div className="bg-white/95 md:bg-white/60 md:backdrop-blur-3xl border border-black/[0.03] rounded-[48px] p-5 md:p-20 shadow-[0_32px_120px_-20px_rgba(0,0,0,0.08)] relative overflow-hidden">
             
             <AnimatePresence mode="wait">
               {isSuccess ? (
@@ -248,7 +248,7 @@ export default function EnterpriseOnboarding() {
                             key={ind.id}
                             disabled={isTransitioning}
                             onClick={() => handleStepAdvance({ ...selections, industry: ind.id })}
-                            className={`group p-8 rounded-[36px] border transition-all duration-700 flex flex-col items-start text-left gap-6 relative overflow-hidden ${
+                            className={`group p-5 md:p-8 rounded-[36px] border transition-all duration-700 flex flex-col items-start text-left gap-6 relative overflow-hidden ${
                               isTransitioning ? 'pointer-events-none' : ''
                             } ${
                               selections.industry === ind.id 
@@ -300,7 +300,7 @@ export default function EnterpriseOnboarding() {
                             key={vol.id}
                             disabled={isTransitioning}
                             onClick={() => handleStepAdvance({ ...selections, volume: vol.id })}
-                            className={`group p-12 rounded-[40px] border transition-all duration-700 flex flex-col items-center text-center gap-8 relative overflow-hidden ${
+                            className={`group p-6 md:p-12 rounded-[40px] border transition-all duration-700 flex flex-col items-center text-center gap-8 relative overflow-hidden ${
                               isTransitioning ? 'pointer-events-none' : ''
                             } ${
                               selections.volume === vol.id 
@@ -361,7 +361,7 @@ export default function EnterpriseOnboarding() {
                                   customization: current.includes(opt.id) ? current.filter(i => i !== opt.id) : [...current, opt.id]
                                 });
                               }}
-                              className={`p-12 rounded-[36px] border transition-all duration-700 text-left flex flex-col justify-between h-[220px] w-full max-w-md relative overflow-hidden ${
+                              className={`p-6 md:p-12 rounded-[36px] border transition-all duration-700 text-left flex flex-col justify-between h-[220px] w-full max-w-md relative overflow-hidden ${
                                 selections.customization.includes(opt.id)
                                   ? 'bg-brand-secondary border-brand-secondary shadow-[0_20px_50px_-10px_rgba(0,71,171,0.3)] scale-[1.02]'
                                   : 'bg-white/95 md:bg-white/40 border-black/[0.05] hover:border-black/10'

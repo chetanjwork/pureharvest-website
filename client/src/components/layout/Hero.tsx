@@ -45,7 +45,7 @@ export default function Hero() {
 
       {/* 2. Massive Background Watermark (Depth) */}
       <div className="absolute top-[40%] lg:top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center z-0 pointer-events-none select-none overflow-hidden">
-        <h2 className="font-sans font-black text-[18rem] sm:text-[28rem] lg:text-[45rem] text-[#000000] opacity-[0.03] tracking-[-0.05em] leading-none whitespace-nowrap">
+        <h2 className="font-sans font-black text-[12rem] sm:text-[24rem] lg:text-[45rem] text-[#000000] opacity-[0.03] tracking-[-0.05em] leading-none whitespace-nowrap">
           PURE
         </h2>
       </div>
@@ -64,7 +64,7 @@ export default function Hero() {
             </MotionWrapper>
 
             <MotionWrapper delay={0.2}>
-              <h1 className="!font-sans !font-black leading-[0.95] lg:leading-[1.0] tracking-[-0.04em] text-[4rem] sm:text-[5rem] lg:text-[5.5rem] xl:text-[6.2rem] uppercase mb-4 lg:mb-5 flex flex-col lg:flex-row">
+              <h1 className="!font-sans !font-black leading-[0.95] lg:leading-[1.0] tracking-[-0.04em] text-[3.2rem] sm:text-[5rem] lg:text-[5.5rem] xl:text-[6.2rem] uppercase mb-4 lg:mb-5 flex flex-col lg:flex-row">
                 <span className="text-brand-accent">PREMIUM BRANDED</span>
                 <span className="text-[#0D47A1] lg:ml-4">WATER</span>
               </h1>

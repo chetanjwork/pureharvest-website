@@ -300,7 +300,7 @@ export default function Portfolio() {
             </span>
             <Heading
               level={2}
-              className="text-4xl sm:text-5xl lg:text-6xl tracking-tighter !font-black uppercase leading-[0.9]"
+              className="text-3xl sm:text-5xl lg:text-6xl tracking-tighter !font-black uppercase leading-[0.9]"
             >
               Crafted for the <br className="hidden md:block" />Distinguished
             </Heading>
