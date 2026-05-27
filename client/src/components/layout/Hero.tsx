@@ -93,7 +93,7 @@ export default function Hero() {
             <div className="w-full flex items-center justify-center z-10 order-2 py-6 pointer-events-none">
               <div className="relative w-full h-full flex items-center justify-center animate-mobile-hero">
                 <Image
-                  src="/herobannerbottle.png"
+                  src="/pureharvestherobottle.png"
                   alt="PureHarvest Premium Branded Water Bottle"
                   width={1536}
                   height={1024}
@@ -126,7 +126,7 @@ export default function Hero() {
                 className="relative w-full h-full flex items-center justify-center"
               >
                 <Image
-                  src="/herobannerbottle.png"
+                  src="/pureharvestherobottle.png"
                   alt="PureHarvest Premium Branded Water Bottle"
                   width={1536}
                   height={1024}
