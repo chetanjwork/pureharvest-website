@@ -21,18 +21,8 @@ const CLIENT_BRANDS = [
 
 export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
   const shouldReduceMotion = useReducedMotion();
-  const disableAnimations = isMobile || shouldReduceMotion;
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const disableAnimations = shouldReduceMotion;
 
   // Track scroll position of the hero section for premium, lag-free parallax
   const { scrollYProgress } = useScroll({

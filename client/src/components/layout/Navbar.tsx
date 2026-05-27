@@ -106,7 +106,7 @@ export default function Navbar() {
             ${isMenuOpen 
               ? 'w-full px-6 py-4 bg-white/95 backdrop-blur-2xl rounded-b-[32px] border-b border-black/5 shadow-lg' 
               : scrolled
-                ? 'w-[92vw] max-w-[340px] sm:max-w-[380px] lg:w-auto px-3 py-1.5 lg:px-5 lg:py-2 bg-white/60 bg-[radial-gradient(120%_120%_at_50%_-20%,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.2)_100%)] backdrop-blur-[40px] border border-white/60 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] rounded-full gap-3 sm:gap-6'
+                ? 'w-auto px-4 py-2 sm:px-5 lg:py-2 bg-white/60 bg-[radial-gradient(120%_120%_at_50%_-20%,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.2)_100%)] backdrop-blur-[40px] border border-white/60 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] rounded-full gap-4 sm:gap-6'
                 : 'w-full max-w-[1400px] px-6 md:px-10 py-5 lg:py-6 bg-transparent border-b border-transparent'
             }
           `}
