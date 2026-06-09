@@ -13,6 +13,8 @@ import { motion } from 'framer-motion';
 
 import { useEffect } from 'react';
 
+import InViewLoader from '@/components/ui/InViewLoader';
+
 // Premium Skeleton Component Factory for uniform lazy loading
 const SectionSkeleton = ({ title }: { title: string }) => (
   <div className="w-full py-32 flex flex-col items-center justify-center bg-[#F3F4F6] gap-4">
@@ -58,8 +60,8 @@ const EnterpriseOnboarding = dynamic(() => import('@/components/layout/Enterpris
   ssr: false,
   loading: () => (
     <div className="py-32 bg-[#F8F9FA] text-center text-brand-accent/40 font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3">
-      <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-ping" />
-      Loading Enterprise Studio Onboarding...
+      <div className="w-4 h-4 rounded-full border-2 border-brand-accent/40 border-t-transparent animate-spin" />
+      Loading Enterprise Application...
     </div>
   )
 });
@@ -69,43 +71,34 @@ const Contact = dynamic(() => import('@/components/layout/Contact'), {
 });
 
 export default function Home() {
-  useEffect(() => {
-    // Force scroll to top on page load/refresh
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
-    }
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
-    <main>
+    <main className="min-h-screen bg-brand-primary selection:bg-brand-secondary selection:text-white overflow-hidden">
       <Hero />
-      
       <Services />
-
-      <Portfolio />
-
-      <InteractiveConfigurator />
+      <FoundersNote />
+      
+      <InViewLoader fallback={<SectionSkeleton title="Configurator" />}>
+        <InteractiveConfigurator />
+      </InViewLoader>
 
       <Purification />
-
       <Industries />
-      
       <Process />
-
       <TrustPillars />
 
-      <FoundersNote />
+      <InViewLoader fallback={<SectionSkeleton title="Portfolio Renders" />} rootMargin="300px">
+        <Portfolio />
+      </InViewLoader>
 
       <FAQ />
 
-      <EnterpriseOnboarding />
+      <InViewLoader fallback={<SectionSkeleton title="Enterprise Application" />} rootMargin="500px">
+        <EnterpriseOnboarding />
+      </InViewLoader>
 
-      {/* Premium WhatsApp CTA Section */}
-      <Section className="bg-brand-primary relative overflow-hidden py-12 md:py-16 lg:py-20">
-        {/* Decorative Background Elements */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-accent/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#25D366]/5 blur-[100px] rounded-full -translate-x-1/2 translate-y-1/2" />
+      {/* Live Inquiry Section */}
+      <Section className="bg-white py-24 md:py-32 relative overflow-hidden" id="live-inquiry">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
         
         <Container>
           <motion.div 

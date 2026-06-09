@@ -110,7 +110,7 @@ export default function Hero({ industry, location }: HeroProps = {}) {
 
           {disableAnimations ? (
             <div className="w-full flex items-center justify-center z-10 order-2 py-6 pointer-events-none">
-              <div className="relative w-full h-full flex items-center justify-center animate-mobile-hero">
+              <div className="relative w-full h-full flex items-center justify-center animate-[fade-in-up_0.8s_ease-out_forwards]">
                 <Image
                   src="/pureharvestherobottle.webp"
                   alt="PureHarvest Premium Branded Water Bottle"
@@ -135,14 +135,13 @@ export default function Hero({ industry, location }: HeroProps = {}) {
               }}
             >
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: [0, -15, 0] }}
+                initial={{ y: 50 }}
+                animate={{ y: [0, -15, 0] }}
                 transition={{
-                  opacity: { duration: 0.8 },
                   y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                 }}
                 style={{ z: 0 }}
-                className="relative w-full h-full flex items-center justify-center"
+                className="relative w-full h-full flex items-center justify-center animate-mobile-hero"
               >
                 <Image
                   src="/pureharvestherobottle.webp"

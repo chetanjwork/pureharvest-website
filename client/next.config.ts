@@ -43,4 +43,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
 };
 
-export default nextConfig;
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
+const analyze = process.env.ANALYZE === 'true';
+
+export default analyze ? withBundleAnalyzer({ enabled: true })(nextConfig) : nextConfig;

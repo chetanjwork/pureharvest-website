@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useSpring, useMotionValueEvent, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
@@ -21,11 +21,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   // Smooth scroll progress for the top bar
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  const scaleX = scrollYProgress;
 
   // Apple/Zomato style zero-JS scroll tracking hooking directly into Framer's render loop
   useMotionValueEvent(scrollY, "change", (latest) => {

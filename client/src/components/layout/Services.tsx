@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { motion, useMotionValue } from 'framer-motion';
 import { Droplet, Palette, ShieldCheck, Globe } from 'lucide-react';
 import Container from '@/components/ui/Container';
@@ -68,7 +69,16 @@ export default function Services() {
           {/* BENTO 1: Signature Branding */}
           <BentoCard className="lg:col-span-2 lg:row-span-2" delay={0.1}>
             <div className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-brand-secondary/10 to-transparent blur-[80px] rounded-full group-hover:scale-150 transition-transform duration-1000 ease-out z-0" />
-            <img src="/pureharvestherobottle.png" alt="" className="absolute -right-10 -bottom-10 w-[120%] max-w-[500px] opacity-[0.03] pointer-events-none group-hover:scale-[1.02] group-hover:-translate-y-2 transition-transform duration-1000 ease-out z-0" />
+            <div className="absolute -right-10 -bottom-10 w-[120%] max-w-[500px] opacity-[0.03] pointer-events-none group-hover:scale-[1.02] group-hover:-translate-y-2 transition-transform duration-1000 ease-out z-0">
+              <Image 
+                src="/pureharvestherobottle.webp" 
+                alt="" 
+                width={500} 
+                height={500} 
+                loading="lazy"
+                className="w-full h-auto"
+              />
+            </div>
             
             <motion.div
               whileHover={{ scale: 1.05, rotate: 5 }}

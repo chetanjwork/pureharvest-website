@@ -1,10 +1,13 @@
 'use client';
 
-import { ReactLenis } from 'lenis/react';
+import dynamic from 'next/dynamic';
 import { ReactNode, useState, useEffect } from 'react';
 
+// Dynamically import ReactLenis to prevent it from blocking the main thread on mobile
+const ReactLenis = dynamic(() => import('lenis/react').then(mod => mod.ReactLenis), { ssr: false });
+
 export default function SmoothScroll({ children }: { children: ReactNode }) {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent instant load on desktop until checked
 
   const [mounted, setMounted] = useState(false);
 
