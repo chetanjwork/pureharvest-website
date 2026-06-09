@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ── Test & Audit Scripts (never commit to production) ──
+test-db.js
+test_*.js
+lighthouse.json
+lighthouse_*.json
