@@ -2,6 +2,7 @@
 
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { ReactNode, useRef, useState, useEffect } from 'react';
+import { useAdaptivePerformance } from '../providers/AdaptivePerformanceProvider';
 
 interface MotionWrapperProps {
   children: ReactNode;
@@ -23,6 +24,7 @@ export default function MotionWrapper({
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '0px 0px -4% 0px' });
   const shouldReduceMotion = useReducedMotion();
+  const { reduceMotion, isLowEndDevice } = useAdaptivePerformance();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -36,7 +38,7 @@ export default function MotionWrapper({
     return () => mql.removeEventListener('change', handleChange);
   }, []);
 
-  if (isMobile || shouldReduceMotion) {
+  if (isMobile || shouldReduceMotion || reduceMotion || isLowEndDevice) {
     return <div className={className}>{children}</div>;
   }
 

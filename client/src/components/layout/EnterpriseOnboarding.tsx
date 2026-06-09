@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, startTransition } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
@@ -75,11 +75,13 @@ export default function EnterpriseOnboarding() {
   const [whatsappUrl, setWhatsappUrl] = useState('');
   const [copied, setCopied] = useState(false);
 
-  const nextStep = useCallback(() => setStep(s => s + 1), []);
-  const prevStep = useCallback(() => setStep(s => s - 1), []);
+  const nextStep = useCallback(() => startTransition(() => setStep(s => s + 1)), []);
+  const prevStep = useCallback(() => startTransition(() => setStep(s => s - 1)), []);
 
   const handleStepAdvance = useCallback((updatedSelections: typeof selections) => {
-    setSelections(updatedSelections);
+    startTransition(() => {
+      setSelections(updatedSelections);
+    });
   }, []);
 
   const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {

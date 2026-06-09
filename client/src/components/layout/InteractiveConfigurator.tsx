@@ -8,6 +8,7 @@ import TextReveal from '../motion/TextReveal';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Sparkles, ShieldCheck, Scale, Layers } from 'lucide-react';
+import { useAdaptivePerformance } from '../providers/AdaptivePerformanceProvider';
 
 const SERIES_OPTIONS = [
   {
@@ -52,6 +53,7 @@ export default function InteractiveConfigurator() {
   const [activeSeries, setActiveSeries] = useState(SERIES_OPTIONS[0]);
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const { isLowEndDevice, reduceMotion } = useAdaptivePerformance();
 
   useEffect(() => {
     setMounted(true);
@@ -117,29 +119,31 @@ export default function InteractiveConfigurator() {
 
             {/* -- Bottle (explicit width/height - never collapses) -- */}
             <motion.div
-              animate={isMobile ? { y: 0 } : { y: [0, -14, 0] }}
-              transition={isMobile ? { duration: 0.1 } : { duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+              animate={isMobile || isLowEndDevice ? { y: 0 } : { y: [0, -14, 0] }}
+              transition={isMobile || isLowEndDevice ? { duration: 0.1 } : { duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
               className="relative z-20 flex items-center justify-center py-12 px-8"
             >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`bottle-${activeSeries.id}`}
-                  initial={isMobile ? undefined : { opacity: 0, scale: 0.94 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={isMobile ? undefined : { opacity: 0, scale: 0.94 }}
-                  transition={isMobile ? { duration: 0 } : { duration: 0.45, ease: 'easeInOut' }}
-                  whileHover={isMobile ? {} : { scale: 1.025, rotate: 0.5 }}
-                  style={{ cursor: 'pointer', willChange: 'transform' }}
-                >
-                  <Image
-                    src={activeSeries.frontImage}
-                    alt={activeSeries.name}
-                    width={activeSeries.width}
-                    height={activeSeries.height}
-                    sizes="(max-width: 1024px) 50vw, 30vw"
-                    style={{
-                      width: 'auto',
-                      height: isMobile ? 'min(45vh, 320px)' : 'min(72vh, 640px)',
+              {mounted && (
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={`bottle-${activeSeries.id}`}
+                    initial={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8, rotateY: 30 }}
+                    animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                    exit={isLowEndDevice ? { opacity: 0 } : { opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
+                    transition={isLowEndDevice ? { duration: 0.2 } : { duration: 0.45, ease: 'easeInOut' }}
+                    whileHover={isLowEndDevice || isMobile ? {} : { scale: 1.025, rotate: 0.5 }}
+                    viewport={{ margin: "200px" }}
+                    style={{ cursor: 'pointer', willChange: 'transform' }}
+                  >
+                    <Image
+                      src={activeSeries.frontImage}
+                      alt={activeSeries.name}
+                      width={activeSeries.width}
+                      height={activeSeries.height}
+                      sizes="(max-width: 1024px) 50vw, 30vw"
+                      style={{
+                        width: 'auto',
+                        height: isMobile ? 'min(45vh, 320px)' : 'min(72vh, 640px)',
                       maxWidth: '100%',
                       objectFit: 'contain',
                       filter: isMobile 
@@ -149,6 +153,7 @@ export default function InteractiveConfigurator() {
                   />
                 </motion.div>
               </AnimatePresence>
+              )}
             </motion.div>
 
             {/* Floor contact shadow - synced to float */}

@@ -7,6 +7,9 @@ import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import LoadingAnimation from "@/components/ui/LoadingAnimation";
 import CodeProtection from "@/components/providers/CodeProtection";
+import { AdaptivePerformanceProvider } from "@/components/providers/AdaptivePerformanceProvider";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -329,14 +332,18 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       </head>
       <body className="font-sans w-full max-w-[100vw]">
-        <CodeProtection />
-        <SmoothScroll>
-          <LoadingAnimation />
-          <Navbar />
-          {children}
-          <WhatsAppFloat />
-          <ScrollToTop />
-        </SmoothScroll>
+        <AdaptivePerformanceProvider>
+          <CodeProtection />
+          <SmoothScroll>
+            <LoadingAnimation />
+            <Navbar />
+            {children}
+            <WhatsAppFloat />
+            <ScrollToTop />
+          </SmoothScroll>
+          <Analytics />
+          <SpeedInsights />
+        </AdaptivePerformanceProvider>
       </body>
     </html>
   );
