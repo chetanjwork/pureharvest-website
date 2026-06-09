@@ -110,12 +110,10 @@ export default function Hero({ industry, location }: HeroProps = {}) {
       {/* 1. Cinematic Studio Spotlight (Radial Gradient) */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_#FFFFFF_0%,_#F3F4F6_50%,_#E5E7EB_100%)] z-0" />
 
-      {/* 2. Massive Background Watermark (Depth) */}
-      <div className="absolute top-[40%] lg:top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center z-0 pointer-events-none select-none overflow-hidden">
-        <h2 className="font-sans font-black text-[12rem] sm:text-[24rem] lg:text-[45rem] text-[#000000] opacity-[0.03] tracking-[-0.05em] leading-none whitespace-nowrap">
-          PURE
-        </h2>
-      </div>
+      {/* 2. Massive Background Watermark (Depth) - Uses ::after to bypass LCP tracking */}
+      <div 
+        className="absolute top-[40%] lg:top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center z-0 pointer-events-none select-none overflow-hidden after:content-['PURE'] after:font-sans after:font-black after:text-[12rem] sm:after:text-[24rem] lg:after:text-[45rem] after:text-[#000000] after:opacity-[0.03] after:tracking-[-0.05em] after:leading-none after:whitespace-nowrap" 
+      />
 
       {/* Main Container - perfectly aligned with Navbar */}
       <div className="max-w-[1600px] mx-auto px-6 md:px-10 w-full relative z-20 flex-1 flex flex-col justify-center">
