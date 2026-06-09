@@ -143,10 +143,11 @@ export default function Portfolio() {
   const [bottles, setBottles] = useState<BottleItem[]>([]);
   const [active, setActive] = useState(0);
   const [mounted, setMounted] = useState(false);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const autoRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const total = bottles.length;
 
   useEffect(() => {
@@ -158,15 +159,27 @@ export default function Portfolio() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  const resetTilt = () => {
+    if (stageRef.current) {
+      stageRef.current.style.setProperty('--tilt-x', '0deg');
+      stageRef.current.style.setProperty('--tilt-y', '0deg');
+      stageRef.current.style.setProperty('--tilt-x-num', '0');
+      stageRef.current.style.setProperty('--tilt-y-num', '0');
+      stageRef.current.style.setProperty('--tilt-x-abs', '0');
+    }
+  };
+
   const next = useCallback(() => {
     if (total === 0) return;
-    setTilt({ x: 0, y: 0 });
+    resetTilt();
+    setIsHovered(false);
     setActive(a => (a + 1) % total);
   }, [total]);
 
   const prev = useCallback(() => {
     if (total === 0) return;
-    setTilt({ x: 0, y: 0 });
+    resetTilt();
+    setIsHovered(false);
     setActive(a => (a - 1 + total) % total);
   }, [total]);
 
@@ -233,21 +246,39 @@ export default function Portfolio() {
   // Pointer-tracking tilt handler (desktop only)
   const handlePointerMove = (e: React.PointerEvent) => {
     if (e.pointerType === 'touch') return;
-    const rect = e.currentTarget.getBoundingClientRect();
+    const stage = e.currentTarget as HTMLElement;
+    const rect = stage.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
     const y = (e.clientY - rect.top) / rect.height - 0.5; // -0.5 to 0.5
-    setTilt({ x: x * 12, y: -y * 12 });
+    const tx = x * 12;
+    const ty = -y * 12;
+    
+    stage.style.setProperty('--tilt-x', `${tx}deg`);
+    stage.style.setProperty('--tilt-y', `${ty}deg`);
+    stage.style.setProperty('--tilt-x-num', `${tx}`);
+    stage.style.setProperty('--tilt-y-num', `${ty}`);
+    stage.style.setProperty('--tilt-x-abs', `${Math.abs(tx)}`);
+    
+    if (!isHovered) {
+      setIsHovered(true);
+    }
   };
 
-  const handlePointerLeave = () => {
-    setTilt({ x: 0, y: 0 });
+  const handlePointerLeave = (e: React.PointerEvent) => {
+    const stage = e.currentTarget as HTMLElement;
+    stage.style.setProperty('--tilt-x', '0deg');
+    stage.style.setProperty('--tilt-y', '0deg');
+    stage.style.setProperty('--tilt-x-num', '0');
+    stage.style.setProperty('--tilt-y-num', '0');
+    stage.style.setProperty('--tilt-x-abs', '0');
+    setIsHovered(false);
   };
 
   if (!mounted) return null;
 
   if (bottles.length === 0) {
     return (
-      <Section className="bg-brand-primary text-brand-accent py-24 overflow-hidden relative" id="portfolio">
+      <Section className="bg-brand-primary text-brand-accent py-16 lg:py-20 overflow-hidden relative" id="portfolio">
         <Container>
           <div className="flex flex-col items-center justify-center min-h-[400px]">
             <div className="w-8 h-8 rounded-full border-2 border-brand-secondary border-t-transparent animate-spin mb-4" />
@@ -264,7 +295,7 @@ export default function Portfolio() {
   const activeGlowColor = GLOW_COLORS[glowKey] || GLOW_COLORS[activeBottleFile] || 'rgba(0, 102, 255, 0.07)';
 
   return (
-    <Section className="bg-brand-primary text-brand-accent pt-28 pb-20 sm:pt-36 sm:pb-28 overflow-hidden relative" id="portfolio">
+    <Section className="bg-brand-primary text-brand-accent pt-12 lg:pt-16 pb-12 lg:pb-16 overflow-hidden relative" id="portfolio">
       {/* Luxury Subtle Grid Pattern */}
       <div
         className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.04] mix-blend-multiply"
@@ -312,6 +343,7 @@ export default function Portfolio() {
 
         {/* 3D Coverflow Stage (Dynamic Height for Single Page Viewports on Mobile) */}
         <div
+          ref={stageRef}
           className="relative mx-auto select-none h-[380px] sm:h-[480px] lg:h-[550px] w-full"
           style={{ maxWidth: 1000, perspective: '1200px' }}
           onPointerDown={onPointerDown}
@@ -321,12 +353,13 @@ export default function Portfolio() {
         >
           {bottles.map((item, i) => {
             const slot = getSlot(i, active, total);
+            if (slot === 99) return null; // Hidden Bottle Rendering Fix (Optimization 2)
             const style = slotStyle(slot);
             const isActive = slot === 0;
 
-            const isTransitioning = tilt.x === 0 && tilt.y === 0;
+            const isTransitioning = !isHovered;
             const activeTransform = isActive
-              ? `translateX(0%) translateZ(40px) scale(1.05) rotateY(${tilt.x}deg) rotateX(${tilt.y}deg)`
+              ? `translateX(0%) translateZ(40px) scale(1.05) rotateY(var(--tilt-x, 0deg)) rotateX(var(--tilt-y, 0deg))`
               : style.transform;
             const activeTransition = isActive
               ? (isTransitioning
@@ -372,8 +405,7 @@ export default function Portfolio() {
                       filter: isActive
                         ? (isMobile
                           ? 'none'
-                          : `drop-shadow(${tilt.x * -0.8}px ${12 + tilt.y * 0.8}px ${18 + Math.abs(tilt.x) * 0.5}px rgba(11,33,71,0.12)) 
-                              drop-shadow(${tilt.x * -0.3}px ${4 + tilt.y * 0.3}px 6px rgba(11,33,71,0.06))`)
+                          : 'drop-shadow(calc(var(--tilt-x-num, 0) * -0.8px) calc(12px + var(--tilt-y-num, 0) * 0.8px) calc(18px + var(--tilt-x-abs, 0) * 0.5px) rgba(11,33,71,0.12)) drop-shadow(calc(var(--tilt-x-num, 0) * -0.3px) calc(4px + var(--tilt-y-num, 0) * 0.3px) 6px rgba(11,33,71,0.06))')
                         : 'none',
                       transition: isTransitioning ? 'filter 0.5s ease' : 'none',
                     }}
@@ -387,7 +419,7 @@ export default function Portfolio() {
                       height: isActive ? '3.5px' : '2.5px',
                       filter: 'blur(1.5px)',
                       opacity: isActive ? 0.8 : 0.25,
-                      transform: `scaleX(1.15) translateX(${tilt.x * -0.4}px) translateY(${tilt.y * 0.15}px)`,
+                      transform: `scaleX(1.15) translateX(calc(var(--tilt-x-num, 0) * -0.4px)) translateY(calc(var(--tilt-y-num, 0) * 0.15px))`,
                       transition: isTransitioning ? 'all 0.5s ease' : 'opacity 0.5s ease',
                     }}
                   />
@@ -400,7 +432,7 @@ export default function Portfolio() {
                       height: isActive ? '9px' : '6px',
                       filter: 'blur(4px)',
                       opacity: isActive ? 0.45 : 0.15,
-                      transform: `scaleX(1.15) translateX(${tilt.x * -0.6}px) translateY(${tilt.y * 0.2}px)`,
+                      transform: `scaleX(1.15) translateX(calc(var(--tilt-x-num, 0) * -0.6px)) translateY(calc(var(--tilt-y-num, 0) * 0.2px))`,
                       transition: isTransitioning ? 'all 0.5s ease' : 'opacity 0.5s ease',
                     }}
                   />
@@ -414,7 +446,7 @@ export default function Portfolio() {
                       background: `radial-gradient(circle, ${activeGlowColor.replace('0.07', '0.75')} 0%, transparent 70%)`,
                       filter: 'blur(2.2px)',
                       opacity: isActive ? 0.85 : 0,
-                      transform: `scaleX(1.15) translateX(${tilt.x * -0.5}px) translateY(${tilt.y * 0.15}px)`,
+                      transform: `scaleX(1.15) translateX(calc(var(--tilt-x-num, 0) * -0.5px)) translateY(calc(var(--tilt-y-num, 0) * 0.15px))`,
                       transition: isTransitioning ? 'all 0.5s ease' : 'opacity 0.5s ease',
                     }}
                   />

@@ -7,7 +7,7 @@ import { Quote } from 'lucide-react';
 
 export default function FoundersNote() {
   return (
-    <Section className="bg-white text-brand-accent py-24 md:py-32 lg:py-40 relative overflow-hidden" id="founders-note">
+    <Section className="bg-white text-brand-accent py-16 md:py-20 lg:py-24 relative overflow-hidden" id="founders-note">
       {/* Subtle luxury background element */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/[0.02] blur-[100px] rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#0D47A1]/[0.02] blur-[100px] rounded-full -translate-x-1/3 translate-y-1/3 pointer-events-none" />
@@ -42,12 +42,15 @@ export default function FoundersNote() {
             </div>
           </MotionWrapper>
 
-          <MotionWrapper delay={0.4} className="mt-16 lg:mt-20 flex flex-col items-center">
-            <span className="font-serif font-black text-3xl md:text-4xl lg:text-5xl text-brand-accent mb-4 tracking-tighter block">
+          <MotionWrapper delay={0.4} className="mt-16 lg:mt-20 flex flex-col items-center text-center">
+            <span className="font-serif font-black text-3xl md:text-4xl lg:text-5xl text-brand-accent mb-3 tracking-tighter block">
               Mrunal Devras
             </span>
-            <span className="text-[#D4AF37] font-bold tracking-[0.3em] uppercase text-[9px] md:text-[10px]">
-              FOUNDER, PUREHARVEST
+            <span className="text-[#D4AF37] font-bold tracking-[0.3em] text-[9px] md:text-[10px] block mb-1.5">
+              Founder
+            </span>
+            <span className="text-brand-accent/50 font-bold tracking-[0.35em] text-[8px] md:text-[9px] block">
+              Pure Harvest.
             </span>
           </MotionWrapper>
 

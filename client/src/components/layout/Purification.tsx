@@ -119,7 +119,7 @@ export default function Purification() {
 
   return (
     <Section 
-      className="bg-[#F8F9FA] text-brand-accent py-20 sm:py-32 border-t border-black/[0.04] relative overflow-hidden scroll-mt-24 sm:scroll-mt-32" 
+      className="bg-[#F8F9FA] text-brand-accent py-12 md:py-16 lg:py-20 border-t border-black/[0.04] relative overflow-hidden scroll-mt-24 sm:scroll-mt-32" 
       id="purification"
     >
       
@@ -237,24 +237,26 @@ export default function Purification() {
                       </td>
                     </tr>
                     {/* Collapsible details row */}
-                    {isExpanded && (
-                      <tr>
-                        <td colSpan={6} className="p-0 bg-black/[0.005]">
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                            className="overflow-hidden border-b border-black/[0.02]"
-                          >
-                            <div className="px-16 py-6 text-xs font-semibold leading-relaxed text-brand-accent/50 flex items-start gap-4">
-                              <span className="w-1.5 h-1.5 rounded-full bg-brand-secondary mt-1.5 shrink-0 animate-pulse" />
-                              <p className="max-w-3xl">{stage.purpose}</p>
-                            </div>
-                          </motion.div>
-                        </td>
-                      </tr>
-                    )}
+                    <AnimatePresence initial={false}>
+                      {isExpanded && (
+                        <tr key={`details-${stage.number}`}>
+                          <td colSpan={6} className="p-0 bg-black/[0.005]">
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                              className="overflow-hidden border-b border-black/[0.02]"
+                            >
+                              <div className="px-16 py-6 text-xs font-semibold leading-relaxed text-brand-accent/50 flex items-start gap-4">
+                                <span className="w-1.5 h-1.5 rounded-full bg-brand-secondary mt-1.5 shrink-0 animate-pulse" />
+                                <p className="max-w-3xl">{stage.purpose}</p>
+                              </div>
+                            </motion.div>
+                          </td>
+                        </tr>
+                      )}
+                    </AnimatePresence>
                   </React.Fragment>
                 );
               })}
@@ -302,37 +304,40 @@ export default function Purification() {
                 </button>
 
                 {/* Collapsible Mobile Content */}
-                {isExpanded && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-4 pb-4 pt-1 border-t border-black/[0.02] bg-black/[0.005]">
-                      <p className="text-[11px] font-semibold leading-relaxed text-brand-accent/50 mb-3.5 pl-7">
-                        {stage.purpose}
-                      </p>
-                      
-                      {/* Compact parameters using standard Tailwind spacing */}
-                      <div className="grid grid-cols-3 gap-2 pl-7">
-                        <div className="bg-black/[0.015] border border-black/[0.03] rounded-xl p-3 flex flex-col justify-between">
-                          <span className="text-[6px] font-bold uppercase tracking-widest text-brand-accent/30 block mb-0.5">Action</span>
-                          <span className="text-[8px] font-black text-brand-accent/75 uppercase truncate">{stage.action}</span>
-                        </div>
-                        <div className="bg-black/[0.015] border border-black/[0.03] rounded-xl p-3 flex flex-col justify-between">
-                          <span className="text-[6px] font-bold uppercase tracking-widest text-brand-accent/30 block mb-0.5">Standard</span>
-                          <span className="text-[8px] font-black text-brand-accent/75 uppercase truncate">{stage.index}</span>
-                        </div>
-                        <div className="bg-black/[0.015] border border-black/[0.03] rounded-xl p-3 flex flex-col justify-between">
-                          <span className="text-[6px] font-bold uppercase tracking-widest text-brand-accent/30 block mb-0.5">Taste</span>
-                          <span className="text-[8px] font-black text-brand-accent/75 uppercase truncate">{stage.taste}</span>
+                <AnimatePresence initial={false}>
+                  {isExpanded && (
+                    <motion.div
+                      key={`mobile-details-${stage.number}`}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-4 pb-4 pt-1 border-t border-black/[0.02] bg-black/[0.005]">
+                        <p className="text-[11px] font-semibold leading-relaxed text-brand-accent/50 mb-3.5 pl-7">
+                          {stage.purpose}
+                        </p>
+                        
+                        {/* Compact parameters using standard Tailwind spacing */}
+                        <div className="grid grid-cols-3 gap-2 pl-7">
+                          <div className="bg-black/[0.015] border border-black/[0.03] rounded-xl p-3 flex flex-col justify-between">
+                            <span className="text-[6px] font-bold uppercase tracking-widest text-brand-accent/30 block mb-0.5">Action</span>
+                            <span className="text-[8px] font-black text-brand-accent/75 uppercase truncate">{stage.action}</span>
+                          </div>
+                          <div className="bg-black/[0.015] border border-black/[0.03] rounded-xl p-3 flex flex-col justify-between">
+                            <span className="text-[6px] font-bold uppercase tracking-widest text-brand-accent/30 block mb-0.5">Standard</span>
+                            <span className="text-[8px] font-black text-brand-accent/75 uppercase truncate">{stage.index}</span>
+                          </div>
+                          <div className="bg-black/[0.015] border border-black/[0.03] rounded-xl p-3 flex flex-col justify-between">
+                            <span className="text-[6px] font-bold uppercase tracking-widest text-brand-accent/30 block mb-0.5">Taste</span>
+                            <span className="text-[8px] font-black text-brand-accent/75 uppercase truncate">{stage.taste}</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </motion.div>
-                )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}

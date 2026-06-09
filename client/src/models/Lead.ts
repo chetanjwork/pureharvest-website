@@ -36,6 +36,33 @@ const LeadSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  refId: {
+    type: String,
+    required: true,
+  },
+  city: {
+    type: String,
+  },
+  orderType: {
+    type: String,
+  },
+  eventDate: {
+    type: String,
+  },
+  gstNumber: {
+    type: String,
+  },
+  requestSample: {
+    type: Boolean,
+    default: false,
+  },
+  logoUrl: {
+    type: String,
+  },
+  leadSource: {
+    type: String,
+    default: 'Website Form',
+  },
   status: {
     type: String,
     enum: ['new', 'contacted', 'qualified', 'closed'],

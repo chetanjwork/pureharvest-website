@@ -36,7 +36,7 @@ const pillars = [
 
 export default function TrustPillars() {
   return (
-    <Section className="bg-brand-accent text-white py-32" id="why-choose-us">
+    <Section className="bg-brand-accent text-white py-16 md:py-20 lg:py-24" id="why-choose-us">
       <Container>
         <div className="flex flex-col lg:flex-row gap-20 items-start">
           <div className="lg:w-1/3 relative lg:sticky lg:top-32 z-10 mb-8 lg:mb-0">

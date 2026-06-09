@@ -6,7 +6,10 @@ import { ReactNode, useState, useEffect } from 'react';
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   const [isMobile, setIsMobile] = useState(false);
 
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     const checkMobile = () => {
       // Disable if viewport is under 768px OR if the device has a coarse pointer (touch screen)
       const isTouch = window.matchMedia("(pointer: coarse)").matches;
@@ -21,7 +24,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
   }, []);
 
   // Return raw children without Lenis wrapper on mobile to ensure 100% native OS scrolling
-  if (isMobile) {
+  if (!mounted || isMobile) {
     return <>{children}</>;
   }
 

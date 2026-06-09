@@ -76,8 +76,8 @@ export default function Hero({ industry, location }: HeroProps = {}) {
 
             <MotionWrapper delay={0.2}>
               <h1 className="!font-sans !font-black leading-[0.95] lg:leading-[1.0] tracking-[-0.04em] text-[3.2rem] sm:text-[5rem] lg:text-[5.5rem] xl:text-[6.2rem] uppercase mb-4 lg:mb-5 flex flex-col lg:flex-row">
-                <span className="text-brand-accent">{industry ? `CUSTOM WATER FOR ${industry.toUpperCase()}` : "PREMIUM CUSTOM"}</span>
-                <span className="text-[#0D47A1] lg:ml-4">{industry && location ? `IN ${location.toUpperCase()}` : location ? location.toUpperCase() : "WATER"}</span>
+                <span className="text-brand-accent">{industry ? `CUSTOM WATER BOTTLE FOR ${industry.toUpperCase()}` : "PREMIUM CUSTOM"}</span>
+                <span className="text-[#0D47A1] lg:ml-4">{industry && location ? `IN ${location.toUpperCase()}` : location ? location.toUpperCase() : "WATER BOTTLE"}</span>
               </h1>
             </MotionWrapper>
 
@@ -100,7 +100,7 @@ export default function Hero({ industry, location }: HeroProps = {}) {
                 </button>
 
                 {/* Trust Badge */}
-                <div className="flex items-center gap-2 lg:gap-3 px-4 py-2 lg:px-5 lg:py-2.5 bg-white/60 md:bg-white/80 backdrop-blur-md border border-[#0D47A1]/10 rounded-full shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] mt-1 lg:mt-2">
+                <div className="flex items-center gap-2 lg:gap-3 px-4 py-2 lg:px-5 lg:py-2.5 bg-white/60 md:bg-white/80 md:backdrop-blur-md border border-[#0D47A1]/10 rounded-full shadow-sm md:shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] mt-1 lg:mt-2">
                   <ShieldCheck className="w-4 h-4 lg:w-4 lg:h-4 text-[#0D47A1]" strokeWidth={2.5} />
                   <span className="text-[9px] lg:text-[10px] font-black text-brand-accent uppercase tracking-[0.15em] pt-[1px]">BIS Approved & ISI Certified</span>
                 </div>
@@ -112,13 +112,13 @@ export default function Hero({ industry, location }: HeroProps = {}) {
             <div className="w-full flex items-center justify-center z-10 order-2 py-6 pointer-events-none">
               <div className="relative w-full h-full flex items-center justify-center animate-mobile-hero">
                 <Image
-                  src="/pureharvestherobottle.png"
+                  src="/pureharvestherobottle.webp"
                   alt="PureHarvest Premium Branded Water Bottle"
                   width={1536}
                   height={1024}
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 90vw, 50vw"
                   priority
-                  className="object-contain md:drop-shadow-[0_24px_48px_rgba(0,0,0,0.12)] max-h-[50vh]"
+                  className="object-contain max-h-[50vh]"
                 />
               </div>
             </div>
@@ -145,11 +145,11 @@ export default function Hero({ industry, location }: HeroProps = {}) {
                 className="relative w-full h-full flex items-center justify-center"
               >
                 <Image
-                  src="/pureharvestherobottle.png"
+                  src="/pureharvestherobottle.webp"
                   alt="PureHarvest Premium Branded Water Bottle"
                   width={1536}
                   height={1024}
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 90vw, 50vw"
                   priority
                   className="object-contain md:drop-shadow-[0_40px_70px_rgba(0,0,0,0.18)] max-h-[82vh]"
                 />

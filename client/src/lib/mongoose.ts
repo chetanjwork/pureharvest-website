@@ -25,6 +25,8 @@ async function connectToDatabase() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
+      serverSelectionTimeoutMS: 500, // Drop connection instantly if MongoDB is offline
+      connectTimeoutMS: 500 // Don't block the API waiting for MongoDB
     };
 
     cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongoose) => {

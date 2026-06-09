@@ -36,9 +36,17 @@ const steps = [
 
 export default function Process() {
   return (
-    <Section className="bg-brand-primary text-brand-accent py-24" id="process">
+    <Section className="bg-brand-primary text-brand-accent pt-10 lg:pt-10 pb-20 lg:pb-24" id="process">
       <Container>
-        <div className="text-center mb-24">
+        {/* Premium vertical timeline line connecting Industries to Process */}
+        <div className="flex flex-col items-center justify-center -mt-10 mb-16 pointer-events-none">
+          <div className="w-[1px] h-20 bg-gradient-to-b from-brand-accent/20 via-brand-accent/5 to-transparent" />
+          <div className="w-2 h-2 rounded-full border border-black/5 bg-[#F8F9FA] flex items-center justify-center -mt-1 shadow-sm">
+            <div className="w-1 h-1 rounded-full bg-brand-secondary" />
+          </div>
+        </div>
+
+        <div className="text-center mb-16">
           <MotionWrapper>
             <span className="text-brand-accent/40 font-bold tracking-[0.3em] uppercase text-xs mb-6 block">
               How It Works

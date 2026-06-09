@@ -34,49 +34,89 @@ export async function POST(req: Request) {
     // 2. Parse Body
     const body = await req.json();
 
-    // 3. Optional Database Save (Gracefully fail if local DB is offline)
-    let newLead = null;
+    // 3. Save to MongoDB (Source of Truth)
+    let newLead: any = null;
     try {
       await connectToDatabase();
       newLead = await Lead.create(body);
     } catch (dbError: any) {
-      console.warn('MongoDB is offline or failed. Proceeding with Google Sheets fallback. Error:', dbError.message);
+      if (process.env.NODE_ENV !== 'production') {
+        // Keep MongoDB silent in production as Sheets is the primary backend
+        console.warn('MongoDB save failed. Proceeding to fallback Sheets:', dbError.message);
+      }
     }
 
-    // 4. Send to Google Sheets (Primary or Fallback)
+    // 4. Send to Google Sheets (Drive Upload)
+    let finalLogoUrl = null;
     if (process.env.GOOGLE_SCRIPT_URL) {
       try {
-        // Map payload to match the exact keys the App Script expects
-        // Prepend apostrophe to WhatsApp so Sheets doesn't treat "+91" as a formula
         const sheetPayload = {
-          name: body.name,
-          brand: body.company,
-          email: body.email,
-          whatsapp: "'" + body.whatsapp,
-          bottleSelection: `${body.industry} | ${body.volume}`,
-          extrasSelected: body.customization?.length > 0 ? body.customization.join(', ') : 'None'
+          refId: body.refId || 'UNKNOWN',
+          name: body.name || '',
+          brand: body.company || '',
+          email: body.email || '',
+          whatsapp: body.whatsapp ? "'" + body.whatsapp : '', // Force text format
+          orderType: body.orderType || 'recurring',
+          bottleSelection: `${body.industry || ''} | ${body.volume || ''}`,
+          extrasSelected: body.customization?.length > 0 ? body.customization.join(', ') : 'None',
+          city: body.city || '',
+          gstNumber: body.gstNumber || '',
+          eventDate: body.eventDate || '',
+          requestSample: body.requestSample ? 'Yes' : 'No',
+          message: body.message || '',
+          phone: body.phone ? "'" + body.phone : '',
+          targetSheet: body.targetSheet || 'Sheet1',
+          fileName: body.logoName || '',
+          base64: body.logoBase64 || '',
+          mimeType: body.logoName ? `image/${body.logoName.split('.').pop()}` : '',
+          leadSource: body.leadSource || 'Website Form',
+          createdAt: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' })
         };
 
         const sheetResponse = await fetch(process.env.GOOGLE_SCRIPT_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(sheetPayload),
-          redirect: 'follow', // App Script requires following 302 redirects
+          redirect: 'follow', // App Script requires 302 follow
         });
+
         if (!sheetResponse.ok) {
-          throw new Error('Google Sheets responded with an error status');
+          throw new Error(`Google Sheets returned ${sheetResponse.status}`);
+        }
+
+        const responseText = await sheetResponse.text();
+        let sheetData: any = {};
+        try {
+          sheetData = JSON.parse(responseText);
+        } catch (e) {
+          // If response isn't JSON, still treat as success but without logo URL
+          console.warn('Google Sheets returned non-JSON:', responseText);
+        }
+
+        finalLogoUrl = sheetData.logoUrl || null;
+
+        // If Drive upload succeeded, update MongoDB
+        if (finalLogoUrl && newLead && newLead._id) {
+          await Lead.findByIdAndUpdate(newLead._id, { logoUrl: finalLogoUrl });
         }
       } catch (sheetError: any) {
-        console.error('Google Sheets Submission Error:', sheetError);
-        return NextResponse.json(
-          { error: 'Failed to save to Google Sheets', details: sheetError.message },
-          { status: 500 }
-        );
+        console.error('Google Sheets/Drive Error:', sheetError);
+
+        // Requirements: If Drive upload fails, save anyway, mark logoUrl as UPLOAD_FAILED, do not block submission.
+        if (newLead && newLead._id && body.logoBase64) {
+          await Lead.findByIdAndUpdate(newLead._id, { logoUrl: 'UPLOAD_FAILED' });
+        }
       }
     }
 
-    // Return success if either DB or Sheets worked
-    return NextResponse.json({ success: true, data: newLead || body }, { status: 201 });
+    // 5. Return Success
+    if (newLead) {
+      return NextResponse.json({ success: true, data: newLead, logoUrl: finalLogoUrl }, { status: 201 });
+    } else {
+      // If MongoDB failed but Sheets succeeded (fallback)
+      return NextResponse.json({ success: true, message: 'Saved to Sheets fallback', logoUrl: finalLogoUrl }, { status: 201 });
+    }
+
   } catch (error: any) {
     console.error('Lead Submission Error:', error);
     return NextResponse.json(

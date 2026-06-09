@@ -8,7 +8,7 @@ import Section from '../ui/Section';
 
 export default function FAQ() {
   return (
-    <Section className="bg-[#F8F9FA] py-28 border-t border-black/[0.04] relative overflow-hidden" id="faq">
+    <Section className="bg-[#F8F9FA] py-16 md:py-20 lg:py-24 border-t border-black/[0.04] relative overflow-hidden" id="faq">
       {/* Dynamic Background Glow */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_120%,_rgba(0,102,255,0.015)_0%,_transparent_60%)]" />
       

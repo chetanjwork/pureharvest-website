@@ -6,7 +6,6 @@ import Navbar from "@/components/layout/Navbar";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import LoadingAnimation from "@/components/ui/LoadingAnimation";
-import CookieConsent from "@/components/layout/CookieConsent";
 import CodeProtection from "@/components/providers/CodeProtection";
 
 const geistSans = Geist({
@@ -334,9 +333,8 @@ export default function RootLayout({
           <LoadingAnimation />
           <Navbar />
           {children}
-          <ScrollToTop />
           <WhatsAppFloat />
-          <CookieConsent />
+          <ScrollToTop />
         </SmoothScroll>
       </body>
     </html>

@@ -73,7 +73,7 @@ export default function InteractiveConfigurator() {
 
   return (
     <Section
-      className="bg-gradient-to-b from-[#f8f8f8] to-[#f1f1f1] text-brand-accent py-32 border-t border-brand-accent/5 relative overflow-hidden"
+      className="bg-gradient-to-b from-[#f8f8f8] to-[#f1f1f1] text-brand-accent py-16 md:py-20 lg:py-24 border-t border-brand-accent/5 relative overflow-hidden"
       id="configurator"
     >
       {/* Subtle noise texture */}
@@ -124,10 +124,10 @@ export default function InteractiveConfigurator() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`bottle-${activeSeries.id}`}
-                  initial={{ opacity: 0, scale: 0.94 }}
+                  initial={isMobile ? undefined : { opacity: 0, scale: 0.94 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.94 }}
-                  transition={{ duration: 0.45, ease: 'easeInOut' }}
+                  exit={isMobile ? undefined : { opacity: 0, scale: 0.94 }}
+                  transition={isMobile ? { duration: 0 } : { duration: 0.45, ease: 'easeInOut' }}
                   whileHover={isMobile ? {} : { scale: 1.025, rotate: 0.5 }}
                   style={{ cursor: 'pointer', willChange: 'transform' }}
                 >
