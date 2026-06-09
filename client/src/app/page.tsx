@@ -113,22 +113,22 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 bg-[#F8F9FA] md:bg-black/[0.02] border border-black/5 md:backdrop-blur-md rounded-[48px] px-8 pt-12 pb-16 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 group hover:border-black/10 transition-all duration-500 shadow-sm md:shadow-none"
+            className="relative z-10 bg-[#F8F9FA] md:bg-black/[0.02] border border-black/5 md:backdrop-blur-md rounded-[48px] px-8 py-16 md:py-20 flex flex-col items-center text-center gap-10 group hover:border-black/10 transition-all duration-500 shadow-sm md:shadow-none"
           >
-            <div className="max-w-2xl text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div className="max-w-3xl flex flex-col items-center">
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#25D366]/10 border border-[#25D366]/20 text-[#25D366] text-xs font-black uppercase tracking-[0.2em] mb-8 shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse" />
                 Live Inquiry
               </span>
-              <Heading level={2} className="text-brand-accent mb-6 leading-tight tracking-tight text-3xl md:text-5xl">
-                Ready to elevate <br className="hidden md:block"/>your brand experience?
+              <Heading level={2} className="text-brand-accent mb-6 leading-tight tracking-tight text-3xl md:text-5xl lg:text-6xl">
+                Ready to elevate <br className="hidden sm:block"/>your brand experience?
               </Heading>
-              <p className="text-brand-accent/70 text-base md:text-lg font-medium leading-relaxed max-w-xl">
+              <p className="text-brand-accent/70 text-base md:text-lg font-medium leading-relaxed max-w-xl mx-auto">
                 Chat with our team for custom design mockups, bulk pricing, and samples - made for your business.
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-center gap-6 w-full lg:w-auto mt-4 md:mt-0">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <div className="relative w-full sm:w-auto">
                 <div className="absolute -inset-1 bg-[#25D366]/20 rounded-full blur-lg animate-pulse" />
                 <a
@@ -141,7 +141,7 @@ export default function Home() {
                   Chat on WhatsApp
                 </a>
               </div>
-              <p className="text-brand-accent/50 text-[10px] uppercase tracking-[0.2em] font-black hidden sm:block text-center sm:text-left">
+              <p className="text-brand-accent/50 text-[10px] uppercase tracking-[0.2em] font-black text-center sm:text-left">
                 Response time <br className="hidden sm:block" />{'< 5 mins'}
               </p>
             </div>
