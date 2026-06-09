@@ -317,6 +317,7 @@ export default function RootLayout({
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" as="image" href="/pureharvestherobottle.webp" type="image/webp" />
 
         {/* All JSON-LD schemas */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />

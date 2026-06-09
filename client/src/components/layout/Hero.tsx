@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform, useReducedMotion, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import MotionWrapper from '../motion/MotionWrapper';
@@ -30,23 +30,79 @@ interface HeroProps {
   location?: string;
 }
 
-export default function Hero({ industry, location }: HeroProps = {}) {
-  const containerRef = useRef<HTMLElement>(null);
-  const shouldReduceMotion = useReducedMotion();
-  const disableAnimations = shouldReduceMotion;
+function StaticBottle() {
+  return (
+    <div className="w-full flex items-center justify-center z-10 order-2 py-6 pointer-events-none lg:hidden">
+      <div className="relative w-full h-full flex items-center justify-center animate-[fade-in-up_0.8s_ease-out_forwards]">
+        <Image
+          src="/pureharvestherobottle.webp"
+          alt="PureHarvest Premium Branded Water Bottle"
+          width={1536}
+          height={1024}
+          sizes="(max-width: 768px) 90vw, 50vw"
+          priority
+          className="object-contain max-h-[50vh]"
+        />
+      </div>
+    </div>
+  );
+}
 
-  // Track scroll position of the hero section for premium, lag-free parallax
+function DesktopAnimatedBottle({ containerRef }: { containerRef: React.RefObject<HTMLElement | null> }) {
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
 
-  // Bypass heavy physics engines (useSpring) and connect directly to raw hardware-accelerated scroll.
-  // This completely eliminates Main Thread math blocking on initial load for older phones.
   const bottleY = useTransform(scrollYProgress, [0, 1], ["0px", "200px"]);
   const bottleScale = useTransform(scrollYProgress, [0, 1], [1.15, 0.90]);
   const bottleRotate = useTransform(scrollYProgress, [0, 1], [0, 15]);
   const bottleOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  return (
+    <motion.div
+      className="hidden lg:flex w-full lg:w-auto lg:absolute lg:left-1/2 lg:top-[50%] lg:-translate-x-1/2 lg:-translate-y-[48%] items-center justify-center z-10 order-2 lg:order-none py-6 lg:py-0 pointer-events-none"
+      style={{
+        y: bottleY,
+        scale: bottleScale,
+        rotate: bottleRotate,
+        opacity: bottleOpacity,
+        z: 0,
+        willChange: "transform, opacity"
+      }}
+    >
+      <motion.div
+        initial={{ y: 50 }}
+        animate={{ y: [0, -15, 0] }}
+        transition={{
+          y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+        }}
+        style={{ z: 0 }}
+        className="relative w-full h-full flex items-center justify-center"
+      >
+        <Image
+          src="/pureharvestherobottle.webp"
+          alt="PureHarvest Premium Branded Water Bottle"
+          width={1536}
+          height={1024}
+          sizes="(max-width: 768px) 90vw, 50vw"
+          priority
+          className="object-contain md:drop-shadow-[0_40px_70px_rgba(0,0,0,0.18)] max-h-[82vh]"
+        />
+      </motion.div>
+    </motion.div>
+  );
+}
+
+export default function Hero({ industry, location }: HeroProps = {}) {
+  const containerRef = useRef<HTMLElement>(null);
+  const [mountDesktopParallax, setMountDesktopParallax] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth >= 1024) {
+      setMountDesktopParallax(true);
+    }
+  }, []);
 
   return (
     <section ref={containerRef} className="relative min-h-[100svh] will-change-transform pt-[10vh] lg:pt-[12vh] pb-[6vh] lg:pb-[8vh] bg-[#F3F4F6] overflow-hidden flex flex-col snap-start snap-always" id="hero">
@@ -108,53 +164,8 @@ export default function Hero({ industry, location }: HeroProps = {}) {
             </MotionWrapper>
           </div>
 
-          {disableAnimations ? (
-            <div className="w-full flex items-center justify-center z-10 order-2 py-6 pointer-events-none">
-              <div className="relative w-full h-full flex items-center justify-center animate-[fade-in-up_0.8s_ease-out_forwards]">
-                <Image
-                  src="/pureharvestherobottle.webp"
-                  alt="PureHarvest Premium Branded Water Bottle"
-                  width={1536}
-                  height={1024}
-                  sizes="(max-width: 768px) 90vw, 50vw"
-                  priority
-                  className="object-contain max-h-[50vh]"
-                />
-              </div>
-            </div>
-          ) : (
-            <motion.div
-              className="w-full lg:w-auto lg:absolute lg:left-1/2 lg:top-[50%] lg:-translate-x-1/2 lg:-translate-y-[48%] flex items-center justify-center z-10 order-2 lg:order-none py-6 lg:py-0 pointer-events-none"
-              style={{
-                y: bottleY,
-                scale: bottleScale,
-                rotate: bottleRotate,
-                opacity: bottleOpacity,
-                z: 0, // Forces GPU hardware acceleration layer
-                willChange: "transform, opacity"
-              }}
-            >
-              <motion.div
-                initial={{ y: 50 }}
-                animate={{ y: [0, -15, 0] }}
-                transition={{
-                  y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                }}
-                style={{ z: 0 }}
-                className="relative w-full h-full flex items-center justify-center animate-mobile-hero"
-              >
-                <Image
-                  src="/pureharvestherobottle.webp"
-                  alt="PureHarvest Premium Branded Water Bottle"
-                  width={1536}
-                  height={1024}
-                  sizes="(max-width: 768px) 90vw, 50vw"
-                  priority
-                  className="object-contain md:drop-shadow-[0_40px_70px_rgba(0,0,0,0.18)] max-h-[82vh]"
-                />
-              </motion.div>
-            </motion.div>
-          )}
+          <StaticBottle />
+          {mountDesktopParallax && <DesktopAnimatedBottle containerRef={containerRef} />}
 
           {/* RIGHT COLUMN: Glass Metrics Cards */}
           <div className="w-full lg:w-[32%] flex flex-col justify-center gap-3 lg:gap-4 z-20 order-3 lg:order-none pb-4 lg:pb-0">
