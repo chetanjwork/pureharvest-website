@@ -463,11 +463,11 @@ export default function EnterpriseOnboarding() {
                     <div className="space-y-12">
                       {/* Order Type Selector */}
                       <div className="space-y-6">
-                        <div className="text-center md:text-left space-y-2">
+                        <div className="text-center space-y-2">
                           <h3 className="text-2xl md:text-3xl font-black tracking-tight text-brand-accent">What kind of order is this?</h3>
                           <p className="text-brand-accent/40 font-bold uppercase tracking-widest text-[10px]">Do you need water for a one-time event or regular daily supply?</p>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto md:mx-0">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
                           <button
                             type="button"
                             onClick={() => setSelections(prev => ({ ...prev, orderType: 'recurring' }))}
@@ -519,16 +519,17 @@ export default function EnterpriseOnboarding() {
                   {step === 2 && (
                     <div className="space-y-12">
                       <div>
-                        <div className="text-center md:text-left space-y-2 mb-6">
-                          <h3 className="text-3xl font-black tracking-tight text-brand-accent">Business Type</h3>
-                          <p className="text-brand-accent/40 font-bold uppercase tracking-widest text-[10px]">What kind of business or event is this for?</p>
+                        <div className="text-center space-y-2 mb-6">
+                          <h3 className="text-2xl md:text-3xl font-black tracking-tight text-brand-accent">Select your industry</h3>
+                          <p className="text-brand-accent/40 font-bold uppercase tracking-widest text-[10px]">Helps us tailor the bottle design and branding</p>
                         </div>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
                           {INDUSTRIES.map((ind) => (
                             <button
                               key={ind.id}
+                              type="button"
                               onClick={() => setSelections(prev => ({ ...prev, industry: ind.id }))}
-                              className={`group p-4 md:p-6 rounded-[20px] md:rounded-[32px] border transition-all duration-500 flex flex-col items-center md:items-start text-center md:text-left gap-3 md:gap-5 relative overflow-hidden ${
+                              className={`group p-4 md:p-6 rounded-[20px] md:rounded-[32px] border transition-all duration-500 flex flex-col items-center text-center gap-3 md:gap-5 relative overflow-hidden ${
                                 selections.industry === ind.id 
                                   ? 'bg-[#0A1128] border-[#0A1128] shadow-[0_20px_50px_-10px_rgba(10,17,40,0.4)] scale-[1.02]' 
                                   : 'bg-white md:bg-white/50 border-black/5 hover:border-black/15 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1'
@@ -560,9 +561,9 @@ export default function EnterpriseOnboarding() {
 
                   {step === 3 && (
                     <div className="space-y-12">
-                      <div className="text-center md:text-left space-y-2">
-                        <h3 className="text-3xl font-black tracking-tight">How Many Bottles?</h3>
-                        <p className="text-brand-accent/40 font-bold uppercase tracking-widest text-[10px]">Estimated monthly requirement</p>
+                      <div className="text-center space-y-2">
+                        <h3 className="text-2xl md:text-3xl font-black tracking-tight text-brand-accent">Estimated Volume</h3>
+                        <p className="text-brand-accent/40 font-bold uppercase tracking-widest text-[10px]">Select your monthly water requirement</p>
                       </div>
                       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
                         {[
@@ -615,8 +616,8 @@ export default function EnterpriseOnboarding() {
 
                   {step === 4 && (
                     <div className="space-y-12">
-                      <div className="text-center md:text-left space-y-2">
-                        <h3 className="text-3xl font-black tracking-tight text-brand-accent">Add Extras</h3>
+                      <div className="text-center space-y-2">
+                        <h3 className="text-2xl md:text-3xl font-black tracking-tight text-brand-accent">Add Extras</h3>
                         <p className="text-brand-accent/40 font-bold uppercase tracking-widest text-[10px]">Special features for your brand</p>
                       </div>
                       <div className="flex flex-col items-center gap-8 w-full">
@@ -746,9 +747,9 @@ export default function EnterpriseOnboarding() {
                         </div>
                       </div>
 
-                      <div className="text-center md:text-left space-y-2">
-                        <h3 className="text-3xl font-black tracking-tight text-brand-accent">Quotation Details</h3>
-                        <p className="text-brand-accent/40 font-bold uppercase tracking-widest text-[10px]">Complete the fields below to request a tailored commercial offer.</p>
+                      <div className="text-center space-y-2">
+                        <h3 className="text-2xl md:text-3xl font-black tracking-tight text-brand-accent">Final Details</h3>
+                        <p className="text-brand-accent/40 font-bold uppercase tracking-widest text-[10px]">Where should we send your quotation and samples?</p>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
