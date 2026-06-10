@@ -14,7 +14,7 @@ interface SectionProps {
 
 export default function Section({ children, className, id }: SectionProps) {
   return (
-    <section id={id} className={cn('py-16 md:py-20 lg:py-24', className)}>
+    <section id={id} className={cn('scroll-mt-24 lg:scroll-mt-32 py-16 md:py-20 lg:py-24', className)}>
       {children}
     </section>
   );

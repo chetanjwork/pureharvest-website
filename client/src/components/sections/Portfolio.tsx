@@ -43,7 +43,7 @@ const BRAND_MAPPING: Record<string, { title: string; client: string; caption: st
   },
   'C_Bottle6.png': {
     title: 'Classic Series',
-    client: 'Delicious Shadu Corner',
+    client: 'Delicious Snacks Corner',
     caption: 'Vibrant custom-branded PET label designed for elite local dining destinations.'
   },
   'S_Bottle1.png': {
@@ -73,7 +73,7 @@ const BRAND_MAPPING: Record<string, { title: string; client: string; caption: st
   },
   'S_Bottle6.png': {
     title: 'Signature Series',
-    client: 'Guilgoz · Mahesh Fine Dine',
+    client: 'Mahesh Fine Dine',
     caption: 'Elite custom packaging designed to complement royal coastal hospitality aesthetics.'
   }
 };
@@ -252,13 +252,13 @@ export default function Portfolio() {
     const y = (e.clientY - rect.top) / rect.height - 0.5; // -0.5 to 0.5
     const tx = x * 12;
     const ty = -y * 12;
-    
+
     stage.style.setProperty('--tilt-x', `${tx}deg`);
     stage.style.setProperty('--tilt-y', `${ty}deg`);
     stage.style.setProperty('--tilt-x-num', `${tx}`);
     stage.style.setProperty('--tilt-y-num', `${ty}`);
     stage.style.setProperty('--tilt-x-abs', `${Math.abs(tx)}`);
-    
+
     if (!isHovered) {
       setIsHovered(true);
     }
@@ -510,7 +510,7 @@ export default function Portfolio() {
               aria-label={`Go to bottle ${i + 1}`}
               className="w-11 h-11 flex items-center justify-center group cursor-pointer focus:outline-none -mx-1"
             >
-              <div 
+              <div
                 className="transition-all duration-500 rounded-full"
                 style={{
                   width: i === active ? 24 : 8,

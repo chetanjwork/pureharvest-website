@@ -140,15 +140,35 @@ export default function Hero({ industry, location }: HeroProps = {}) {
 
             <MotionWrapper delay={0.2}>
               <h1 className="font-sans! font-black! leading-[0.95] lg:leading-[1.05] tracking-[-0.04em] text-[3.2rem] sm:text-[5rem] lg:text-[4.5rem] xl:text-[5rem] uppercase mb-4 lg:mb-5 flex flex-col">
-                <span className="text-brand-accent">{industry ? `CUSTOM WATER BOTTLE FOR ${industry.toUpperCase()}` : "PREMIUM WATER"}</span>
-                <span className="text-[#0D47A1]">{industry && location ? `IN ${location.toUpperCase()}` : location ? location.toUpperCase() : "CUSTOM BOTTLE"}</span>
+                <span className="text-brand-accent">
+                  {industry 
+                    ? "CUSTOM BOTTLES FOR" 
+                    : location 
+                      ? "CUSTOM BOTTLES IN" 
+                      : "CUSTOM BRANDED"}
+                </span>
+                <span className="text-[#0D47A1]">
+                  {industry && location 
+                    ? `${industry.toUpperCase()} IN ${location.toUpperCase()}` 
+                    : industry 
+                      ? industry.toUpperCase() 
+                      : location 
+                        ? location.toUpperCase() 
+                        : "WATER BOTTLES"}
+                </span>
               </h1>
             </MotionWrapper>
 
             <TextReveal
-              text={industry && location
-                ? `Show off your ${industry.toLowerCase()} brand in ${location} with premium custom water bottles. We put your logo on high-quality glass bottles, perfect for your guests and clients.`
-                : "Show off your brand with premium custom water bottles. We put your logo on high-quality glass bottles, perfect for your guests and clients."}
+              text={
+                industry && location
+                  ? `Show off your ${industry.toLowerCase()} brand in ${location} with premium custom water bottles. We put your logo on high-quality bottles, perfect for your guests and clients.`
+                  : industry
+                    ? `Show off your ${industry.toLowerCase()} brand with premium custom water bottles. We put your logo on high-quality bottles, perfect for your guests and clients.`
+                    : location
+                      ? `Show off your brand in ${location} with premium custom water bottles. We put your logo on high-quality bottles, perfect for your guests and clients.`
+                      : "Show off your brand with premium custom water bottles. We put your logo on high-quality bottles, perfect for your guests and clients."
+              }
               delay={0.3}
               className="text-[#4B5563] text-3.5 sm:text-3.75 max-w-80 lg:max-w-112.5 font-medium leading-[1.6] mb-8 lg:mb-10 mx-auto lg:mx-0 justify-center lg:justify-start"
             />

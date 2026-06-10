@@ -39,8 +39,8 @@ export default function Footer() {
             <h4 className="text-white font-medium text-[13px] tracking-wider opacity-60">Contact</h4>
             <ul className="space-y-4">
               <li>
-                <a href="mailto:hello@pureharvestenterprises.com" className="text-white/80 text-[14px] font-medium hover:text-white inline-block transition-all break-all">
-                  hello@pureharvestenterprises.com
+                <a href="mailto:pureharvestenterprise@gmail.com" className="text-white/80 text-[14px] font-medium hover:text-white inline-block transition-all break-all">
+                  pureharvestenterprise@gmail.com
                 </a>
               </li>
               <li>
@@ -55,11 +55,11 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-white font-medium text-[13px] tracking-wider opacity-60">Locations</h4>
             <ul className="space-y-4">
-              <li><Link href="/mumbai" className="text-white/80 text-[14px] hover:text-white inline-block transition-all font-medium">Mumbai (HQ)</Link></li>
-              <li><Link href="/pune" className="text-white/80 text-[14px] hover:text-white inline-block transition-all font-medium">Pune Hub</Link></li>
-              <li><Link href="/bangalore" className="text-white/80 text-[14px] hover:text-white inline-block transition-all font-medium">Bangalore Supply</Link></li>
-              <li><Link href="/delhi" className="text-white/80 text-[14px] hover:text-white inline-block transition-all font-medium">Delhi NCR Supply</Link></li>
-              <li><Link href="/hotels" className="text-white/80 text-[14px] hover:text-white inline-block transition-all font-medium">Hotels (All India)</Link></li>
+              <li><Link href="/mumbai" className="text-white/80 text-[14px] hover:text-white inline-block transition-all font-medium">Mumbai</Link></li>
+              <li><Link href="/pune" className="text-white/80 text-[14px] hover:text-white inline-block transition-all font-medium">Pune</Link></li>
+              <li><Link href="/bangalore" className="text-white/80 text-[14px] hover:text-white inline-block transition-all font-medium">Bangalore</Link></li>
+              <li><Link href="/delhi" className="text-white/80 text-[14px] hover:text-white inline-block transition-all font-medium">Delhi NCR</Link></li>
+              <li><Link href="/hotels" className="text-white/80 text-[14px] hover:text-white inline-block transition-all font-medium">All India Hotels</Link></li>
             </ul>
           </div>
 

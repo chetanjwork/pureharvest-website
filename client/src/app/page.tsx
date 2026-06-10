@@ -46,20 +46,21 @@ export default function Home() {
     <main className="min-h-screen bg-brand-primary selection:bg-brand-secondary selection:text-white overflow-hidden">
       <Hero />
       <Services />
-      <FoundersNote />
-      
+
+      <InViewLoader fallback={<div />} rootMargin="1500px">
+        <PortfolioDynamic />
+      </InViewLoader>
+
       <InViewLoader fallback={<div />} rootMargin="1500px">
         <InteractiveConfiguratorDynamic />
       </InViewLoader>
+
+      <FoundersNote />
 
       <Purification />
       <Industries />
       <Process />
       <TrustPillars />
-
-      <InViewLoader fallback={<div />} rootMargin="1500px">
-        <PortfolioDynamic />
-      </InViewLoader>
 
       <FAQ />
 

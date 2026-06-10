@@ -14,36 +14,36 @@ const SERIES_OPTIONS = [
   {
     id: 'signature',
     name: 'Signature Series',
-    tagline: 'Elegant & Sleek Design',
-    description: 'Our most premium bottle. Thick-walled PET plastic, custom logo branding, matte aluminum cap. Perfect for corporate offices, boardrooms, and premium client presentations.',
+    tagline: 'Elegant & Sleek',
+    description: 'Thick-walled premium PET with matte aluminum caps. Designed for corporate headquarters, boardrooms, and high-end client hospitality.',
     frontImage: '/signature.webp',
     backImage: '/signature.webp',
     width: 309,
     height: 1008,
     bgGlow: 'radial-gradient(ellipse 60% 80% at 50% 60%, rgba(13, 71, 161, 0.08) 0%, transparent 70%)',
     specs: [
-      { label: 'Material', value: 'High-Density Premium PET', icon: Scale },
-      { label: 'Cap Finish', value: 'Matte Aluminum Seal', icon: ShieldCheck },
-      { label: 'Logo Method', value: 'Precision Custom Branding', icon: Sparkles },
-      { label: 'Best For', value: 'VIP & Boardroom Tables', icon: Layers }
+      { label: 'Material', value: 'Premium PET', icon: Scale },
+      { label: 'Cap Finish', value: 'Matte Aluminum', icon: ShieldCheck },
+      { label: 'Logo Method', value: 'Precision Branding', icon: Sparkles },
+      { label: 'Best For', value: 'Executive Spaces', icon: Layers }
     ],
     waMessage: 'Hi PureHarvest, I want to know more about the Signature Series bottles.'
   },
   {
     id: 'classic',
     name: 'Classic Series',
-    tagline: 'Clean, Simple, Classy',
-    description: 'Light, durable, and beautifully branded. Anti-slip ridged grip, brushed silver cap, screen-printed logo. Great for cafés, restaurants, weddings, and high-volume events.',
+    tagline: 'Clean & Durable',
+    description: 'Lightweight, durable, and beautifully screen-printed. Features a secure grip and brushed finish. Perfect for cafés, restaurants, and high-volume hospitality.',
     frontImage: '/classic.webp',
     backImage: '/classic.webp',
     width: 427,
     height: 1338,
     bgGlow: 'radial-gradient(ellipse 60% 80% at 50% 60%, rgba(0, 102, 255, 0.06) 0%, transparent 70%)',
     specs: [
-      { label: 'Material', value: 'High-Durability Food PET', icon: Scale },
-      { label: 'Cap Finish', value: 'Brushed Silver Cap', icon: ShieldCheck },
-      { label: 'Logo Method', value: 'Organic Screen Printing', icon: Sparkles },
-      { label: 'Best For', value: 'Cafés & High-Volume Events', icon: Layers }
+      { label: 'Material', value: 'Food-Grade PET', icon: Scale },
+      { label: 'Cap Finish', value: 'Brushed Silver', icon: ShieldCheck },
+      { label: 'Logo Method', value: 'Screen Printing', icon: Sparkles },
+      { label: 'Best For', value: 'Cafes & Events', icon: Layers }
     ],
     waMessage: 'Hi PureHarvest, I want to know more about the Classic Series bottles.'
   }
@@ -80,7 +80,7 @@ export default function InteractiveConfigurator() {
     >
       {/* Subtle noise texture */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.012] z-30"
+        className="absolute inset-0 pointer-events-none opacity-[0.01] z-30"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`
         }}
@@ -91,11 +91,10 @@ export default function InteractiveConfigurator() {
 
           {/* ─── LEFT: Bottle Studio ─── */}
           <div
-            className="relative flex items-center justify-center rounded-[48px] border border-white/80 overflow-hidden"
+            className="relative flex items-center justify-center rounded-[32px] lg:rounded-[48px] border border-white/80 overflow-hidden min-h-[420px] lg:min-h-[660px] w-full"
             style={{
               background: 'linear-gradient(160deg, #ffffff 0%, #f4f4f4 100%)',
               boxShadow: '0 40px 120px -30px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.9)',
-              minHeight: '700px',
             }}
           >
 
@@ -143,23 +142,23 @@ export default function InteractiveConfigurator() {
                       sizes="(max-width: 1024px) 50vw, 30vw"
                       style={{
                         width: 'auto',
-                        height: isMobile ? 'min(45vh, 320px)' : 'min(72vh, 640px)',
-                      maxWidth: '100%',
-                      objectFit: 'contain',
-                      filter: isMobile 
-                        ? 'none' 
-                        : 'drop-shadow(0 40px 60px rgba(0,0,0,0.12)) drop-shadow(0 8px 16px rgba(0,0,0,0.06))',
-                    }}
-                  />
-                </motion.div>
-              </AnimatePresence>
+                        height: isMobile ? 'min(45vh, 300px)' : 'min(72vh, 600px)',
+                        maxWidth: '100%',
+                        objectFit: 'contain',
+                        filter: isMobile 
+                          ? 'none' 
+                          : 'drop-shadow(0 40px 60px rgba(0,0,0,0.12)) drop-shadow(0 8px 16px rgba(0,0,0,0.06))',
+                      }}
+                    />
+                  </motion.div>
+                </AnimatePresence>
               )}
             </motion.div>
 
             {/* Floor contact shadow - synced to float */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
               <motion.div
-                animate={isMobile ? { scaleX: 1, opacity: 0.14 } : { scaleX: [1, 0.88, 1], opacity: [0.10, 0.18, 0.10] }}
+                animate={isMobile ? { scaleX: 1, opacity: 0.1 } : { scaleX: [1, 0.88, 1], opacity: [0.08, 0.14, 0.08] }}
                 transition={isMobile ? { duration: 0.1 } : { duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
                 style={{
                   width: 120,
@@ -174,9 +173,9 @@ export default function InteractiveConfigurator() {
 
             {/* Live render badge */}
             <div className="absolute bottom-5 right-7 flex items-center gap-2 pointer-events-none z-20">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50 animate-ping" />
-              <span className="text-2 font-black uppercase tracking-[0.25em] text-brand-accent/25">
-                Ultra-Sharp Render
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/40 animate-ping" />
+              <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-brand-accent/30">
+                Studio Render
               </span>
             </div>
           </div>
@@ -184,8 +183,8 @@ export default function InteractiveConfigurator() {
           {/* ─── RIGHT: Details Panel ─── */}
           <div className="flex flex-col justify-center">
             <MotionWrapper>
-              <span className="text-brand-secondary font-black tracking-[0.35em] uppercase text-2.25 mb-5 block">
-                Our Bottle Range
+              <span className="text-brand-secondary font-semibold tracking-[0.2em] uppercase text-xs mb-3 block">
+                The Collection
               </span>
             </MotionWrapper>
 
@@ -193,36 +192,36 @@ export default function InteractiveConfigurator() {
               <TextReveal
                 text="Choose Your Bottle"
                 as="h2"
-                className="text-brand-accent tracking-tighter font-black! text-4xl sm:text-5xl lg:text-6xl mb-4 uppercase leading-[0.95]"
+                className="text-brand-accent tracking-tight font-semibold text-3xl sm:text-4xl lg:text-5xl mb-4 leading-tight"
               />
             </MotionWrapper>
 
             <MotionWrapper delay={0.15}>
-              <h3 className="text-brand-accent/50 font-bold uppercase tracking-widest text-sm sm:text-base mb-5">
+              <h3 className="text-brand-secondary font-medium text-base sm:text-lg mb-3">
                 {activeSeries.tagline}
               </h3>
-              <p className="text-brand-accent/60 leading-relaxed text-base font-medium max-w-lg mb-10">
+              <p className="text-brand-accent/60 leading-relaxed text-sm sm:text-base font-medium max-w-lg mb-8">
                 {activeSeries.description}
               </p>
             </MotionWrapper>
 
             {/* Apple-style segmented toggle */}
-            <div className="bg-[#F8F9FA] md:bg-black/3 border border-black/6 p-1 rounded-full flex gap-1 mb-10 max-w-md md:backdrop-blur-sm">
+            <div className="bg-black/[0.03] border border-black/5 p-1 rounded-full flex gap-1 mb-8 max-w-xs">
               {SERIES_OPTIONS.map((series) => (
                 <button
                   key={series.id}
                   onClick={() => handleSeriesChange(series)}
-                  className="flex-1 relative py-3 rounded-full text-2.25 font-black uppercase tracking-[0.25em] transition-all duration-500 cursor-pointer"
+                  className="flex-1 relative py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer"
                 >
                   {activeSeries.id === series.id && (
                     <motion.div
                       layoutId="activePremiumSegment"
-                      className="absolute inset-0 bg-white border border-black/5 rounded-full shadow-[0_4px_14pxrgba(0,0,0,0.07)]"
+                      className="absolute inset-0 bg-white border border-black/5 rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.06)]"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
-                  <span className={`relative z-10 transition-colors duration-300 ${activeSeries.id === series.id ? 'text-brand-accent' : 'text-brand-accent/35'}`}>
-                    {series.name}
+                  <span className={`relative z-10 transition-colors duration-300 ${activeSeries.id === series.id ? 'text-brand-accent' : 'text-brand-accent/40'}`}>
+                    {series.name.replace(' Series', '')}
                   </span>
                 </button>
               ))}
@@ -236,14 +235,14 @@ export default function InteractiveConfigurator() {
                   <MotionWrapper
                     key={spec.label}
                     delay={0.2 + i * 0.06}
-                    className="bg-white/95 md:bg-white/50 md:backdrop-blur-md border border-white/70 p-5 rounded-2xl flex items-center gap-4 hover:border-black/10 hover:bg-white/70 hover:-translate-y-0.5 hover:shadow-[0_12px_32pxrgba(0,0,0,0.04)] transition-all duration-400 group cursor-default"
+                    className="bg-white/40 backdrop-blur-xs border border-black/[0.03] p-4 rounded-xl flex items-center gap-3.5 hover:border-black/10 hover:bg-white/60 transition-all duration-300 group cursor-default"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#F8F9FA] md:bg-black/2 border border-black/6 flex items-center justify-center text-brand-secondary group-hover:bg-brand-secondary/10 transition-all shrink-0">
-                      <Icon size={16} strokeWidth={2} />
+                    <div className="w-8 h-8 rounded-lg bg-black/[0.02] border border-black/[0.04] flex items-center justify-center text-brand-secondary group-hover:bg-brand-secondary/5 transition-all shrink-0">
+                      <Icon size={14} strokeWidth={1.75} />
                     </div>
                     <div>
-                      <div className="text-2.25 uppercase tracking-[0.2em] text-brand-accent/40 font-bold mb-0.5">{spec.label}</div>
-                      <div className="text-xs font-black uppercase text-brand-accent tracking-wide leading-snug">{spec.value}</div>
+                      <div className="text-[10px] uppercase tracking-wider text-brand-accent/40 font-medium mb-0.5">{spec.label}</div>
+                      <div className="text-xs font-semibold text-brand-accent/80 tracking-wide leading-none">{spec.value}</div>
                     </div>
                   </MotionWrapper>
                 );
@@ -251,17 +250,17 @@ export default function InteractiveConfigurator() {
             </div>
 
             {/* CTA */}
-            <MotionWrapper delay={0.45} className="pt-10 mt-10 border-t border-black/6 flex flex-col sm:flex-row items-center gap-6">
+            <MotionWrapper delay={0.45} className="pt-8 mt-8 border-t border-black/5 flex flex-col sm:flex-row items-center gap-5">
               <a
                 href={`https://wa.me/918149174975?text=${encodeURIComponent(activeSeries.waMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-between gap-8 bg-[#18181B] text-white px-10 py-5 rounded-full text-xs font-bold uppercase tracking-widest shadow-[0_20px_40px_-15pxrgba(0,0,0,0.4)] hover:bg-black hover:scale-[1.02] hover:shadow-[0_25px_50px_-12pxrgba(0,0,0,0.5)] active:scale-95 transition-all duration-300 group cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-between gap-6 bg-brand-accent text-white px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-brand-accent/90 active:scale-95 transition-all duration-300 group cursor-pointer"
               >
                 <span>Get a Free Mockup</span>
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" strokeWidth={3} />
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" strokeWidth={2} />
               </a>
-              <p className="text-2.5 text-brand-accent/40 font-black uppercase tracking-[0.2em] text-center sm:text-left leading-relaxed">
+              <p className="text-[10px] text-brand-accent/40 font-semibold uppercase tracking-wider text-center sm:text-left leading-relaxed">
                 We&apos;ll design it<br />in under 5 mins
               </p>
             </MotionWrapper>
