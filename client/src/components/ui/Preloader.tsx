@@ -43,7 +43,7 @@ export default function Preloader() {
               delay: 0.3 
             } 
           }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-white will-change-transform"
+          className="fixed inset-0 z-9999 flex items-center justify-center bg-white will-change-transform"
         >
           {/* Main Logo Text Architecture */}
           <div className="flex flex-col items-center gap-14">
@@ -87,14 +87,14 @@ export default function Preloader() {
               className="flex flex-col items-center gap-6"
             >
               <div className="w-16 h-[1.5px] bg-black/10 rounded-full" />
-              <span className="text-[10px] uppercase tracking-[0.8em] font-black text-black/30">
+              <span className="text-2.5 uppercase tracking-[0.8em] font-black text-black/30">
                 Institutional Standard
               </span>
             </motion.div>
           </div>
 
           {/* Optimized Depth Layer */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/[0.02] to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/2 to-transparent pointer-events-none" />
         </motion.div>
       )}
     </AnimatePresence>

@@ -23,6 +23,12 @@ const nextConfig: NextConfig = {
           { key: "X-Frame-Options", value: "DENY" },
           { key: "X-XSS-Protection", value: "1; mode=block" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
+          { 
+            key: "Content-Security-Policy", 
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://vitals.vercel-insights.com; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://*.googleusercontent.com; font-src 'self' data:; connect-src 'self' https://script.google.com https://*.googleusercontent.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://*.sentry.io;" 
+          },
         ],
       },
     ];
@@ -36,15 +42,30 @@ const nextConfig: NextConfig = {
 
   // ── Compiler optimisations ──────────────────────────────────────
   compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
+    removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
   },
 
   // ── Power BI / Bundle optimization ──────────────────────────────
   poweredByHeader: false,
+  
+  // ── Security ────────────────────────────────────────────────────
+  productionBrowserSourceMaps: false,
 };
 
 import withBundleAnalyzer from '@next/bundle-analyzer';
+import { withSentryConfig } from '@sentry/nextjs';
 
 const analyze = process.env.ANALYZE === 'true';
 
-export default analyze ? withBundleAnalyzer({ enabled: true })(nextConfig) : nextConfig;
+const configured = analyze ? withBundleAnalyzer({ enabled: true })(nextConfig) : nextConfig;
+
+export default withSentryConfig(configured, {
+  silent: true,
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  widenClientFileUpload: true,
+  tunnelRoute: "/monitoring",
+  sourcemaps: {
+    disable: true
+  }
+});

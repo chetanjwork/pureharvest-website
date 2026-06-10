@@ -29,7 +29,7 @@ export default function MotionWrapper({
 
   useEffect(() => {
     const mql = window.matchMedia('(max-width: 1023px)');
-    setIsMobile(mql.matches);
+    setTimeout(() => setIsMobile(mql.matches), 0);
     
     const handleChange = (e: MediaQueryListEvent) => {
       setIsMobile(e.matches);

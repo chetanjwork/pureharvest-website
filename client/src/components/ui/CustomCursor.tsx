@@ -19,7 +19,7 @@ export default function CustomCursor() {
   useEffect(() => {
     // Only enable on devices with a fine pointer (desktops/laptops)
     if (window.matchMedia('(pointer: fine)').matches) {
-      setIsDesktop(true);
+      setTimeout(() => setIsDesktop(true), 0);
       
       // Hide the default cursor globally
       document.body.style.cursor = 'none';
@@ -62,7 +62,7 @@ export default function CustomCursor() {
     <>
       {/* The main smooth following circle */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] flex items-center justify-center mix-blend-difference"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-9999 flex items-center justify-center mix-blend-difference"
         style={{
           x: cursorX,
           y: cursorY,
@@ -78,7 +78,7 @@ export default function CustomCursor() {
       
       {/* The exact center dot for precision */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-white pointer-events-none z-[10000] mix-blend-difference"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-white pointer-events-none z-10000 mix-blend-difference"
         style={{
           x: mouseX,
           y: mouseY,

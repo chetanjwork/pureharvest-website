@@ -35,7 +35,7 @@ export function AdaptivePerformanceProvider({ children }: { children: React.Reac
 
       // Check device memory (GB) - only supported in Chromium-based browsers
       if ('deviceMemory' in navigator) {
-        const memory = (navigator as any).deviceMemory || 4;
+        const memory = (navigator as unknown as { deviceMemory: number }).deviceMemory || 4;
         if (memory < 4) {
           isLowEnd = true;
           lowMem = true;
@@ -44,7 +44,7 @@ export function AdaptivePerformanceProvider({ children }: { children: React.Reac
 
       // Check connection speed (optional, if we want to reduce preload assets)
       if ('connection' in navigator) {
-        const conn = (navigator as any).connection;
+        const conn = (navigator as unknown as { connection: { saveData: boolean, effectiveType: string } }).connection;
         if (conn && (conn.saveData || conn.effectiveType === 'slow-2g' || conn.effectiveType === '2g' || conn.effectiveType === '3g')) {
           isLowEnd = true;
         }

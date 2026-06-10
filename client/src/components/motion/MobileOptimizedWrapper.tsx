@@ -7,7 +7,7 @@ import { useIsMobile } from '@/hooks/useIsMobile';
 interface MobileOptimizedWrapperProps {
   children: ReactNode;
   /** Heavy components should be rendered inside this function so they can be skipped entirely on mobile */
-  renderHeavyDesktopComponent: (props: any) => ReactNode;
+  renderHeavyDesktopComponent: (props: Record<string, unknown>) => ReactNode;
 }
 
 /**

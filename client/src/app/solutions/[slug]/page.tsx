@@ -1,23 +1,21 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import Hero from '@/components/layout/Hero';
-import Footer from '@/components/layout/Footer';
-import Container from '@/components/ui/Container';
+import Hero from '@/components/sections/Hero';
+import Footer from '@/components/global/Footer';
 
 const SectionSkeleton = ({ title }: { title: string }) => (
   <div className="w-full py-32 flex flex-col items-center justify-center bg-[#F3F4F6] gap-4">
     <div className="w-8 h-8 rounded-full border-2 border-brand-accent border-t-transparent animate-spin" />
-    <span className="text-[10px] font-black uppercase tracking-[0.25em] text-brand-accent/40 animate-pulse">
+    <span className="text-2.5 font-black uppercase tracking-[0.25em] text-brand-accent/40 animate-pulse">
       Loading {title}...
     </span>
   </div>
 );
 
-const InteractiveConfigurator = dynamic(() => import('@/components/layout/InteractiveConfigurator'), {
+const InteractiveConfigurator = dynamic(() => import('@/components/features/InteractiveConfigurator'), {
   loading: () => <SectionSkeleton title="Configurator" />
 });
-const Purification = dynamic(() => import('@/components/layout/Purification'), {
+const Purification = dynamic(() => import('@/components/sections/Purification'), {
   loading: () => <SectionSkeleton title="Purification" />
 });
 

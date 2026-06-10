@@ -1,11 +1,11 @@
 import React from 'react';
 
 export const ConfiguratorSkeleton = () => (
-  <div className="w-full min-h-[800px] py-24 flex flex-col items-center justify-center bg-[#F8F9FA]">
+  <div className="w-full min-h-200 py-24 flex flex-col items-center justify-center bg-[#F8F9FA]">
     <div className="w-full max-w-7xl px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 animate-pulse">
       {/* Left side: Bottle silhouette */}
-      <div className="w-full flex justify-center items-center h-[500px]">
-        <div className="w-[120px] md:w-[180px] h-[400px] md:h-[600px] bg-black/5 rounded-full" />
+      <div className="w-full flex justify-center items-center h-125">
+        <div className="w-30 md:w-45 h-100 md:h-150 bg-black/5 rounded-full" />
       </div>
       {/* Right side: Controls */}
       <div className="w-full flex flex-col justify-center space-y-8">
@@ -34,7 +34,7 @@ export const PortfolioSkeleton = () => (
 
 export const FormSkeleton = () => (
   <div className="w-full py-32 flex items-center justify-center bg-[#F8F9FA] animate-pulse">
-    <div className="w-full max-w-3xl h-[600px] bg-white rounded-[48px] shadow-sm border border-black/5 p-8 md:p-16 flex flex-col space-y-8">
+    <div className="w-full max-w-3xl h-150 bg-white rounded-[48px] shadow-sm border border-black/5 p-8 md:p-16 flex flex-col space-y-8">
       <div className="w-1/2 h-10 bg-black/5 rounded-lg self-center" />
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
         {[1, 2, 3, 4].map(i => (

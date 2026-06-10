@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
-import Navbar from "@/components/layout/Navbar";
-import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
+import Navbar from "@/components/global/Navbar";
+import WhatsAppFloat from "@/components/global/WhatsAppFloat";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import LoadingAnimation from "@/components/ui/LoadingAnimation";
 import CodeProtection from "@/components/providers/CodeProtection";
@@ -98,7 +98,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "", // Add Google Search Console verification code when ready
+    // IMPORTANT: To verify ownership with Google Search Console, paste your
+    // HTML tag verification code (the content attribute value) inside the quotes below.
+    // e.g. google: "1234567890abcdef-1234567890abcdef"
+    google: "",
   },
   category: "food & beverage",
 };

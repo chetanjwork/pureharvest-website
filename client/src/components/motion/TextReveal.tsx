@@ -25,7 +25,7 @@ export default function TextReveal({ text, className = '', delay = 0, as = 'p' }
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const Component = motion[as as keyof typeof motion] as any;
+  const Component = motion[as as keyof typeof motion] as unknown as React.ElementType;
   const words = text.split(' ');
 
   if (shouldReduceMotion) {

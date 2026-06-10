@@ -20,7 +20,7 @@ export default function LoadingAnimation() {
       delay: Math.random() * 3,
       size: 1.5 + Math.random() * 4,
     }));
-    setBubbles(newBubbles);
+    setTimeout(() => setBubbles(newBubbles), 0);
 
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -36,7 +36,7 @@ export default function LoadingAnimation() {
           initial={{ y: '0%', opacity: 1 }}
           exit={{ y: '-100%', opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.85, 0, 0.15, 1] }}
-          className="fixed inset-0 z-[999] bg-[#FFFFFF] flex items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-999 bg-[#FFFFFF] flex items-center justify-center overflow-hidden"
         >
           <style dangerouslySetInnerHTML={{__html: `
             .water-fill-text {
@@ -113,13 +113,13 @@ export default function LoadingAnimation() {
               initial={{ width: 0, opacity: 0 }}
               animate={{ width: 200, opacity: 1 }}
               transition={{ delay: 0.5, duration: 2.5, ease: "easeOut" }}
-              className="mt-12 h-[1px] bg-black/5 relative overflow-hidden hidden md:block"
+              className="mt-12 h-px bg-black/5 relative overflow-hidden hidden md:block"
             >
               <motion.div 
                 initial={{ left: '-100%' }}
                 animate={{ left: '100%' }}
                 transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                className="absolute top-0 bottom-0 w-1/2 bg-gradient-to-r from-transparent via-brand-secondary/20 to-transparent"
+                className="absolute top-0 bottom-0 w-1/2 bg-linear-to-r from-transparent via-brand-secondary/20 to-transparent"
               />
             </motion.div>
 

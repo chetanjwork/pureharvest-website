@@ -12,7 +12,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    setTimeout(() => setMounted(true), 0);
     const checkMobile = () => {
       // Disable if viewport is under 768px OR if the device has a coarse pointer (touch screen)
       const isTouch = window.matchMedia("(pointer: coarse)").matches;

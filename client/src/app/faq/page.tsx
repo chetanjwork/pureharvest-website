@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Search, MessageSquare, ArrowRight, ShieldCheck, HelpCircle, PhoneCall, Check, Send, Sparkles } from 'lucide-react';
+import { ChevronDown, Search, MessageSquare, ShieldCheck, HelpCircle, Sparkles } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 import MotionWrapper from '@/components/motion/MotionWrapper';
@@ -120,7 +120,7 @@ export default function FAQPage() {
 
   // Reset open accordion on category change
   useEffect(() => {
-    setOpenIndex(null);
+    setTimeout(() => setOpenIndex(null), 0);
   }, [activeCategory, searchQuery]);
 
   // Filter logic for FAQ catalog
@@ -141,8 +141,8 @@ export default function FAQPage() {
 
       {/* Decorative Ambience elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#F8F9FA] md:bg-black/[0.02] blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#25D366]/[0.01] blur-[120px] rounded-full -translate-x-1/3 translate-y-1/3" />
+        <div className="absolute top-0 right-0 w-175 h-175 bg-[#F8F9FA] md:bg-black/2 blur-37.5 rounded-full translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute bottom-0 left-0 w-125 h-125 bg-[#25D366]/[0.01] blur-30 rounded-full -translate-x-1/3 translate-y-1/3" />
       </div>
 
       <Container className="relative z-10">
@@ -151,18 +151,18 @@ export default function FAQPage() {
         <div className="max-w-4xl mx-auto mb-20 text-center sm:text-left">
           <MotionWrapper>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-6">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-accent/5 border border-brand-accent/10 text-brand-secondary text-[9px] font-black uppercase tracking-[0.25em]">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-accent/5 border border-brand-accent/10 text-brand-secondary text-2.25 font-black uppercase tracking-[0.25em]">
                 <Sparkles size={10} className="text-brand-secondary animate-pulse" />
                 Knowledge Base & FAQ
               </span>
-              <span className="text-brand-accent/40 text-[9px] font-black uppercase tracking-[0.2em] border-b border-black/5 pb-1">
+              <span className="text-brand-accent/40 text-2.25 font-black uppercase tracking-[0.2em] border-b border-black/5 pb-1">
                 FSSAI License: 27GVMPD4986B1ZA
               </span>
             </div>
             
             <Heading level={1} className="text-4xl md:text-6xl font-black tracking-tight leading-[0.95] text-brand-accent uppercase mb-8">
               Got Questions?<br />
-              <span className="text-brand-accent/30 font-medium">We've Got Plain Answers.</span>
+              <span className="text-brand-accent/30 font-medium">We&apos;ve Got Plain Answers.</span>
             </Heading>
             
             <p className="text-brand-accent/60 text-base md:text-lg font-medium leading-relaxed max-w-2xl mb-12">
@@ -203,7 +203,7 @@ export default function FAQPage() {
                   transition={{ duration: 0.2 }}
                   className="mt-3 text-left pl-2"
                 >
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-secondary/5 border border-brand-secondary/10 text-brand-secondary text-[10px] font-black uppercase tracking-wider">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-secondary/5 border border-brand-secondary/10 text-brand-secondary text-2.5 font-black uppercase tracking-wider">
                     Found {filteredFaqs.length} {filteredFaqs.length === 1 ? 'match' : 'matches'}
                   </span>
                 </motion.div>
@@ -221,14 +221,14 @@ export default function FAQPage() {
               <div className="flex lg:flex-col gap-1.5 min-w-max lg:min-w-0">
                 <button
                   onClick={() => setActiveCategory('All')}
-                  className={`px-4 py-3 rounded-full lg:rounded-xl text-[10px] font-black uppercase tracking-widest text-left transition-all duration-300 border lg:border-none flex items-center justify-between w-full gap-8 ${
+                  className={`px-4 py-3 rounded-full lg:rounded-xl text-2.5 font-black uppercase tracking-widest text-left transition-all duration-300 border lg:border-0 flex items-center justify-between w-full gap-8 ${
                     activeCategory === 'All'
                       ? 'bg-brand-accent text-white border-brand-accent shadow-sm'
-                      : 'bg-white lg:bg-black/[0.01] text-brand-accent/50 border-black/[0.05] hover:bg-black/[0.04] hover:text-brand-accent'
+                      : 'bg-white lg:bg-black/1 text-brand-accent/50 border-black/5 hover:bg-black/4 hover:text-brand-accent'
                   }`}
                 >
                   <span>All Categories</span>
-                  <span className={`text-[9px] tabular-nums hidden lg:inline-block px-1.5 py-0.5 rounded-full ${activeCategory === 'All' ? 'bg-white/20 text-white' : 'bg-black/5 text-brand-accent/40'}`}>
+                  <span className={`text-2.25 tabular-nums hidden lg:inline-block px-1.5 py-0.5 rounded-full ${activeCategory === 'All' ? 'bg-white/20 text-white' : 'bg-black/5 text-brand-accent/40'}`}>
                     {faqs.length}
                   </span>
                 </button>
@@ -238,14 +238,14 @@ export default function FAQPage() {
                     <button
                       key={cat}
                       onClick={() => setActiveCategory(cat)}
-                      className={`px-4 py-3 rounded-full lg:rounded-xl text-[10px] font-black uppercase tracking-widest text-left transition-all duration-300 border lg:border-none flex items-center justify-between w-full gap-8 ${
+                      className={`px-4 py-3 rounded-full lg:rounded-xl text-2.5 font-black uppercase tracking-widest text-left transition-all duration-300 border lg:border-0 flex items-center justify-between w-full gap-8 ${
                         activeCategory === cat
                           ? 'bg-brand-accent text-white border-brand-accent shadow-sm'
-                          : 'bg-white lg:bg-black/[0.01] text-brand-accent/50 border-black/[0.05] hover:bg-black/[0.04] hover:text-brand-accent'
+                          : 'bg-white lg:bg-black/1 text-brand-accent/50 border-black/5 hover:bg-black/4 hover:text-brand-accent'
                       }`}
                     >
                       <span>{cat}</span>
-                      <span className={`text-[9px] tabular-nums hidden lg:inline-block px-1.5 py-0.5 rounded-full ${activeCategory === cat ? 'bg-white/20 text-white' : 'bg-black/5 text-brand-accent/40'}`}>
+                      <span className={`text-2.25 tabular-nums hidden lg:inline-block px-1.5 py-0.5 rounded-full ${activeCategory === cat ? 'bg-white/20 text-white' : 'bg-black/5 text-brand-accent/40'}`}>
                         {count}
                       </span>
                     </button>
@@ -254,10 +254,10 @@ export default function FAQPage() {
               </div>
 
               {/* Verified Trust Pill */}
-              <div className="hidden lg:block mt-8 p-6 rounded-2xl bg-[#F8F9FA] md:bg-black/[0.02] border border-black/5 text-left">
+              <div className="hidden lg:block mt-8 p-6 rounded-2xl bg-[#F8F9FA] md:bg-black/2 border border-black/5 text-left">
                 <ShieldCheck size={20} className="text-brand-secondary mb-4" />
-                <h4 className="text-[10px] font-black uppercase tracking-widest text-brand-accent mb-2">Verified Content</h4>
-                <p className="text-[11px] text-brand-accent/50 leading-relaxed font-semibold">
+                <h4 className="text-2.5 font-black uppercase tracking-widest text-brand-accent mb-2">Verified Content</h4>
+                <p className="text-2.75 text-brand-accent/50 leading-relaxed font-semibold">
                   Answers optimized directly for accuracy in generative search platforms and certified with FSSAI hygiene standards.
                 </p>
               </div>
@@ -285,8 +285,8 @@ export default function FAQPage() {
                       <div
                         className={`rounded-2xl border bg-white overflow-hidden transition-all duration-300 ${
                           isOpen
-                            ? 'border-brand-accent/20 shadow-[0_12px_40px_rgba(0,0,0,0.05)]'
-                            : 'border-black/[0.05] hover:border-black/[0.12] hover:-translate-y-[1px]'
+                            ? 'border-brand-accent/20 shadow-[0_12px_40pxrgba(0,0,0,0.05)]'
+                            : 'border-black/5 hover:border-black/12 hover:-translate-y-px'
                         }`}
                       >
                         <button
@@ -295,14 +295,14 @@ export default function FAQPage() {
                           aria-expanded={isOpen}
                         >
                           <div className="flex items-start gap-4 md:gap-5 flex-1">
-                            <span className="text-[10px] font-black text-brand-accent/20 uppercase tracking-widest shrink-0 mt-1.5 tabular-nums">
+                            <span className="text-2.5 font-black text-brand-accent/20 uppercase tracking-widest shrink-0 mt-1.5 tabular-nums">
                               {String(i + 1).padStart(2, '0')}
                             </span>
                             <div className="space-y-2">
                               <span className="text-sm md:text-base font-black text-brand-accent leading-snug tracking-tight block">
                                 {highlightText(faq.question, searchQuery)}
                               </span>
-                              <span className="inline-block text-[8px] font-black uppercase tracking-[0.2em] text-brand-secondary/60 bg-brand-secondary/5 border border-brand-secondary/10 px-2 py-0.5 rounded-md">
+                              <span className="inline-block text-2 font-black uppercase tracking-[0.2em] text-brand-secondary/60 bg-brand-secondary/5 border border-brand-secondary/10 px-2 py-0.5 rounded-md">
                                 {faq.category}
                               </span>
                             </div>
@@ -326,29 +326,29 @@ export default function FAQPage() {
                               className="overflow-hidden"
                             >
                               <div className="px-6 md:px-8 pb-6 md:pb-8 pl-14 md:pl-20">
-                                <div className="h-px bg-black/[0.04] mb-6" />
+                                <div className="h-px bg-black/4 mb-6" />
                                 
                                 {/* Bold Direct semantic summary statement for search bots */}
                                 {faq.highlight && (
-                                  <div className="p-4 rounded-xl bg-black/[0.01] border border-black/5 mb-5 flex items-start gap-3">
+                                  <div className="p-4 rounded-xl bg-black/1 border border-black/5 mb-5 flex items-start gap-3">
                                     <HelpCircle size={14} className="text-brand-secondary shrink-0 mt-0.5" />
-                                    <p className="text-[12px] font-bold text-brand-accent leading-normal">
+                                    <p className="text-3 font-bold text-brand-accent leading-normal">
                                       {highlightText(faq.highlight, searchQuery)}
                                     </p>
                                   </div>
                                 )}
                                 
-                                <p className="text-brand-accent/60 text-sm md:text-[15px] leading-relaxed font-semibold">
+                                <p className="text-brand-accent/60 text-sm md:text-3.75 leading-relaxed font-semibold">
                                   {highlightText(faq.answer, searchQuery)}
                                 </p>
 
                                 {/* WhatsApp Quote trigger for this exact question */}
-                                <div className="mt-6 flex flex-wrap gap-4 items-center border-t border-black/[0.03] pt-5">
+                                <div className="mt-6 flex flex-wrap gap-4 items-center border-t border-black/3 pt-5">
                                   <a
                                     href={`https://wa.me/918149174975?text=Hi%20PureHarvest%2C%20I%20have%20a%20question%20about%3A%20${encodeURIComponent(faq.question)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-wider text-[#25D366] hover:text-[#22c55e] transition-colors"
+                                    className="inline-flex items-center gap-2 text-2.5 font-black uppercase tracking-wider text-[#25D366] hover:text-[#22c55e] transition-colors"
                                   >
                                     <MessageSquare size={13} fill="currentColor" stroke="none" />
                                     Discuss on WhatsApp
@@ -374,7 +374,7 @@ export default function FAQPage() {
                   </p>
                   <button 
                     onClick={() => { setSearchQuery(''); setActiveCategory('All'); }}
-                    className="px-6 py-3 rounded-full bg-brand-accent text-white text-[9px] font-black uppercase tracking-widest"
+                    className="px-6 py-3 rounded-full bg-brand-accent text-white text-2.25 font-black uppercase tracking-widest"
                   >
                     Reset Filter
                   </button>
@@ -388,9 +388,9 @@ export default function FAQPage() {
         {/* ── Concierge Support Footer Area ── */}
         <div className="max-w-4xl mx-auto mt-24 pt-16 border-t border-black/5">
           <MotionWrapper>
-            <div className="bg-black/[0.01] border border-black/5 rounded-[32px] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 group hover:border-black/10 hover:bg-white hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)] transition-all duration-500">
+            <div className="bg-black/1 border border-black/5 rounded-4xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 group hover:border-black/10 hover:bg-white hover:shadow-[0_20px_40pxrgba(0,0,0,0.03)] transition-all duration-500">
               <div className="max-w-md text-center md:text-left">
-                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#25D366]/10 text-[#25D366] text-[9px] font-black uppercase tracking-widest mb-4">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#25D366]/10 text-[#25D366] text-2.25 font-black uppercase tracking-widest mb-4">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse" />
                   Live Concierge
                 </span>
@@ -407,7 +407,7 @@ export default function FAQPage() {
                   href="https://wa.me/918149174975?text=Hello%20PureHarvest%2C%20I%20checked%20your%20FAQ%20page%20and%20would%20like%20to%20request%20samples%20for%20my%20business."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#25D366] text-white font-black uppercase tracking-widest text-[10px] px-8 py-4.5 rounded-full hover:bg-[#22c55e] transition-all hover:scale-105 active:scale-95 shadow-[0_8px_30px_rgba(37,211,102,0.2)]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#25D366] text-white font-black uppercase tracking-widest text-2.5 px-8 py-4.5 rounded-full hover:bg-[#22c55e] transition-all hover:scale-105 active:scale-95 shadow-[0_8px_30pxrgba(37,211,102,0.2)]"
                 >
                   <MessageSquare size={14} fill="currentColor" stroke="none" />
                   Request Bespoke Quote
@@ -423,8 +423,8 @@ export default function FAQPage() {
             onClick={() => lenis ? lenis.scrollTo(0, { duration: 1.5 }) : window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="group flex flex-col items-center gap-4 text-brand-accent/30 hover:text-brand-accent transition-all cursor-pointer outline-none"
           >
-            <span className="text-[9px] font-black uppercase tracking-[0.3em]">Back to Top</span>
-            <div className="w-px h-8 bg-gradient-to-b from-black/20 to-transparent group-hover:h-12 group-hover:bg-brand-accent/40 transition-all duration-500" />
+            <span className="text-2.25 font-black uppercase tracking-[0.3em]">Back to Top</span>
+            <div className="w-px h-8 bg-linear-to-b from-black/20 to-transparent group-hover:h-12 group-hover:bg-brand-accent/40 transition-all duration-500" />
           </button>
         </div>
 

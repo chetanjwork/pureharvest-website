@@ -27,7 +27,7 @@
 
 @layer base {
   body {
-    @apply bg-[var(--background)] text-[var(--foreground)] antialiased;
+    @apply bg-(--background) text-(--foreground) antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
     /* Smooth scroll is handled by Lenis — no CSS scroll-snap on body */
     -webkit-overflow-scrolling: touch;
